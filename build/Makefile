@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named CtpSystem
+# Target rules for targets named mdserver
 
 # Build rule for target.
-CtpSystem: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 CtpSystem
-.PHONY : CtpSystem
+mdserver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mdserver
+.PHONY : mdserver
 
 # fast build rule for target.
-CtpSystem/fast:
-	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/build
-.PHONY : CtpSystem/fast
+mdserver/fast:
+	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/build
+.PHONY : mdserver/fast
 
 # Help Target
 help:
@@ -131,7 +131,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... CtpSystem"
+	@echo "... mdserver"
 .PHONY : help
 
 

@@ -27,7 +27,6 @@ void UdpOutputAdapter::init(){
 }
 
 void UdpOutputAdapter::send(Frame dataframe){
-  UdpOutputAdapter::init();
   this->dataframe = dataframe;
   int ret = sendto(this->sock, (char *)&this->dataframe, sizeof(this->dataframe), 0, (struct sockaddr*)&this->si, sizeof(this->si));
   if(!ret || !errno){

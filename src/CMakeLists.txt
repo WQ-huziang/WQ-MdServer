@@ -15,6 +15,6 @@ SET(CPP_LIST
 
 SET(CMAKE_BUILD_TYPE "Debug")
 
-ADD_EXECUTABLE(CtpSystem ${CPP_LIST})
+ADD_EXECUTABLE(mdserver ${CPP_LIST})
 
-TARGET_LINK_LIBRARIES(CtpSystem thostmduserapi thosttraderapi)
+TARGET_LINK_LIBRARIES(mdserver thostmduserapi thosttraderapi)

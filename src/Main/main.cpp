@@ -20,6 +20,7 @@ char **contracts;
 TThostFtdcInvestorIDType InvestorID;
 TThostFtdcPasswordType Password;
 char MdAddr[30];
+int port;
 
 int processInstrumentIDList(char *list[], const char pInstrumentIDList[]) {
   if (pInstrumentIDList[0] == '\0') {
@@ -44,10 +45,11 @@ int processInstrumentIDList(char *list[], const char pInstrumentIDList[]) {
   return sum;
 }
 
-void readIni(){
-  IniConfig* ini = new IniConfig("../config.ini");
+void readIni(char *filepath){
+  IniConfig* ini = new IniConfig(filepath);
   ini->readIni();
   strcpy(MdAddr, (ini->getObject("Addr", "Md", "false").c_str()));
+  port = atoi((ini->getObject("Addr", "Port", "12345").c_str()));
   strcpy(InvestorID, (ini->getObject("UsrInfo", "UserID", "false").c_str()));
   strcpy(Password, (ini->getObject("UsrInfo", "Password", "false").c_str()));
   contracts = new char*[CONTRACT_NUM];
@@ -55,19 +57,23 @@ void readIni(){
     contracts[i] = new char[CONTRACT_LEN];
   }
   contractsnum = processInstrumentIDList(contracts, (ini->getObject("CtaInfo", "Contracts", "").c_str()));
-  for (int i = 0; i < contractsnum; i++) {
-    printf("%s\n", contracts[i]);
-  }
 }
 
-int main(int argn, char* argv[])
+int main(int argc, char* argv[])
 {
-  readIni();
+  if (argc != 3 || strcmp(argv[1], "-f") != 0) {
+    printf("Usage : ./mdserver -f CONFIG_FILE\n"
+      "\tCONFIG_FILE : initial file path (.ini)\n");
+    return 0;
+  }
+
+  readIni(argv[2]);
 
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
-  OutputAdapter *udpadapter = new UdpOutputAdapter(12345, "127.0.0.1");
-  OutputAdapter *tcpadapter = new TcpOutputAdapter(12345, "127.0.0.1");
-  engine->setOutput(tcpadapter);
+  OutputAdapter *udpadapter = new UdpOutputAdapter(port, "127.0.0.1");
+  OutputAdapter *tcpadapter = new TcpOutputAdapter(port, "127.0.0.1");
+  udpadapter->init();
+  engine->setOutput(udpadapter);
   cout << "初始化行情..." << endl;
 
   while (true) {

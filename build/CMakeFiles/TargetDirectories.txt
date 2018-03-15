@@ -2,4 +2,4 @@
 /home/huziang/Desktop/MdServer/build/CMakeFiles/rebuild_cache.dir
 /home/huziang/Desktop/MdServer/build/src/CMakeFiles/edit_cache.dir
 /home/huziang/Desktop/MdServer/build/src/CMakeFiles/rebuild_cache.dir
-/home/huziang/Desktop/MdServer/build/src/CMakeFiles/CtpSystem.dir
+/home/huziang/Desktop/MdServer/build/src/CMakeFiles/mdserver.dir

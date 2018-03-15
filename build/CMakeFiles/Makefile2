@@ -63,12 +63,12 @@ CMAKE_BINARY_DIR = /home/huziang/Desktop/MdServer/build
 # Directory level rules for directory src
 
 # Convenience name for "all" pass in the directory.
-src/all: src/CMakeFiles/CtpSystem.dir/all
+src/all: src/CMakeFiles/mdserver.dir/all
 
 .PHONY : src/all
 
 # Convenience name for "clean" pass in the directory.
-src/clean: src/CMakeFiles/CtpSystem.dir/clean
+src/clean: src/CMakeFiles/mdserver.dir/clean
 
 .PHONY : src/clean
 
@@ -78,39 +78,39 @@ src/preinstall:
 .PHONY : src/preinstall
 
 #=============================================================================
-# Target rules for target src/CMakeFiles/CtpSystem.dir
+# Target rules for target src/CMakeFiles/mdserver.dir
 
 # All Build rule for target.
-src/CMakeFiles/CtpSystem.dir/all:
-	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/depend
-	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target CtpSystem"
-.PHONY : src/CMakeFiles/CtpSystem.dir/all
+src/CMakeFiles/mdserver.dir/all:
+	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/depend
+	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target mdserver"
+.PHONY : src/CMakeFiles/mdserver.dir/all
 
 # Include target in all.
-all: src/CMakeFiles/CtpSystem.dir/all
+all: src/CMakeFiles/mdserver.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-src/CMakeFiles/CtpSystem.dir/rule: cmake_check_build_system
+src/CMakeFiles/mdserver.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/MdServer/build/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/CtpSystem.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/mdserver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/MdServer/build/CMakeFiles 0
-.PHONY : src/CMakeFiles/CtpSystem.dir/rule
+.PHONY : src/CMakeFiles/mdserver.dir/rule
 
 # Convenience name for target.
-CtpSystem: src/CMakeFiles/CtpSystem.dir/rule
+mdserver: src/CMakeFiles/mdserver.dir/rule
 
-.PHONY : CtpSystem
-
-# clean rule for target.
-src/CMakeFiles/CtpSystem.dir/clean:
-	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/clean
-.PHONY : src/CMakeFiles/CtpSystem.dir/clean
+.PHONY : mdserver
 
 # clean rule for target.
-clean: src/CMakeFiles/CtpSystem.dir/clean
+src/CMakeFiles/mdserver.dir/clean:
+	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/clean
+.PHONY : src/CMakeFiles/mdserver.dir/clean
+
+# clean rule for target.
+clean: src/CMakeFiles/mdserver.dir/clean
 
 .PHONY : clean
 

@@ -32,7 +32,6 @@ void TcpOutputAdapter::init(){
 }
 
 void TcpOutputAdapter::send(Frame dataframe){
-  TcpOutputAdapter::init();
   int ret = write(this->sock, (char*)&dataframe, sizeof(dataframe));
   std::cout << errno << std::endl;
   if(!ret){

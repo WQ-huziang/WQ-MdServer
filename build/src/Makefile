@@ -111,19 +111,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/CtpSystem.dir/rule:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/CtpSystem.dir/rule
-.PHONY : src/CMakeFiles/CtpSystem.dir/rule
+src/CMakeFiles/mdserver.dir/rule:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/mdserver.dir/rule
+.PHONY : src/CMakeFiles/mdserver.dir/rule
 
 # Convenience name for target.
-CtpSystem: src/CMakeFiles/CtpSystem.dir/rule
+mdserver: src/CMakeFiles/mdserver.dir/rule
 
-.PHONY : CtpSystem
+.PHONY : mdserver
 
 # fast build rule for target.
-CtpSystem/fast:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/build
-.PHONY : CtpSystem/fast
+mdserver/fast:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/build
+.PHONY : mdserver/fast
 
 Main/IniConfig.o: Main/IniConfig.cpp.o
 
@@ -131,7 +131,7 @@ Main/IniConfig.o: Main/IniConfig.cpp.o
 
 # target to build an object file
 Main/IniConfig.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o
 .PHONY : Main/IniConfig.cpp.o
 
 Main/IniConfig.i: Main/IniConfig.cpp.i
@@ -140,7 +140,7 @@ Main/IniConfig.i: Main/IniConfig.cpp.i
 
 # target to preprocess a source file
 Main/IniConfig.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.i
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.i
 .PHONY : Main/IniConfig.cpp.i
 
 Main/IniConfig.s: Main/IniConfig.cpp.s
@@ -149,7 +149,7 @@ Main/IniConfig.s: Main/IniConfig.cpp.s
 
 # target to generate assembly for a file
 Main/IniConfig.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.s
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.s
 .PHONY : Main/IniConfig.cpp.s
 
 Main/main.o: Main/main.cpp.o
@@ -158,7 +158,7 @@ Main/main.o: Main/main.cpp.o
 
 # target to build an object file
 Main/main.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/main.cpp.o
 .PHONY : Main/main.cpp.o
 
 Main/main.i: Main/main.cpp.i
@@ -167,7 +167,7 @@ Main/main.i: Main/main.cpp.i
 
 # target to preprocess a source file
 Main/main.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Main/main.cpp.i
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/main.cpp.i
 .PHONY : Main/main.cpp.i
 
 Main/main.s: Main/main.cpp.s
@@ -176,7 +176,7 @@ Main/main.s: Main/main.cpp.s
 
 # target to generate assembly for a file
 Main/main.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Main/main.cpp.s
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/main.cpp.s
 .PHONY : Main/main.cpp.s
 
 Md/CustomMdSpi.o: Md/CustomMdSpi.cpp.o
@@ -185,7 +185,7 @@ Md/CustomMdSpi.o: Md/CustomMdSpi.cpp.o
 
 # target to build an object file
 Md/CustomMdSpi.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Md/CustomMdSpi.cpp.o
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
 .PHONY : Md/CustomMdSpi.cpp.o
 
 Md/CustomMdSpi.i: Md/CustomMdSpi.cpp.i
@@ -194,7 +194,7 @@ Md/CustomMdSpi.i: Md/CustomMdSpi.cpp.i
 
 # target to preprocess a source file
 Md/CustomMdSpi.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Md/CustomMdSpi.cpp.i
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.i
 .PHONY : Md/CustomMdSpi.cpp.i
 
 Md/CustomMdSpi.s: Md/CustomMdSpi.cpp.s
@@ -203,7 +203,7 @@ Md/CustomMdSpi.s: Md/CustomMdSpi.cpp.s
 
 # target to generate assembly for a file
 Md/CustomMdSpi.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Md/CustomMdSpi.cpp.s
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.s
 .PHONY : Md/CustomMdSpi.cpp.s
 
 Md/MdEngine.o: Md/MdEngine.cpp.o
@@ -212,7 +212,7 @@ Md/MdEngine.o: Md/MdEngine.cpp.o
 
 # target to build an object file
 Md/MdEngine.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
 .PHONY : Md/MdEngine.cpp.o
 
 Md/MdEngine.i: Md/MdEngine.cpp.i
@@ -221,7 +221,7 @@ Md/MdEngine.i: Md/MdEngine.cpp.i
 
 # target to preprocess a source file
 Md/MdEngine.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.i
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.i
 .PHONY : Md/MdEngine.cpp.i
 
 Md/MdEngine.s: Md/MdEngine.cpp.s
@@ -230,7 +230,7 @@ Md/MdEngine.s: Md/MdEngine.cpp.s
 
 # target to generate assembly for a file
 Md/MdEngine.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.s
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.s
 .PHONY : Md/MdEngine.cpp.s
 
 OutputAdapter/TcpOutputAdapter.o: OutputAdapter/TcpOutputAdapter.cpp.o
@@ -239,7 +239,7 @@ OutputAdapter/TcpOutputAdapter.o: OutputAdapter/TcpOutputAdapter.cpp.o
 
 # target to build an object file
 OutputAdapter/TcpOutputAdapter.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o
 .PHONY : OutputAdapter/TcpOutputAdapter.cpp.o
 
 OutputAdapter/TcpOutputAdapter.i: OutputAdapter/TcpOutputAdapter.cpp.i
@@ -248,7 +248,7 @@ OutputAdapter/TcpOutputAdapter.i: OutputAdapter/TcpOutputAdapter.cpp.i
 
 # target to preprocess a source file
 OutputAdapter/TcpOutputAdapter.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.i
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.i
 .PHONY : OutputAdapter/TcpOutputAdapter.cpp.i
 
 OutputAdapter/TcpOutputAdapter.s: OutputAdapter/TcpOutputAdapter.cpp.s
@@ -257,7 +257,7 @@ OutputAdapter/TcpOutputAdapter.s: OutputAdapter/TcpOutputAdapter.cpp.s
 
 # target to generate assembly for a file
 OutputAdapter/TcpOutputAdapter.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.s
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.s
 .PHONY : OutputAdapter/TcpOutputAdapter.cpp.s
 
 OutputAdapter/UdpOutputAdapter.o: OutputAdapter/UdpOutputAdapter.cpp.o
@@ -266,7 +266,7 @@ OutputAdapter/UdpOutputAdapter.o: OutputAdapter/UdpOutputAdapter.cpp.o
 
 # target to build an object file
 OutputAdapter/UdpOutputAdapter.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o
 .PHONY : OutputAdapter/UdpOutputAdapter.cpp.o
 
 OutputAdapter/UdpOutputAdapter.i: OutputAdapter/UdpOutputAdapter.cpp.i
@@ -275,7 +275,7 @@ OutputAdapter/UdpOutputAdapter.i: OutputAdapter/UdpOutputAdapter.cpp.i
 
 # target to preprocess a source file
 OutputAdapter/UdpOutputAdapter.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.i
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.i
 .PHONY : OutputAdapter/UdpOutputAdapter.cpp.i
 
 OutputAdapter/UdpOutputAdapter.s: OutputAdapter/UdpOutputAdapter.cpp.s
@@ -284,7 +284,7 @@ OutputAdapter/UdpOutputAdapter.s: OutputAdapter/UdpOutputAdapter.cpp.s
 
 # target to generate assembly for a file
 OutputAdapter/UdpOutputAdapter.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.s
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.s
 .PHONY : OutputAdapter/UdpOutputAdapter.cpp.s
 
 # Help Target
@@ -295,7 +295,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... CtpSystem"
+	@echo "... mdserver"
 	@echo "... Main/IniConfig.o"
 	@echo "... Main/IniConfig.i"
 	@echo "... Main/IniConfig.s"
