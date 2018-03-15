@@ -67,6 +67,8 @@ int main(int argn, char* argv[])
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
   OutputAdapter *udpadapter = new UdpOutputAdapter(12345, "127.0.0.1");
   OutputAdapter *tcpadapter = new TcpOutputAdapter(12345, "127.0.0.1");
+  udpadapter->init();
+  tcpadapter->init();
   engine->setOutput(tcpadapter);
   cout << "初始化行情..." << endl;
 
