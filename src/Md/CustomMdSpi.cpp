@@ -14,14 +14,16 @@ using std::cout;
 using std::endl;
 
 extern int requestID;
-extern char *contracts[];
+extern char **contracts;
 extern int contractsnum;
 
 CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
                          TThostFtdcPasswordType password,
-                         char mdaddr[]) {
+                         char mdaddr[],
+                         char datadirpath[]) {
   strcpy(Password, password);
   strcpy(InvestorID, uid);
+  pUserApi = CThostFtdcMdApi::CreateFtdcMdApi(datadirpath);
   pUserApi->RegisterSpi(this);
   pUserApi->RegisterFront(mdaddr);
   pUserApi->Init();
@@ -29,7 +31,6 @@ CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
 
 CustomMdSpi::~CustomMdSpi() {
   pUserApi->Join();
-  delete pMd;
   pUserApi->Release();
 }
 
@@ -168,7 +169,7 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   cout << "Turnover: " << pDepthMarketData->Turnover << endl;
 
   WZMarketDataField pWZDepthMarketData;
-  pWZDepthMarketData = parseFrom(pDepthMarketData);
+  pWZDepthMarketData = parseFrom(*pDepthMarketData);
   this->rtnDepthMarketData(&pWZDepthMarketData);
   /*此处可将数据存入数据库*/
   /*      to do       */

@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include "Frame.h"
 
 class OutputAdapter{
 
@@ -18,7 +19,7 @@ public:
   struct sockaddr_in UdpOutputAdapter();
   void TcpOutputAdapter();
   const char* getFilePath();
-  virtual void write()
+  virtual void write(Frame &frame) = 0;
 
 private:
   int UdpHtons;

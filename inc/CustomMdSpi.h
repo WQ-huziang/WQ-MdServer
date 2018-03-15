@@ -8,13 +8,13 @@
 #define MDSERVER_CUSTOMMDSPI_H_
 
 #include "MdEngine.h"
+#include "ThostFtdcMdApi.h"
 #include "ThostFtdcUserApiStruct.h"
 #include "ctpwzadapter.h"
 #include "wzdatastruct.h"
 
-class CThostFtdcMdApi;
-
-class CustomMdSpi : public CThostFtdcMdSpi, public MdEngine {
+class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
+{
  public:
   ///当客户端与交易后台建立起通信连接时（还未登录前），该方法被调用。
   void OnFrontConnected();
@@ -64,13 +64,14 @@ class CustomMdSpi : public CThostFtdcMdSpi, public MdEngine {
  public:
   CustomMdSpi(TThostFtdcInvestorIDType uid,
               TThostFtdcPasswordType password,
-              char mdaddr[]);
+              char mdaddr[],
+              char datadirpath[] = "../data/");
   ~CustomMdSpi();
   void reqUserLogin();
   void reqSubscribeMarketData();
 
 private:
-  DISALLOW_COPY_AND_ASSIGN(CustomMdSpi);
+  // DISALLOW_COPY_AND_ASSIGN(CustomMdSpi);
   const TThostFtdcBrokerIDType BrokerID = "9999";
   TThostFtdcInvestorIDType InvestorID;
   TThostFtdcPasswordType Password;

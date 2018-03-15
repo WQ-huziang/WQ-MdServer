@@ -21,7 +21,7 @@ class MdEngine {
   void rtnDepthMarketData(WZMarketDataField* pDepthMarketData);
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(MdEngine);
+  // DISALLOW_COPY_AND_ASSIGN(MdEngine);
   OutputAdapter* output;
 };
 

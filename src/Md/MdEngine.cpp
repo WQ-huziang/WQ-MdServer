@@ -7,13 +7,18 @@
 #include "Frame.h"
 #include "OutputAdapter.h"
 
-void setOutput(OutputAdapter* _output) {
+Frame parseTo(WZMarketDataField &pDepthMarketData) {
+  Frame frame = {};
+  return frame;
+}
+
+void MdEngine::setOutput(OutputAdapter* _output) {
   output = _output;
 }
 
 void MdEngine::rtnDepthMarketData(WZMarketDataField* pDepthMarketData) {
   if (output != NULL) {
-    Frame frame = parseTo(pDepthMarketData);
-    output.write(frame);
+    Frame frame = parseTo(*pDepthMarketData);
+    output->write(frame);
   }
 }
