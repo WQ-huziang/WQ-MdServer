@@ -1,17 +1,28 @@
+//
+//
+// Author: lijiaheng
+// this is a base virtual class used in main.cpp
+
+#ifndef MDSERVER_MDENGINE_H_
+#define MDSERVER_MDENGINE_H_
+
 #include "ctpwzadapter.h"
 #include "wzconstant.h"
 #include "wzdatastruct.h"
 
-class MdEngine{
+class OutputAdapter;
 
-public:
-	virtual void reqUserLogin() = 0;
-	virtual void reqSubscribeMarketData() = 0;
-	virtual void rtnDepthMarketData(WZMarketDataField* pDepthMarketData) = 0;
-	//virtual void storeData() = 0;
+class MdEngine {
+ public:
+  MdEngine(OutputAdapter* _output = NULL)
+      : output(_output) {}
+  virtual void reqSubscribeMarketData() = 0;
+  void setOutput(OutputAdapter* _output);
+  void rtnDepthMarketData(WZMarketDataField* pDepthMarketData);
 
-	void sendMdData(WZMarketDataField pDepthMarketData);
-
-private:
-	bool tag = false;
+ private:
+  DISALLOW_COPY_AND_ASSIGN(MdEngine);
+  OutputAdapter* output;
 };
+
+#endif  // MDSERVER_MDENGINE_H_

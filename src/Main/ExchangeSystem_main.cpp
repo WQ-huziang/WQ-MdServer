@@ -1,65 +1,71 @@
-#include "ThostFtdcMdApi.h"
-#include "ThostFtdcTraderApi.h"
-#include "ThostFtdcUserApiDataType.h"
-#include "ThostFtdcUserApiStruct.h"
-#include "CustomMdSpi.h"
-#include "CustomTradeSpi.h"
-#include "IniConfig.h"
-#include "ctpwzadapter.h"
-#include "wzconstant.h"
-#include "wzdatastruct.h"
-#include "OutputAdapter.h"
+//
+//
+// Author : huziang
+// This is main.cpp file by md server
+
+#define CONTRACT_NUM 100
+#define CONTRACT_LEN 8
+
 #include <iostream>
 #include <cstring>
-using namespace std;
+#include "IniConfig.h"
+#include "CustomMdSpi.h"
 
-//#pragma comment(lib, "thostmduserapi.lib")
-//#pragma comment(lib, "thosttraderapi.lib")
+
 
 int requestID;
-CThostFtdcTraderApi *pTradeUserApi = NULL;
-CThostFtdcMdApi *pUserApi = NULL;
-char TradeAddr[] = "tcp://180.168.146.187:10001";
-char MdAddr[] = "tcp://180.168.146.187:10011";
-int ContractsNum = 1;
-char *Contracts[100];
-TThostFtdcPriceType gLimitPrice;
-char_19 InvestorID;
-char Password[41];
-OutputAdapter* opa;
-char Filepath[] = {"test.txt"};
-char UdpAddr[] = {"127.0.0.1"};
-char TcpAddr[] = {"127.0.0.1"};
+int contractsnum;
+char **contracts;
+TThostFtdcInvestorIDType InvestorID;
+TThostFtdcPasswordType Password;
+char MdAddr[];
+
+int processInstrumentIDList(char *list[], const char pInstrumentIDList[]) {
+  if (pInstrumentIDList[0] == '\0') {
+    return 0;
+  }
+
+  // split string
+  int sum = 0;
+  char str[strlen(pInstrumentIDList) + 1];
+  strcpy(str, pInstrumentIDList);
+  char *begin = str;
+  for (int i = 0; str[i] != '\0'; i++) {
+    if (str[i] == ' ') {
+      str[i] = '\0';
+      strcpy(list[sum++], begin);
+      begin = str + i + 1;
+    }
+  }
+
+  // get last string
+  strcpy(list[sum++], begin);
+  return sum;
+}
 
 void readIni(){
-	IniConfig* ini = new IniConfig("config.ini");
-	ini->readIni();
-	strcpy(TradeAddr, (ini->getObject("Addr", "Td", "false").c_str()));
-	strcpy(MdAddr, (ini->getObject("Addr", "Md", "false").c_str()));
-	strcpy(InvestorID, (ini->getObject("UsrInfo", "UserID", "false").c_str()));
-	strcpy(Password, (ini->getObject("UsrInfo", "Password", "false").c_str()));
+  IniConfig* ini = new IniConfig("config.ini");
+  ini->readIni();
+  strcpy(MdAddr, (ini->getObject("Addr", "Md", "false").c_str()));
+  strcpy(InvestorID, (ini->getObject("UsrInfo", "UserID", "false").c_str()));
+  strcpy(Password, (ini->getObject("UsrInfo", "Password", "false").c_str()));
+  contracts = new char*[CONTRACT_NUM];
+  for (int i = 0; i < CONTRACT_NUM; i++) {
+    contracts[i] = new char[CONTRACT_LEN];
+  }
+  contractsnum = processInstrumentIDList(contracts, (ini->getObject("CtaInfo", "contracts", "").c_str()));
 }
 
 int main(int argn, char* argv[])
 {
-	
-	readIni();
-	Contracts[0] = argv[1];
-	cout << "用户id：" << InvestorID << endl;
+  readIni();
 
-	opa = new OutputAdapter;
-	opa->setUdpHtons(8888);
+  MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
+  cout << "初始化行情..." << endl;
 
-	cout << "初始化行情..." << endl;
-	pUserApi = CThostFtdcMdApi::CreateFtdcMdApi();
-	CustomMdSpi *pMd = new CustomMdSpi(Password, InvestorID);
-	pUserApi->RegisterSpi(pMd);
-	pUserApi->RegisterFront(MdAddr);
-	pUserApi->Init();
+  while (true) {
+    sleep(100);
+  }
 
-	pUserApi->Join();
-	delete pMd;
-	pUserApi->Release();
-	
-    return 0;
+  return 0;
 }
