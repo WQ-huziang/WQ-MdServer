@@ -7,6 +7,7 @@
 #include <memory.h>
 #include "MdEngine.h"
 #include "OutputAdapter.h"
+#include "frame.h"
 using namespace std;
 
 extern OutputAdapter* opa;
@@ -20,17 +21,19 @@ void MdEngine::sendMdData(WZMarketDataField pDepthMarketData){
 
 	struct sockaddr_in si = opa->UdpOutputAdapter();
 	
-	// struct sockaddr_in si;
-	// si.sin_port = htons(8888);
-	// si.sin_addr.s_addr = inet_addr("127.0.0.1");
+	Frame MdFrame;
+	short msg_type = 1;
+	int data_length = sizeof(pDepthMarketData);
+	MdFrame.msg_type = msg_type;
+	MdFrame.length = data_length;
+	MdFrame.error_id = 1;
+	MdFrame.rtn_type = 1;
+	MdFrame.source = 1;
+	memcpy(MdFrame.data, (char *)&pDepthMarketData, 500);
+	char *buff = new char[sizeof(MdFrame)];
+	memcpy(buff, &MdFrame, sizeof(MdFrame));
 	
-	//usleep(3000);
-	//char buf[20];
-	//memset(buf, 0, sizeof(buf));
-	//strcpy(buf, "aaa");
-	//cout << buf << endl;
-	int ret = sendto(cfd, (char *)&pDepthMarketData, sizeof(pDepthMarketData), 0, (struct sockaddr*)&si, sizeof(si));
-	//int ret = sendto(cfd, buf, 20, 0, (struct sockaddr*)&si, sizeof(si));
+	int ret = sendto(cfd, (char *)&MdFrame, sizeof(MdFrame), 0, (struct sockaddr*)&si, sizeof(si));
 	if(!ret){
 		std::cout << "sending successfully" << std::endl;
 	}
