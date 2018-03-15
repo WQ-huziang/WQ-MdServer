@@ -69,6 +69,7 @@ int main(int argc, char* argv[])
 
   readIni(argv[2]);
 
+  printf("%s\n", MdAddr);
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
   OutputAdapter *udpadapter = new UdpOutputAdapter(port, "127.0.0.1");
   OutputAdapter *tcpadapter = new TcpOutputAdapter(port, "127.0.0.1");
