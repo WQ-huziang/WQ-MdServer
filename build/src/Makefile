@@ -233,32 +233,59 @@ Md/MdEngine.cpp.s:
 	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.s
 .PHONY : Md/MdEngine.cpp.s
 
-OutputAdapter/OutputAdapter.o: OutputAdapter/OutputAdapter.cpp.o
+OutputAdapter/TcpOutputAdapter.o: OutputAdapter/TcpOutputAdapter.cpp.o
 
-.PHONY : OutputAdapter/OutputAdapter.o
+.PHONY : OutputAdapter/TcpOutputAdapter.o
 
 # target to build an object file
-OutputAdapter/OutputAdapter.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o
-.PHONY : OutputAdapter/OutputAdapter.cpp.o
+OutputAdapter/TcpOutputAdapter.cpp.o:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o
+.PHONY : OutputAdapter/TcpOutputAdapter.cpp.o
 
-OutputAdapter/OutputAdapter.i: OutputAdapter/OutputAdapter.cpp.i
+OutputAdapter/TcpOutputAdapter.i: OutputAdapter/TcpOutputAdapter.cpp.i
 
-.PHONY : OutputAdapter/OutputAdapter.i
+.PHONY : OutputAdapter/TcpOutputAdapter.i
 
 # target to preprocess a source file
-OutputAdapter/OutputAdapter.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.i
-.PHONY : OutputAdapter/OutputAdapter.cpp.i
+OutputAdapter/TcpOutputAdapter.cpp.i:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.i
+.PHONY : OutputAdapter/TcpOutputAdapter.cpp.i
 
-OutputAdapter/OutputAdapter.s: OutputAdapter/OutputAdapter.cpp.s
+OutputAdapter/TcpOutputAdapter.s: OutputAdapter/TcpOutputAdapter.cpp.s
 
-.PHONY : OutputAdapter/OutputAdapter.s
+.PHONY : OutputAdapter/TcpOutputAdapter.s
 
 # target to generate assembly for a file
-OutputAdapter/OutputAdapter.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.s
-.PHONY : OutputAdapter/OutputAdapter.cpp.s
+OutputAdapter/TcpOutputAdapter.cpp.s:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.s
+.PHONY : OutputAdapter/TcpOutputAdapter.cpp.s
+
+OutputAdapter/UdpOutputAdapter.o: OutputAdapter/UdpOutputAdapter.cpp.o
+
+.PHONY : OutputAdapter/UdpOutputAdapter.o
+
+# target to build an object file
+OutputAdapter/UdpOutputAdapter.cpp.o:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o
+.PHONY : OutputAdapter/UdpOutputAdapter.cpp.o
+
+OutputAdapter/UdpOutputAdapter.i: OutputAdapter/UdpOutputAdapter.cpp.i
+
+.PHONY : OutputAdapter/UdpOutputAdapter.i
+
+# target to preprocess a source file
+OutputAdapter/UdpOutputAdapter.cpp.i:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.i
+.PHONY : OutputAdapter/UdpOutputAdapter.cpp.i
+
+OutputAdapter/UdpOutputAdapter.s: OutputAdapter/UdpOutputAdapter.cpp.s
+
+.PHONY : OutputAdapter/UdpOutputAdapter.s
+
+# target to generate assembly for a file
+OutputAdapter/UdpOutputAdapter.cpp.s:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.s
+.PHONY : OutputAdapter/UdpOutputAdapter.cpp.s
 
 # Help Target
 help:
@@ -281,9 +308,12 @@ help:
 	@echo "... Md/MdEngine.o"
 	@echo "... Md/MdEngine.i"
 	@echo "... Md/MdEngine.s"
-	@echo "... OutputAdapter/OutputAdapter.o"
-	@echo "... OutputAdapter/OutputAdapter.i"
-	@echo "... OutputAdapter/OutputAdapter.s"
+	@echo "... OutputAdapter/TcpOutputAdapter.o"
+	@echo "... OutputAdapter/TcpOutputAdapter.i"
+	@echo "... OutputAdapter/TcpOutputAdapter.s"
+	@echo "... OutputAdapter/UdpOutputAdapter.o"
+	@echo "... OutputAdapter/UdpOutputAdapter.i"
+	@echo "... OutputAdapter/UdpOutputAdapter.s"
 .PHONY : help
 
 

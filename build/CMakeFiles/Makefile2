@@ -84,7 +84,7 @@ src/preinstall:
 src/CMakeFiles/CtpSystem.dir/all:
 	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/depend
 	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target CtpSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target CtpSystem"
 .PHONY : src/CMakeFiles/CtpSystem.dir/all
 
 # Include target in all.
@@ -94,7 +94,7 @@ all: src/CMakeFiles/CtpSystem.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/CtpSystem.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/MdServer/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/MdServer/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/CtpSystem.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/MdServer/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/CtpSystem.dir/rule

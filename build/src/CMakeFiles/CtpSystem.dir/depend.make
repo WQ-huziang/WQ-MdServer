@@ -7,6 +7,10 @@ src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o: ../src/Main/IniConfig.cpp
 src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/CustomMdSpi.h
 src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/IniConfig.h
 src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/MdEngine.h
+src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/OutputAdapter/Frame.h
+src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/OutputAdapter/OutputAdapter.h
+src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/OutputAdapter/TcpOutputAdapter.h
+src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/OutputAdapter/UdpOutputAdapter.h
 src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/ThostFtdcMdApi.h
 src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/ThostFtdcUserApiDataType.h
 src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o: ../inc/ThostFtdcUserApiStruct.h
@@ -25,9 +29,9 @@ src/CMakeFiles/CtpSystem.dir/Md/CustomMdSpi.cpp.o: ../inc/wzconstant.h
 src/CMakeFiles/CtpSystem.dir/Md/CustomMdSpi.cpp.o: ../inc/wzdatastruct.h
 src/CMakeFiles/CtpSystem.dir/Md/CustomMdSpi.cpp.o: ../src/Md/CustomMdSpi.cpp
 
-src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/Frame.h
 src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/MdEngine.h
-src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/OutputAdapter.h
+src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/OutputAdapter/Frame.h
+src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/OutputAdapter/OutputAdapter.h
 src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/ThostFtdcUserApiDataType.h
 src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/ThostFtdcUserApiStruct.h
 src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/ctpwzadapter.h
@@ -35,7 +39,13 @@ src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/wzconstant.h
 src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../inc/wzdatastruct.h
 src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o: ../src/Md/MdEngine.cpp
 
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o: ../inc/Frame.h
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o: ../inc/OutputAdapter.h
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o: ../src/OutputAdapter/OutputAdapter.cpp
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o: ../inc/OutputAdapter/Frame.h
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o: ../inc/OutputAdapter/OutputAdapter.h
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o: ../inc/OutputAdapter/TcpOutputAdapter.h
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o: ../src/OutputAdapter/TcpOutputAdapter.cpp
+
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o: ../inc/OutputAdapter/Frame.h
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o: ../inc/OutputAdapter/OutputAdapter.h
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o: ../inc/OutputAdapter/UdpOutputAdapter.h
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o: ../src/OutputAdapter/UdpOutputAdapter.cpp
 

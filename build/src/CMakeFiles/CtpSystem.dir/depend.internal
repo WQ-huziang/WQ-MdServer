@@ -8,6 +8,10 @@ src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o
  ../inc/CustomMdSpi.h
  ../inc/IniConfig.h
  ../inc/MdEngine.h
+ ../inc/OutputAdapter/Frame.h
+ ../inc/OutputAdapter/OutputAdapter.h
+ ../inc/OutputAdapter/TcpOutputAdapter.h
+ ../inc/OutputAdapter/UdpOutputAdapter.h
  ../inc/ThostFtdcMdApi.h
  ../inc/ThostFtdcUserApiDataType.h
  ../inc/ThostFtdcUserApiStruct.h
@@ -26,16 +30,22 @@ src/CMakeFiles/CtpSystem.dir/Md/CustomMdSpi.cpp.o
  ../inc/wzdatastruct.h
  /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp
 src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o
- ../inc/Frame.h
  ../inc/MdEngine.h
- ../inc/OutputAdapter.h
+ ../inc/OutputAdapter/Frame.h
+ ../inc/OutputAdapter/OutputAdapter.h
  ../inc/ThostFtdcUserApiDataType.h
  ../inc/ThostFtdcUserApiStruct.h
  ../inc/ctpwzadapter.h
  ../inc/wzconstant.h
  ../inc/wzdatastruct.h
  /home/huziang/Desktop/MdServer/src/Md/MdEngine.cpp
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o
- ../inc/Frame.h
- ../inc/OutputAdapter.h
- /home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter.cpp
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o
+ ../inc/OutputAdapter/Frame.h
+ ../inc/OutputAdapter/OutputAdapter.h
+ ../inc/OutputAdapter/TcpOutputAdapter.h
+ /home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o
+ ../inc/OutputAdapter/Frame.h
+ ../inc/OutputAdapter/OutputAdapter.h
+ ../inc/OutputAdapter/UdpOutputAdapter.h
+ /home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp

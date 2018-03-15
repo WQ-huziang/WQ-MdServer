@@ -153,28 +153,52 @@ src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o.provides: src/CMakeFiles/CtpSy
 src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o.provides.build: src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o
 
 
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o: src/CMakeFiles/CtpSystem.dir/flags.make
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o: ../src/OutputAdapter/OutputAdapter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o -c /home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter.cpp
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o: src/CMakeFiles/CtpSystem.dir/flags.make
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o: ../src/OutputAdapter/UdpOutputAdapter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o -c /home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp
 
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.i"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter.cpp > CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.i
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.i"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp > CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.i
 
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.s"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter.cpp -o CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.s
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.s"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp -o CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.s
 
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o.requires:
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o.requires:
 
-.PHONY : src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o.requires
+.PHONY : src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o.requires
 
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o.provides: src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o.provides.build
-.PHONY : src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o.provides
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o.provides: src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o.provides.build
+.PHONY : src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o.provides
 
-src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o.provides.build: src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o.provides.build: src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o
+
+
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o: src/CMakeFiles/CtpSystem.dir/flags.make
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o: ../src/OutputAdapter/TcpOutputAdapter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o -c /home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp
+
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.i"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp > CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.i
+
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.s"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp -o CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.s
+
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o.requires
+
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o.provides: src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/CtpSystem.dir/build.make src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o.provides.build
+.PHONY : src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o.provides
+
+src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o.provides.build: src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o
 
 
 # Object files for target CtpSystem
@@ -183,7 +207,8 @@ CtpSystem_OBJECTS = \
 "CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o" \
 "CMakeFiles/CtpSystem.dir/Main/main.cpp.o" \
 "CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o" \
-"CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o"
+"CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o" \
+"CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o"
 
 # External object files for target CtpSystem
 CtpSystem_EXTERNAL_OBJECTS =
@@ -192,10 +217,11 @@ CtpSystem_EXTERNAL_OBJECTS =
 ../bin/CtpSystem: src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o
 ../bin/CtpSystem: src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o
 ../bin/CtpSystem: src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o
-../bin/CtpSystem: src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o
+../bin/CtpSystem: src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o
+../bin/CtpSystem: src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o
 ../bin/CtpSystem: src/CMakeFiles/CtpSystem.dir/build.make
 ../bin/CtpSystem: src/CMakeFiles/CtpSystem.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable ../../bin/CtpSystem"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ../../bin/CtpSystem"
 	cd /home/huziang/Desktop/MdServer/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CtpSystem.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -207,7 +233,8 @@ src/CMakeFiles/CtpSystem.dir/requires: src/CMakeFiles/CtpSystem.dir/Md/CustomMdS
 src/CMakeFiles/CtpSystem.dir/requires: src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o.requires
 src/CMakeFiles/CtpSystem.dir/requires: src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o.requires
 src/CMakeFiles/CtpSystem.dir/requires: src/CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o.requires
-src/CMakeFiles/CtpSystem.dir/requires: src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o.requires
+src/CMakeFiles/CtpSystem.dir/requires: src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o.requires
+src/CMakeFiles/CtpSystem.dir/requires: src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o.requires
 
 .PHONY : src/CMakeFiles/CtpSystem.dir/requires
 

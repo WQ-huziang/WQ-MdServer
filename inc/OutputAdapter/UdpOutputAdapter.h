@@ -1,3 +1,8 @@
+//
+//
+// Author : lijiaheng
+// This is a udp output class
+
 #ifndef UDPADAPTER_H
 #define UDPADAPTER_H
 #include <iostream>
@@ -5,8 +10,8 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "OutputAdapter.h"
-#include "Frame.h"
+#include "OutputAdapter/OutputAdapter.h"
+#include "OutputAdapter/Frame.h"
 
 class UdpOutputAdapter:public OutputAdapter{
 

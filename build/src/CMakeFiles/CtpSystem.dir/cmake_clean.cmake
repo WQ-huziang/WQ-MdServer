@@ -3,7 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o"
   "CMakeFiles/CtpSystem.dir/Main/main.cpp.o"
   "CMakeFiles/CtpSystem.dir/Main/IniConfig.cpp.o"
-  "CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o"
+  "CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o"
+  "CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o"
   "../../bin/CtpSystem.pdb"
   "../../bin/CtpSystem"
 )

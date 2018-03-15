@@ -18,8 +18,6 @@ ctpwzadapter.h
 wzdatastruct.h
 ../inc/wzdatastruct.h
 
-../inc/Frame.h
-
 ../inc/IniConfig.h
 iostream
 -
@@ -36,7 +34,15 @@ wzconstant.h
 wzdatastruct.h
 ../inc/wzdatastruct.h
 
-../inc/OutputAdapter.h
+../inc/OutputAdapter/Frame.h
+
+../inc/OutputAdapter/OutputAdapter.h
+iostream
+-
+OutputAdapter/Frame.h
+../inc/OutputAdapter/OutputAdapter/Frame.h
+
+../inc/OutputAdapter/TcpOutputAdapter.h
 iostream
 -
 unistd.h
@@ -47,8 +53,26 @@ netinet/in.h
 -
 arpa/inet.h
 -
-Frame.h
-../inc/Frame.h
+OutputAdapter/OutputAdapter.h
+../inc/OutputAdapter/OutputAdapter/OutputAdapter.h
+OutputAdapter/Frame.h
+../inc/OutputAdapter/OutputAdapter/Frame.h
+
+../inc/OutputAdapter/UdpOutputAdapter.h
+iostream
+-
+unistd.h
+-
+sys/types.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+OutputAdapter/OutputAdapter.h
+../inc/OutputAdapter/OutputAdapter/OutputAdapter.h
+OutputAdapter/Frame.h
+../inc/OutputAdapter/OutputAdapter/Frame.h
 
 ../inc/ThostFtdcMdApi.h
 ThostFtdcUserApiStruct.h
@@ -101,6 +125,10 @@ IniConfig.h
 /home/huziang/Desktop/MdServer/src/Main/IniConfig.h
 CustomMdSpi.h
 /home/huziang/Desktop/MdServer/src/Main/CustomMdSpi.h
+OutputAdapter/UdpOutputAdapter.h
+/home/huziang/Desktop/MdServer/src/Main/OutputAdapter/UdpOutputAdapter.h
+OutputAdapter/TcpOutputAdapter.h
+/home/huziang/Desktop/MdServer/src/Main/OutputAdapter/TcpOutputAdapter.h
 
 /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp
 CustomMdSpi.h
@@ -119,16 +147,32 @@ ThostFtdcMdApi.h
 /home/huziang/Desktop/MdServer/src/Md/MdEngine.cpp
 MdEngine.h
 /home/huziang/Desktop/MdServer/src/Md/MdEngine.h
-Frame.h
-/home/huziang/Desktop/MdServer/src/Md/Frame.h
-OutputAdapter.h
-/home/huziang/Desktop/MdServer/src/Md/OutputAdapter.h
+OutputAdapter/Frame.h
+/home/huziang/Desktop/MdServer/src/Md/OutputAdapter/Frame.h
+OutputAdapter/OutputAdapter.h
+/home/huziang/Desktop/MdServer/src/Md/OutputAdapter/OutputAdapter.h
 
-/home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter.cpp
-OutputAdapter.h
-/home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter.h
-iostream
+/home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp
+OutputAdapter/TcpOutputAdapter.h
+/home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter/TcpOutputAdapter.h
+unistd.h
 -
+sys/types.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+string.h
+-
+errno.h
+-
+memory.h
+-
+
+/home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp
+OutputAdapter/UdpOutputAdapter.h
+/home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter/UdpOutputAdapter.h
 unistd.h
 -
 sys/types.h

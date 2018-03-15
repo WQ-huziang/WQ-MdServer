@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/huziang/Desktop/MdServer/src/Main/main.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/CtpSystem.dir/Main/main.cpp.o"
   "/home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/CtpSystem.dir/Md/CustomMdSpi.cpp.o"
   "/home/huziang/Desktop/MdServer/src/Md/MdEngine.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/CtpSystem.dir/Md/MdEngine.cpp.o"
-  "/home/huziang/Desktop/MdServer/src/OutputAdapter/OutputAdapter.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/CtpSystem.dir/OutputAdapter/OutputAdapter.cpp.o"
+  "/home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/CtpSystem.dir/OutputAdapter/TcpOutputAdapter.cpp.o"
+  "/home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/CtpSystem.dir/OutputAdapter/UdpOutputAdapter.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -1,12 +1,18 @@
+//
+//
+// Author : lijiaheng
+// This is a tcp output class
+
 #ifndef TCPOUTPUTADAPTER_H
 #define TCPOUTPUTADAPTER_H
+
 #include <iostream>
 #include <unistd.h>
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "OutputAdapter.h"
-#include "Frame.h"
+#include "OutputAdapter/OutputAdapter.h"
+#include "OutputAdapter/Frame.h"
 
 class TcpOutputAdapter:public OutputAdapter{
 
