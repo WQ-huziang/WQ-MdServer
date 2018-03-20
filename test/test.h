@@ -15,7 +15,7 @@ using std::map;
 using std::string;
 
 class Time {
-public:
+ public:
   Time();
   ~Time();
   long SetMap(char *list[], int num);
@@ -23,7 +23,7 @@ public:
   void WriteStart(char *name);
   void WriteEnd(char *name);
 
-private:
+ private:
   bool lock1, lock2;
   map<string, FILE*> fpmap;
   struct timeval begin;

@@ -14,8 +14,10 @@
 #include "OutputAdapter/UdpOutputAdapter.h"
 #include "OutputAdapter/TcpOutputAdapter.h"
 
+#ifdef DEBUG
 #include "test.h"
 Time *mytime;
+#endif
 
 int requestID;
 int contractsnum;
@@ -77,8 +79,11 @@ void readInit(char *filepath){
 }
 
 void testInit() {
+#ifdef DEBUG
   mytime = new Time();
   mytime->SetMap(contracts, contractsnum);
+#else
+#endif
 }
 
 int main(int argc, char* argv[])

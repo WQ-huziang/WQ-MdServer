@@ -11,8 +11,10 @@
 #include "ThostFtdcUserApiDataType.h"
 #include "ThostFtdcMdApi.h"
 
+#ifdef DEBUG
 #include "test.h"
 extern Time *mytime;
+#endif
 
 using std::cout;
 using std::endl;
@@ -162,6 +164,7 @@ void CustomMdSpi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpec
 
 ///深度行情通知
 void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
+#ifdef DEBUG
   mytime->WriteStart(pDepthMarketData->InstrumentID);
   cout << "===== Get Depth Market Data =====" << endl;
   // cout << "Trading Day: " << pDepthMarketData->TradingDay << endl;
@@ -170,15 +173,17 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   cout << "Last Price: " << pDepthMarketData->LastPrice << endl;
   cout << "Volume: " << pDepthMarketData->Volume << endl;
   // cout << "Turnover: " << pDepthMarketData->Turnover << endl;
-
-  sleep(10);
+#endif
 
   WZMarketDataField pWZDepthMarketData;
   pWZDepthMarketData = parseFrom(*pDepthMarketData);
   this->RtnDepthMarketData(&pWZDepthMarketData);
   /*此处可将数据存入数据库*/
   /*      to do       */
+
+#ifdef DEBUG
   mytime->WriteEnd(pDepthMarketData->InstrumentID);
+#endif
 };
 
 ///询价通知
