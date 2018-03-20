@@ -7,15 +7,17 @@
 #include <memory.h>
 #include <string>
 #include <iostream>
+#include <unistd.h>
 #include "ThostFtdcUserApiDataType.h"
 #include "ThostFtdcMdApi.h"
+
+#include "test.h"
+extern Time *mytime;
 
 using std::cout;
 using std::endl;
 
 extern int requestID;
-extern char **contracts;
-extern int contractsnum;
 
 CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
                          TThostFtdcPasswordType password,
@@ -26,21 +28,28 @@ CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
   pUserApi = CThostFtdcMdApi::CreateFtdcMdApi(datadirpath);
   pUserApi->RegisterSpi(this);
   pUserApi->RegisterFront(mdaddr);
+}
+
+void CustomMdSpi::Init() {
   pUserApi->Init();
 }
 
-CustomMdSpi::~CustomMdSpi() {
+void CustomMdSpi::Release() {
   pUserApi->Join();
   pUserApi->Release();
 }
 
-//登录检测
-void CustomMdSpi::OnFrontConnected() {
-  cout << "连接成功，正在登录..." << endl;
-  reqUserLogin();
-};
+void CustomMdSpi::ReqSubscribeMarketData(char *contracts[], int contractsnum){
+  int ret = pUserApi->SubscribeMarketData(contracts, contractsnum);
+  if (!ret) {
+    cout << "发送行情请求成功" << endl;
+  }
+  else {
+    cout << "发送行情请求失败" << endl;
+  }
+}
 
-void CustomMdSpi::reqUserLogin(){
+void CustomMdSpi::ReqUserLogin(){
   CThostFtdcReqUserLoginField req;
   memset(&req, 0, sizeof(req));
   strcpy(req.BrokerID, BrokerID);
@@ -54,6 +63,12 @@ void CustomMdSpi::reqUserLogin(){
     cout << "发送登录请求失败" << endl;
   }
 }
+
+//登录检测
+void CustomMdSpi::OnFrontConnected() {
+  cout << "连接成功，正在登录..." << endl;
+  ReqUserLogin();
+};
 
 void CustomMdSpi::OnFrontDisconnected(int nReason) {
   cout << "连接失败，错误码：" << nReason << endl;
@@ -74,24 +89,11 @@ void CustomMdSpi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CTh
     cout << "登录时间:" << pRspUserLogin->LoginTime << endl;
     cout << "用户名:" << pRspUserLogin->UserID << endl;
     cout << "经济商:" << pRspUserLogin->BrokerID << endl;
-
-    //发送行情请求
-    reqSubscribeMarketData();
   }
   else {
     cout << "登录失败，错误信息：" << pRspInfo->ErrorMsg << endl;
   }
 };
-
-void CustomMdSpi::reqSubscribeMarketData(){
-  int ret = pUserApi->SubscribeMarketData(contracts, contractsnum);
-  if (!ret) {
-    cout << "发送行情请求成功" << endl;
-  }
-  else {
-    cout << "发送行情请求失败" << endl;
-  }
-}
 
 ///登出请求响应
 void CustomMdSpi::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
@@ -160,19 +162,23 @@ void CustomMdSpi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpec
 
 ///深度行情通知
 void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
+  mytime->WriteStart(pDepthMarketData->InstrumentID);
   cout << "===== Get Depth Market Data =====" << endl;
-  cout << "Trading Day: " << pDepthMarketData->TradingDay << endl;
-  cout << "Exchange ID: " << pDepthMarketData->ExchangeID << endl;
+  // cout << "Trading Day: " << pDepthMarketData->TradingDay << endl;
+  // cout << "Exchange ID: " << pDepthMarketData->ExchangeID << endl;
   cout << "Instrument ID: " << pDepthMarketData->InstrumentID << endl;
   cout << "Last Price: " << pDepthMarketData->LastPrice << endl;
   cout << "Volume: " << pDepthMarketData->Volume << endl;
-  cout << "Turnover: " << pDepthMarketData->Turnover << endl;
+  // cout << "Turnover: " << pDepthMarketData->Turnover << endl;
+
+  sleep(10);
 
   WZMarketDataField pWZDepthMarketData;
   pWZDepthMarketData = parseFrom(*pDepthMarketData);
-  this->rtnDepthMarketData(&pWZDepthMarketData);
+  this->RtnDepthMarketData(&pWZDepthMarketData);
   /*此处可将数据存入数据库*/
   /*      to do       */
+  mytime->WriteEnd(pDepthMarketData->InstrumentID);
 };
 
 ///询价通知

@@ -114,7 +114,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=CtpSystem
+CMAKE_PROJECT_NAME:STATIC=MD_SERVER
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -170,6 +170,51 @@ CtpSystem_BINARY_DIR:STATIC=/home/huziang/Desktop/MdServer/build/src
 
 //Value Computed by CMake
 CtpSystem_SOURCE_DIR:STATIC=/home/huziang/Desktop/MdServer/src
+
+//Dependencies for target
+CustomMdSpi_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+CustomMdSpi_static_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+IniConfig_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+IniConfig_static_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+MD_SERVER_BINARY_DIR:STATIC=/home/huziang/Desktop/MdServer/build
+
+//Value Computed by CMake
+MD_SERVER_SOURCE_DIR:STATIC=/home/huziang/Desktop/MdServer
+
+//Dependencies for target
+MdEngine_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+MdEngine_static_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+TcpOutputAdapter_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+TcpOutputAdapter_static_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+UdpOutputAdapter_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+UdpOutputAdapter_static_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+test_static_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+ttest_LIB_DEPENDS:STATIC=
+
+//Dependencies for target
+ttest_static_LIB_DEPENDS:STATIC=
 
 
 ########################
@@ -262,7 +307,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

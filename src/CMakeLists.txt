@@ -1,20 +1,15 @@
-SET(CMAKE_CXX_FLAGS "-std=c++11 -O3")
-
-CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
-
-PROJECT(CtpSystem)
-
-SET(CPP_LIST
+SET(CLASS_FILE
   Md/CustomMdSpi.cpp
   Md/MdEngine.cpp
-  Main/main.cpp
   Main/IniConfig.cpp
-  OutputAdapter/UdpOutputAdapter.cpp
   OutputAdapter/TcpOutputAdapter.cpp
+  OutputAdapter/UdpOutputAdapter.cpp
 )
+SET(MAIN_FILE Main/main.cpp)
+SET(CTP_SO thostmduserapi thosttraderapi)
 
-SET(CMAKE_BUILD_TYPE "Debug")
+# add c++11 and -g
+SET(CMAKE_CXX_FLAGS "-std=c++11 -g")
 
-ADD_EXECUTABLE(mdserver ${CPP_LIST})
-
-TARGET_LINK_LIBRARIES(mdserver thostmduserapi thosttraderapi)
+ADD_EXECUTABLE(mdserver ${MAIN_FILE} ${CLASS_FILE})
+TARGET_LINK_LIBRARIES(mdserver ${CTP_SO} ${TEST_LIB})

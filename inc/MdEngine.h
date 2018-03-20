@@ -16,9 +16,11 @@ class MdEngine {
  public:
   MdEngine(OutputAdapter* _output = NULL)
       : output(_output) {}
-  virtual void reqSubscribeMarketData() = 0;
-  void setOutput(OutputAdapter* _output);
-  void rtnDepthMarketData(WZMarketDataField* pDepthMarketData);
+  virtual void Init() = 0;
+  virtual void Release() = 0;
+  virtual void ReqSubscribeMarketData(char *contracts[], int contractsnum) = 0;
+  void SetOutput(OutputAdapter* _output);
+  void RtnDepthMarketData(WZMarketDataField* pDepthMarketData);
 
  private:
   // DISALLOW_COPY_AND_ASSIGN(MdEngine);

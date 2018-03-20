@@ -66,9 +66,12 @@ class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
               TThostFtdcPasswordType password,
               char mdaddr[],
               char datadirpath[] = "../data/");
-  ~CustomMdSpi();
-  void reqUserLogin();
-  void reqSubscribeMarketData();
+  // virtual function
+  void Init();
+  void Release();
+  void ReqSubscribeMarketData(char *contracts[], int contractsnum);
+
+  void ReqUserLogin();
 
 private:
   // DISALLOW_COPY_AND_ASSIGN(CustomMdSpi);
@@ -76,6 +79,7 @@ private:
   TThostFtdcInvestorIDType InvestorID;
   TThostFtdcPasswordType Password;
   CThostFtdcMdApi *pUserApi;
+  bool lock;
 };
 
 #endif  // MDSERVER_CUSTOMMDSPI_H_

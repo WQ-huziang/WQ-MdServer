@@ -17,6 +17,7 @@ src/CMakeFiles/mdserver.dir/Main/main.cpp.o: ../inc/ThostFtdcUserApiStruct.h
 src/CMakeFiles/mdserver.dir/Main/main.cpp.o: ../inc/ctpwzadapter.h
 src/CMakeFiles/mdserver.dir/Main/main.cpp.o: ../inc/wzconstant.h
 src/CMakeFiles/mdserver.dir/Main/main.cpp.o: ../inc/wzdatastruct.h
+src/CMakeFiles/mdserver.dir/Main/main.cpp.o: ../test/test.h
 src/CMakeFiles/mdserver.dir/Main/main.cpp.o: ../src/Main/main.cpp
 
 src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../inc/CustomMdSpi.h
@@ -27,6 +28,7 @@ src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../inc/ThostFtdcUserApiStruct.
 src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../inc/ctpwzadapter.h
 src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../inc/wzconstant.h
 src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../inc/wzdatastruct.h
+src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../test/test.h
 src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../src/Md/CustomMdSpi.cpp
 
 src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o: ../inc/MdEngine.h

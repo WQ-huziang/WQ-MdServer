@@ -111,6 +111,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named ttest_static
+
+# Build rule for target.
+ttest_static: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ttest_static
+.PHONY : ttest_static
+
+# fast build rule for target.
+ttest_static/fast:
+	$(MAKE) -f test/CMakeFiles/ttest_static.dir/build.make test/CMakeFiles/ttest_static.dir/build
+.PHONY : ttest_static/fast
+
+#=============================================================================
+# Target rules for targets named ttest
+
+# Build rule for target.
+ttest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ttest
+.PHONY : ttest
+
+# fast build rule for target.
+ttest/fast:
+	$(MAKE) -f test/CMakeFiles/ttest.dir/build.make test/CMakeFiles/ttest.dir/build
+.PHONY : ttest/fast
+
+#=============================================================================
 # Target rules for targets named mdserver
 
 # Build rule for target.
@@ -131,6 +157,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ttest_static"
+	@echo "... ttest"
 	@echo "... mdserver"
 .PHONY : help
 

@@ -27,11 +27,11 @@ Frame parseTo(WZMarketDataField &pDepthMarketData) {
   return frame;
 }
 
-void MdEngine::setOutput(OutputAdapter* _output) {
+void MdEngine::SetOutput(OutputAdapter* _output) {
   output = _output;
 }
 
-void MdEngine::rtnDepthMarketData(WZMarketDataField* pDepthMarketData) {
+void MdEngine::RtnDepthMarketData(WZMarketDataField* pDepthMarketData) {
   if (output != NULL) {
     Frame frame = parseTo(*pDepthMarketData);
     output->send(frame);
