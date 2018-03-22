@@ -1,9 +1,0 @@
-/home/huziang/Desktop/MdServer/build/CMakeFiles/edit_cache.dir
-/home/huziang/Desktop/MdServer/build/CMakeFiles/rebuild_cache.dir
-/home/huziang/Desktop/MdServer/build/test/CMakeFiles/rebuild_cache.dir
-/home/huziang/Desktop/MdServer/build/test/CMakeFiles/edit_cache.dir
-/home/huziang/Desktop/MdServer/build/test/CMakeFiles/ttest_static.dir
-/home/huziang/Desktop/MdServer/build/test/CMakeFiles/ttest.dir
-/home/huziang/Desktop/MdServer/build/src/CMakeFiles/edit_cache.dir
-/home/huziang/Desktop/MdServer/build/src/CMakeFiles/rebuild_cache.dir
-/home/huziang/Desktop/MdServer/build/src/CMakeFiles/mdserver.dir

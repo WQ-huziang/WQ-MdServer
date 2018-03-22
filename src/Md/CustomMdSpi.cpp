@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include "ThostFtdcUserApiDataType.h"
 #include "ThostFtdcMdApi.h"
+#include "MessageQueue.h"
 
 #ifdef DEBUG
 #include "test.h"
@@ -20,6 +21,7 @@ using std::cout;
 using std::endl;
 
 extern int requestID;
+extern MessageQueue *que;
 
 CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
                          TThostFtdcPasswordType password,
@@ -36,8 +38,12 @@ void CustomMdSpi::Init() {
   pUserApi->Init();
 }
 
-void CustomMdSpi::Release() {
+void CustomMdSpi::Join(){
   pUserApi->Join();
+}
+
+void CustomMdSpi::Release() {
+  // pUserApi->Join();
   pUserApi->Release();
 }
 
@@ -164,8 +170,8 @@ void CustomMdSpi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpec
 
 ///深度行情通知
 void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
-#ifdef DEBUG
-  mytime->WriteStart(pDepthMarketData->InstrumentID);
+// #ifdef DEBUG
+  // mytime->WriteStart(pDepthMarketData->InstrumentID);
   cout << "===== Get Depth Market Data =====" << endl;
   // cout << "Trading Day: " << pDepthMarketData->TradingDay << endl;
   // cout << "Exchange ID: " << pDepthMarketData->ExchangeID << endl;
@@ -173,17 +179,17 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   cout << "Last Price: " << pDepthMarketData->LastPrice << endl;
   cout << "Volume: " << pDepthMarketData->Volume << endl;
   // cout << "Turnover: " << pDepthMarketData->Turnover << endl;
-#endif
+// #endif
 
   WZMarketDataField pWZDepthMarketData;
   pWZDepthMarketData = parseFrom(*pDepthMarketData);
   this->RtnDepthMarketData(&pWZDepthMarketData);
   /*此处可将数据存入数据库*/
-  /*      to do       */
+  que->send(&pWZDepthMarketData);
 
-#ifdef DEBUG
-  mytime->WriteEnd(pDepthMarketData->InstrumentID);
-#endif
+// #ifdef DEBUG
+  // mytime->WriteEnd(pDepthMarketData->InstrumentID);
+// #endif
 };
 
 ///询价通知
