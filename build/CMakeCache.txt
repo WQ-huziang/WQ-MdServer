@@ -166,49 +166,10 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-CtpSystem_BINARY_DIR:STATIC=/home/huziang/Desktop/MdServer/build/src
-
-//Value Computed by CMake
-CtpSystem_SOURCE_DIR:STATIC=/home/huziang/Desktop/MdServer/src
-
-//Dependencies for target
-CustomMdSpi_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-CustomMdSpi_static_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-IniConfig_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-IniConfig_static_LIB_DEPENDS:STATIC=
-
-//Value Computed by CMake
 MD_SERVER_BINARY_DIR:STATIC=/home/huziang/Desktop/MdServer/build
 
 //Value Computed by CMake
 MD_SERVER_SOURCE_DIR:STATIC=/home/huziang/Desktop/MdServer
-
-//Dependencies for target
-MdEngine_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-MdEngine_static_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-TcpOutputAdapter_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-TcpOutputAdapter_static_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-UdpOutputAdapter_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-UdpOutputAdapter_static_LIB_DEPENDS:STATIC=
-
-//Dependencies for target
-test_static_LIB_DEPENDS:STATIC=
 
 //Dependencies for target
 ttest_LIB_DEPENDS:STATIC=

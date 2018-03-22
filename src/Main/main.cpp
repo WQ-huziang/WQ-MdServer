@@ -9,10 +9,15 @@
 #include <unistd.h>
 #include <iostream>
 #include <cstring>
+#include <fstream>
+#include <thread>
 #include "WZUtil/iniparser.h"
 #include "CustomMdSpi.h"
 #include "WZUtil/TcpPiper.h"
 #include "WZUtil/UDPPiper.h"
+#include "MessageQueue.h"
+using std::thread;
+
 
 #ifdef DEBUG
 #include "test.h"
@@ -26,6 +31,8 @@ TThostFtdcInvestorIDType InvestorID;
 TThostFtdcPasswordType Password;
 char contractsfile[50];
 char MdAddr[50];
+MessageQueue *que;
+
 
 // int splitList(char *list[], const char strs[], const char deli = '\n') {
 //   if (strs[0] == '\0') {
@@ -84,6 +91,34 @@ void testInit() {
 #endif
 }
 
+void writeFile(WZMarketDataField *pDepthMarketData){
+  char filePath[100] = {'\0'};
+  std::cout << pDepthMarketData->InstrumentID << std::endl;
+  sprintf(filePath, "%s_market_data.csv", pDepthMarketData->InstrumentID);
+  std::ofstream fout;
+  fout.open(filePath, std::ios::app);
+  fout << pDepthMarketData->InstrumentID << "," << pDepthMarketData->TradingDay << "," << pDepthMarketData->LastPrice << "," << pDepthMarketData->Volume << std::endl;
+  fout.close();
+}
+
+void writeThread(){
+  for(int index = 0; index < contractsnum; index++){
+    char filePath[100] = {'\0'};
+    sprintf(filePath, "%s_market_data.csv", contracts[index]);
+    std::ofstream fout;
+    fout.open(filePath, std::ios::app);
+    fout << "code" << "," << "date" << "," << "last price" << "," << "volume" << std::endl;
+    fout.close();
+  }
+  WZMarketDataField *pDepthMarketData = new WZMarketDataField;
+  que = new MessageQueue(sizeof(*pDepthMarketData), 600);
+  while(1){
+    if(que->receive(pDepthMarketData)){
+      writeFile(pDepthMarketData);
+    }
+  }
+}
+
 int main(int argc, char* argv[])
 {
   // if argv isn't "-f CONFIG_FILE", print help
@@ -100,6 +135,7 @@ int main(int argc, char* argv[])
   }
 
   readInit(argv[2]);
+  thread wtr(writeThread);
 
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
   WZPiper *udppiper = new UDPPiper();
@@ -114,9 +150,12 @@ int main(int argc, char* argv[])
   sleep(1);
 
   // test class init
-  testInit();
+  // testInit();
 
   engine->ReqSubscribeMarketData(contracts, contractsnum);
+  wtr.join();
+  engine->Join();
+
   engine->Release();
 
   return 0;

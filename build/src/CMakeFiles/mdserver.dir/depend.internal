@@ -4,6 +4,7 @@
 src/CMakeFiles/mdserver.dir/Main/main.cpp.o
  ../inc/CustomMdSpi.h
  ../inc/MdEngine.h
+ ../inc/MessageQueue.h
  ../inc/ThostFtdcMdApi.h
  ../inc/ThostFtdcUserApiDataType.h
  ../inc/ThostFtdcUserApiStruct.h
@@ -20,6 +21,7 @@ src/CMakeFiles/mdserver.dir/Main/main.cpp.o
 src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
  ../inc/CustomMdSpi.h
  ../inc/MdEngine.h
+ ../inc/MessageQueue.h
  ../inc/ThostFtdcMdApi.h
  ../inc/ThostFtdcUserApiDataType.h
  ../inc/ThostFtdcUserApiStruct.h

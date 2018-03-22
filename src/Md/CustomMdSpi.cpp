@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include "ThostFtdcUserApiDataType.h"
 #include "ThostFtdcMdApi.h"
+#include "MessageQueue.h"
 
 #ifdef DEBUG
 #include "test.h"
@@ -20,6 +21,7 @@ using std::cout;
 using std::endl;
 
 extern int requestID;
+extern MessageQueue *que;
 
 CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
                          TThostFtdcPasswordType password,
@@ -36,8 +38,12 @@ void CustomMdSpi::Init() {
   pUserApi->Init();
 }
 
-void CustomMdSpi::Release() {
+void CustomMdSpi::Join(){
   pUserApi->Join();
+}
+
+void CustomMdSpi::Release() {
+  // pUserApi->Join();
   pUserApi->Release();
 }
 
@@ -180,7 +186,7 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   pWZDepthMarketData = parseFrom(*pDepthMarketData);
   this->RtnDepthMarketData(&pWZDepthMarketData);
   /*此处可将数据存入数据库*/
-  /*      to do       */
+  que->send(&pWZDepthMarketData);
 
 #ifdef DEBUG
   mytime->WriteEnd();

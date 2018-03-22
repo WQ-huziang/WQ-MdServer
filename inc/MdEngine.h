@@ -17,6 +17,7 @@ class MdEngine {
   MdEngine(WZPiper* _output = NULL)
       : output(_output) {}
   virtual void Init() = 0;
+  virtual void Join() = 0;
   virtual void Release() = 0;
   virtual void ReqSubscribeMarketData(char *contracts[], int contractsnum) = 0;
   void SetOutput(WZPiper* _output);

@@ -125,6 +125,10 @@ iostream
 -
 cstring
 -
+fstream
+-
+thread
+-
 WZUtil/iniparser.h
 /home/huziang/Desktop/MdServer/src/Main/WZUtil/iniparser.h
 CustomMdSpi.h
@@ -133,6 +137,8 @@ WZUtil/TcpPiper.h
 /home/huziang/Desktop/MdServer/src/Main/WZUtil/TcpPiper.h
 WZUtil/UDPPiper.h
 /home/huziang/Desktop/MdServer/src/Main/WZUtil/UDPPiper.h
+MessageQueue.h
+/home/huziang/Desktop/MdServer/src/Main/MessageQueue.h
 test.h
 /home/huziang/Desktop/MdServer/src/Main/test.h
 
@@ -151,6 +157,8 @@ ThostFtdcUserApiDataType.h
 /home/huziang/Desktop/MdServer/src/Md/ThostFtdcUserApiDataType.h
 ThostFtdcMdApi.h
 /home/huziang/Desktop/MdServer/src/Md/ThostFtdcMdApi.h
+MessageQueue.h
+/home/huziang/Desktop/MdServer/src/Md/MessageQueue.h
 test.h
 /home/huziang/Desktop/MdServer/src/Md/test.h
 
