@@ -165,7 +165,8 @@ void CustomMdSpi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpec
 ///深度行情通知
 void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
 #ifdef DEBUG
-  mytime->WriteStart(pDepthMarketData->InstrumentID);
+  mytime->WriteName(pDepthMarketData->InstrumentID);
+  mytime->WriteStart();
   cout << "===== Get Depth Market Data =====" << endl;
   // cout << "Trading Day: " << pDepthMarketData->TradingDay << endl;
   // cout << "Exchange ID: " << pDepthMarketData->ExchangeID << endl;
@@ -182,7 +183,7 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   /*      to do       */
 
 #ifdef DEBUG
-  mytime->WriteEnd(pDepthMarketData->InstrumentID);
+  mytime->WriteEnd();
 #endif
 };
 

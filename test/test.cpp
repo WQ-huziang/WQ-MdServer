@@ -4,27 +4,31 @@
 // This is a test file
 
 #include "test.h"
+#include <unistd.h>
+#include <sys/stat.h>
+
+string Time::path = "../test/sending-time-data/";
 
 Time::Time() {
   gettimeofday( &this->begin, NULL );
+  // create new floder
+  if (access(path.c_str(), W_OK) == -1) {
+    mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+  }
 }
 
 Time::~Time() {
-  for (auto it : fpmap) {
-    fclose(it.second);
-  }
+  fclose(fp);
 }
 
-long Time::SetMap(char *list[], int num) {
-  for (int i = 0; i < num; i++) {
-    string filepath = list[i];
-    string dicpath = "/home/huziang/Desktop/MdServer/test/sending-time-data/";
-    dicpath += filepath;
-    FILE *fp = fopen(dicpath.c_str(), "w");
-    fclose(fp);
-    fp = fopen(dicpath.c_str(), "a+");
-    fpmap[filepath] = fp;
-  }
+void Time::Init() {
+  string filepath = "timedata.csv";
+  string dicpath = path;
+  dicpath += filepath;
+  fp = fopen(dicpath.c_str(), "w");
+  fprintf(fp, "ID,start,end\n");
+  fclose(fp);
+  fp = fopen(dicpath.c_str(), "a+");
 }
 
 long Time::GetDiffTime() {
@@ -33,14 +37,17 @@ long Time::GetDiffTime() {
   return 1000000 * ( now.tv_sec - begin.tv_sec ) + now.tv_usec - begin.tv_usec;
 }
 
-void Time::WriteStart(char *name) {
-  FILE *fp = fpmap[string(name)];
-  fprintf(fp, "START:%ld\n", GetDiffTime());
+void Time::WriteName(char *name) {
+  fprintf(fp, "%s,", name);
   fflush(fp);
 }
 
-void Time::WriteEnd(char *name) {
-  FILE *fp = fpmap[string(name)];
-  fprintf(fp, "END:%ld\n", GetDiffTime());
+void Time::WriteStart() {
+  fprintf(fp, "%ld,", GetDiffTime());
+  fflush(fp);
+}
+
+void Time::WriteEnd() {
+  fprintf(fp, "%ld\n", GetDiffTime());
   fflush(fp);
 }

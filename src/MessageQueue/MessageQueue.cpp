@@ -43,7 +43,6 @@ bool MessageQueue::send(void *_data) {
     }
     // same as receive
     pthread_mutex_lock(&lenlock);
-    int index = head++;
     if (head == cap + 1) {
       head = 0;
     }

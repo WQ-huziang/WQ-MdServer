@@ -10,22 +10,22 @@
 #include <stdio.h>
 #include <iostream>
 #include <string>
-#include <map>
-using std::map;
 using std::string;
 
 class Time {
  public:
   Time();
   ~Time();
-  long SetMap(char *list[], int num);
+  void Init();
   long GetDiffTime();
-  void WriteStart(char *name);
-  void WriteEnd(char *name);
+  void WriteName(char *name);
+  void WriteStart();
+  void WriteEnd();
 
  private:
+  static string path;
   bool lock1, lock2;
-  map<string, FILE*> fpmap;
+  FILE *fp;
   struct timeval begin;
 };
 

@@ -79,7 +79,7 @@ void readInit(char *filepath){
 void testInit() {
 #ifdef DEBUG
   mytime = new Time();
-  mytime->SetMap(contracts, contractsnum);
+  mytime->Init();
 #else
 #endif
 }
