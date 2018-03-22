@@ -12,6 +12,8 @@ SET(WZUTIL_SO
   iniparser
   TcpPiper
   UDPPiper
+  Logger
+  glog
 )
 
 ADD_EXECUTABLE(mdserver ${MAIN_FILE} ${CLASS_FILE})
