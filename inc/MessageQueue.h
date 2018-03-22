@@ -8,38 +8,27 @@
 #define MDSERVER_MESSAGEQUEUE_H_
 
 #include <pthread.h>
-#include <semaphore.h>
-#include <iostream>
-#include <cstddef>
-
 
 class MessageQueue {
  private:
-  struct Node {
-    void *data;
-    Node *next;
-    Node(void *_data = nullptr, Node *_next = nullptr)
-        : data(_data),
-          next(_next)
-      {}
-  };
-  int len;
+  inline int length() { return tail + (tail < head) * (cap + 1) - head; }
+  inline bool empty() { return head == tail; }
+  inline bool full() { return head == tail + 1; }
+  int head;
+  int tail;
+  int typelen;
   int cap;
-  Node *head;
-  Node *tail;
+  char *datas;
   pthread_mutex_t lenlock;
-  sem_t datasem;
+  int prosem_id, consem_id;  // product Semaphore and consume Semaphore
 
  public:
-  MessageQueue(int cap = 100);
+  MessageQueue(int typelen, int cap = 100);
   ~MessageQueue();
   bool send(void*);
-  bool receive(void*);
+  bool receive(void*);   // if return NULL, mean failure
   void clear();
-  inline int length() { return len; }
   inline int capacity() { return cap; }
-  inline bool empty() { return len == 0; }
-  inline bool full() { return len == cap; }
 };
 
 #endif // MDSERVER_MESSAGEQUEUE_H_

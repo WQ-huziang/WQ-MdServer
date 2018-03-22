@@ -1,4 +1,5 @@
 SET(CLASS_FILE
+  MessageQueue/MessageQueue.cpp
   Md/CustomMdSpi.cpp
   Md/MdEngine.cpp
 )

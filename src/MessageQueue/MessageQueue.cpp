@@ -4,64 +4,76 @@
 // This is a cpp file corresponded with it's head file
 
 #include "MessageQueue.h"
-#include "pthread.h"
+#include <iostream>
+#include "semaphore.h"
 
-MessageQueue::MessageQueue(int _cap) {
+MessageQueue::MessageQueue(int _typelen, int _cap) {
+  head = 0;
+  tail = 0;
   cap = _cap;
-  len = 0;
-  head = new Node();
-  tail = head;
+  typelen = _typelen;
+  datas = new char[(cap + 1) * typelen];
   pthread_mutex_init(&lenlock, NULL);  // normal lock
-  sem_init(&datasem, 0, 0);  // normal semaphore
+  // get semaphores' id
+  if (!set_semvalue(&prosem_id, cap)) {
+    perror("Can't create product semaphore!");
+    exit(1);
+  }
+  if (!set_semvalue(&consem_id, 0)) {
+    perror("Can't create consume semaphore!");
+    exit(1);
+  } 
 }
 
 MessageQueue::~MessageQueue() {
-  clear();
-  delete head;
+  delete [] datas;
   pthread_mutex_destroy(&lenlock);
-  sem_destroy(&datasem);
+  // destroy semaphore   
+  del_semvalue(&prosem_id);
+  del_semvalue(&consem_id); 
 }
 
-bool MessageQueue::send(void *data) {
-  if (full()) {
-    return false;
+bool MessageQueue::send(void *_data) {
+  // if full, drop oldest data, get the semaphore
+  if (!trywait_semvalue(&prosem_id)) {
+    // some extreme status
+    if (!trywait_semvalue(&consem_id)) {
+      return false;
+    }
+    // same as receive
+    pthread_mutex_lock(&lenlock);
+    int index = head++;
+    if (head == cap + 1) {
+      head = 0;
+    }
+    pthread_mutex_unlock(&lenlock);
   }
 
   pthread_mutex_lock(&lenlock);
-  len++;
+  int index = tail++;
+  if (tail == cap + 1) {
+    tail = 0;
+  }
   pthread_mutex_unlock(&lenlock);
-
-  tail->next = new Node(data);
-  tail = tail->next;
-
-  sem_post(&datasem);
+  memcpy(datas + index * typelen, _data, typelen);
+  signal_semvalue(&consem_id);
   return true;
 }
 
-bool MessageQueue::receive(void *data) {
-  sem_wait(&datasem);
-
+bool MessageQueue::receive(void *_data) {
+  wait_semvalue(&consem_id);
   pthread_mutex_lock(&lenlock);
-  len--;
-  if (empty()) {
-    tail = head;
+  int index = head++;
+  if (head == cap + 1) {
+    head = 0;
   }
   pthread_mutex_unlock(&lenlock);
-
-  Node* temp = head->next;
-  head->next = temp->next;
-  data = temp->data;
-  delete temp;
-
+  memcpy(_data, datas + index * typelen, typelen);
+  signal_semvalue(&prosem_id);
   return true;
 }
 
 void MessageQueue::clear() {
-  Node *temp = head->next;
-  while (temp != nullptr) {
-    Node* del = temp;
-    temp = temp->next;
-    delete del;
-  }
-  len = 0;
+  head = 0;
+  tail = 0;
 }
