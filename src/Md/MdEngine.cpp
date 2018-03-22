@@ -4,17 +4,8 @@
 // This is a cpp file, complete the function in class MdEngine
 
 #include "MdEngine.h"
-#include "OutputAdapter/Frame.h"
-#include "OutputAdapter/OutputAdapter.h"
-
-// struct Frame{
-//     short source;
-//     short msg_type;
-//     short error_id;
-//     short rtn_type;
-//     int length;
-//     char data[500];
-// };
+#include "WZUtil/frame.h"
+#include "WZUtil/WZPiper.h"
 
 Frame parseTo(WZMarketDataField &pDepthMarketData) {
   Frame frame = {};
@@ -27,13 +18,13 @@ Frame parseTo(WZMarketDataField &pDepthMarketData) {
   return frame;
 }
 
-void MdEngine::SetOutput(OutputAdapter* _output) {
+void MdEngine::SetOutput(WZPiper* _output) {
   output = _output;
 }
 
 void MdEngine::RtnDepthMarketData(WZMarketDataField* pDepthMarketData) {
   if (output != NULL) {
     Frame frame = parseTo(*pDepthMarketData);
-    output->send(frame);
+    output->do_write(frame);
   }
 }

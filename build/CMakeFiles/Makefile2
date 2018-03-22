@@ -86,7 +86,7 @@ test/preinstall:
 test/CMakeFiles/ttest_static.dir/all:
 	$(MAKE) -f test/CMakeFiles/ttest_static.dir/build.make test/CMakeFiles/ttest_static.dir/depend
 	$(MAKE) -f test/CMakeFiles/ttest_static.dir/build.make test/CMakeFiles/ttest_static.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=10,11 "Built target ttest_static"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=7,8 "Built target ttest_static"
 .PHONY : test/CMakeFiles/ttest_static.dir/all
 
 # Include target in all.
@@ -123,7 +123,7 @@ clean: test/CMakeFiles/ttest_static.dir/clean
 test/CMakeFiles/ttest.dir/all:
 	$(MAKE) -f test/CMakeFiles/ttest.dir/build.make test/CMakeFiles/ttest.dir/depend
 	$(MAKE) -f test/CMakeFiles/ttest.dir/build.make test/CMakeFiles/ttest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=8,9 "Built target ttest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=5,6 "Built target ttest"
 .PHONY : test/CMakeFiles/ttest.dir/all
 
 # Include target in all.
@@ -178,7 +178,7 @@ src/preinstall:
 src/CMakeFiles/mdserver.dir/all: test/CMakeFiles/ttest.dir/all
 	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/depend
 	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target mdserver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=1,2,3,4 "Built target mdserver"
 .PHONY : src/CMakeFiles/mdserver.dir/all
 
 # Include target in all.
@@ -188,7 +188,7 @@ all: src/CMakeFiles/mdserver.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/mdserver.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/MdServer/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/MdServer/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/mdserver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/huziang/Desktop/MdServer/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/mdserver.dir/rule

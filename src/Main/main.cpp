@@ -9,10 +9,10 @@
 #include <unistd.h>
 #include <iostream>
 #include <cstring>
-#include "IniConfig.h"
+#include "WZUtil/iniparser.h"
 #include "CustomMdSpi.h"
-#include "OutputAdapter/UdpOutputAdapter.h"
-#include "OutputAdapter/TcpOutputAdapter.h"
+#include "WZUtil/TcpPiper.h"
+#include "WZUtil/UDPPiper.h"
 
 #ifdef DEBUG
 #include "test.h"
@@ -26,7 +26,6 @@ TThostFtdcInvestorIDType InvestorID;
 TThostFtdcPasswordType Password;
 char contractsfile[50];
 char MdAddr[50];
-int port;
 
 // int splitList(char *list[], const char strs[], const char deli = '\n') {
 //   if (strs[0] == '\0') {
@@ -64,13 +63,12 @@ int processInstrumentIDList(char *list[], const char *filename) {
 }
 
 void readInit(char *filepath){
-  IniConfig* ini = new IniConfig(filepath);
-  ini->readIni();
-  strcpy(MdAddr, (ini->getObject("Addr", "Md", "false").c_str()));
-  port = atoi((ini->getObject("Addr", "Port", "12345").c_str()));
-  strcpy(InvestorID, (ini->getObject("UsrInfo", "UserID", "false").c_str()));
-  strcpy(Password, (ini->getObject("UsrInfo", "Password", "false").c_str()));
-  strcpy(contractsfile, (ini->getObject("CtaInfo", "ContractsFile", "").c_str()));
+  CIni ini;
+  ini.OpenFile(filepath, "r");
+  strcpy(MdAddr, (ini.GetStr("Addr", "Md")));
+  strcpy(InvestorID, ini.GetStr("UsrInfo", "UserID"));
+  strcpy(Password, ini.GetStr("UsrInfo", "Password"));
+  strcpy(contractsfile, ini.GetStr("CtaInfo", "ContractsFile"));
   contracts = new char*[CONTRACT_NUM];
   for (int i = 0; i < CONTRACT_NUM; i++) {
     contracts[i] = new char[CONTRACT_LEN];
@@ -88,19 +86,28 @@ void testInit() {
 
 int main(int argc, char* argv[])
 {
+  // if argv isn't "-f CONFIG_FILE", print help
   if (argc != 3 || strcmp(argv[1], "-f") != 0) {
     printf("Usage : ./mdserver -f CONFIG_FILE\n"
       "\tCONFIG_FILE : initial file path (.ini)\n");
-    return 0;
+    exit(1);
+  }
+
+  // if this file can't read
+  if (access(argv[2], R_OK) == -1) {
+    perror("Not have a such file or this file is not readable!");
+    exit(1);
   }
 
   readInit(argv[2]);
 
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
-  OutputAdapter *udpadapter = new UdpOutputAdapter(port, "127.0.0.1");
-  OutputAdapter *tcpadapter = new TcpOutputAdapter(port, "127.0.0.1");
-  udpadapter->init();
-  engine->SetOutput(udpadapter);
+  WZPiper *udppiper = new UDPPiper();
+  udppiper->set_config_info(argv[2]);
+  udppiper->init_as_client();
+  //WZPiper *tcppiper = new TcpPiper();
+
+  engine->SetOutput(udppiper);
 
   cout << "初始化行情..." << endl;
   engine->Init();

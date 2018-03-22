@@ -125,33 +125,6 @@ mdserver/fast:
 	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/build
 .PHONY : mdserver/fast
 
-Main/IniConfig.o: Main/IniConfig.cpp.o
-
-.PHONY : Main/IniConfig.o
-
-# target to build an object file
-Main/IniConfig.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o
-.PHONY : Main/IniConfig.cpp.o
-
-Main/IniConfig.i: Main/IniConfig.cpp.i
-
-.PHONY : Main/IniConfig.i
-
-# target to preprocess a source file
-Main/IniConfig.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.i
-.PHONY : Main/IniConfig.cpp.i
-
-Main/IniConfig.s: Main/IniConfig.cpp.s
-
-.PHONY : Main/IniConfig.s
-
-# target to generate assembly for a file
-Main/IniConfig.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.s
-.PHONY : Main/IniConfig.cpp.s
-
 Main/main.o: Main/main.cpp.o
 
 .PHONY : Main/main.o
@@ -233,60 +206,6 @@ Md/MdEngine.cpp.s:
 	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.s
 .PHONY : Md/MdEngine.cpp.s
 
-OutputAdapter/TcpOutputAdapter.o: OutputAdapter/TcpOutputAdapter.cpp.o
-
-.PHONY : OutputAdapter/TcpOutputAdapter.o
-
-# target to build an object file
-OutputAdapter/TcpOutputAdapter.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o
-.PHONY : OutputAdapter/TcpOutputAdapter.cpp.o
-
-OutputAdapter/TcpOutputAdapter.i: OutputAdapter/TcpOutputAdapter.cpp.i
-
-.PHONY : OutputAdapter/TcpOutputAdapter.i
-
-# target to preprocess a source file
-OutputAdapter/TcpOutputAdapter.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.i
-.PHONY : OutputAdapter/TcpOutputAdapter.cpp.i
-
-OutputAdapter/TcpOutputAdapter.s: OutputAdapter/TcpOutputAdapter.cpp.s
-
-.PHONY : OutputAdapter/TcpOutputAdapter.s
-
-# target to generate assembly for a file
-OutputAdapter/TcpOutputAdapter.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.s
-.PHONY : OutputAdapter/TcpOutputAdapter.cpp.s
-
-OutputAdapter/UdpOutputAdapter.o: OutputAdapter/UdpOutputAdapter.cpp.o
-
-.PHONY : OutputAdapter/UdpOutputAdapter.o
-
-# target to build an object file
-OutputAdapter/UdpOutputAdapter.cpp.o:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o
-.PHONY : OutputAdapter/UdpOutputAdapter.cpp.o
-
-OutputAdapter/UdpOutputAdapter.i: OutputAdapter/UdpOutputAdapter.cpp.i
-
-.PHONY : OutputAdapter/UdpOutputAdapter.i
-
-# target to preprocess a source file
-OutputAdapter/UdpOutputAdapter.cpp.i:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.i
-.PHONY : OutputAdapter/UdpOutputAdapter.cpp.i
-
-OutputAdapter/UdpOutputAdapter.s: OutputAdapter/UdpOutputAdapter.cpp.s
-
-.PHONY : OutputAdapter/UdpOutputAdapter.s
-
-# target to generate assembly for a file
-OutputAdapter/UdpOutputAdapter.cpp.s:
-	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.s
-.PHONY : OutputAdapter/UdpOutputAdapter.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -296,9 +215,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... mdserver"
-	@echo "... Main/IniConfig.o"
-	@echo "... Main/IniConfig.i"
-	@echo "... Main/IniConfig.s"
 	@echo "... Main/main.o"
 	@echo "... Main/main.i"
 	@echo "... Main/main.s"
@@ -308,12 +224,6 @@ help:
 	@echo "... Md/MdEngine.o"
 	@echo "... Md/MdEngine.i"
 	@echo "... Md/MdEngine.s"
-	@echo "... OutputAdapter/TcpOutputAdapter.o"
-	@echo "... OutputAdapter/TcpOutputAdapter.i"
-	@echo "... OutputAdapter/TcpOutputAdapter.s"
-	@echo "... OutputAdapter/UdpOutputAdapter.o"
-	@echo "... OutputAdapter/UdpOutputAdapter.i"
-	@echo "... OutputAdapter/UdpOutputAdapter.s"
 .PHONY : help
 
 

@@ -10,12 +10,13 @@ struct Frame{
     short msg_type;
     short error_id;
     short rtn_type;
+    short dest;
     int length;
     char data[500];
 };
 
 ///////////////////////////////////
-// source: Êý¾ÝÀ´Ô´
+// source: 数据来源
 ///////////////////////////////////
 //ctp
 #define WZ_SOURCE_CTP          0
@@ -25,34 +26,34 @@ struct Frame{
 typedef short WZSourceType;
 
 ///////////////////////////////////
-// msg_type: Êý¾ÝÀàÐÍ
+// msg_type: 数据类型
 ///////////////////////////////////
-//ÐÐÇéÊý¾Ý
+//行情数据
 #define WZ_MSG_TYPE_MARKET_DATA          0
-//ÏÂµ¥Êý¾Ý
+//下单数据
 #define WZ_MSG_TYPE_ORDER_INSERT         1
-//³·µ¥Êý¾Ý
+//撤单数据
 #define WZ_MSG_TYPE_ORDER_ACTION         2
-//¶©µ¥±ä»¯Êý¾Ý
+//订单变化数据
 #define WZ_MSG_TYPE_ON_ORDER             3
-//¶©µ¥³É½»Êý¾Ý
+//订单成交数据
 #define WZ_MSG_TYPE_ON_TRADE             4
 
 typedef short WZMsgType;
 
 ///////////////////////////////////
-// error_id: Êý¾ÝÀàÐÍ
+// error_id: 数据类型
 ///////////////////////////////////
-//³É¹¦
+//成功
 #define WZ_ERROR_ID_SUCCESS          0
-//Òì³£
+//异常
 #define WZ_ERROR_ID_ERROR            1
 
 typedef short WZErrorId;
 
 
 ///////////////////////////////////
-// source: Êý¾ÝÀ´Ô´
+// source: 数据来源
 ///////////////////////////////////
 //ctp
 #define WZ_SOURCE_CTP          0
@@ -62,9 +63,9 @@ typedef short WZErrorId;
 typedef short WZSourceType;
 
 ///////////////////////////////////
-// rtn_type: ÓÃÀ´¶þ¼¶Çø·Ömsg_type, ÔÝÊ±ÓÃ²»×Å
+// rtn_type: 用来二级区分msg_type, 暂时用不着
 ///////////////////////////////////
-// Í³Ò»
+// 统一
 #define WZ_RTN_TYPE 0
 
 typedef short WZRtnType;

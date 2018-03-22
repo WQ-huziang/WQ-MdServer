@@ -129,86 +129,11 @@ src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o.provides: src/CMakeFiles/mdserver.
 src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
 
 
-src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o: src/CMakeFiles/mdserver.dir/flags.make
-src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o: ../src/Main/IniConfig.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o -c /home/huziang/Desktop/MdServer/src/Main/IniConfig.cpp
-
-src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mdserver.dir/Main/IniConfig.cpp.i"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/Main/IniConfig.cpp > CMakeFiles/mdserver.dir/Main/IniConfig.cpp.i
-
-src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mdserver.dir/Main/IniConfig.cpp.s"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/Main/IniConfig.cpp -o CMakeFiles/mdserver.dir/Main/IniConfig.cpp.s
-
-src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o.requires:
-
-.PHONY : src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o.requires
-
-src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o.provides: src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o.provides.build
-.PHONY : src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o.provides
-
-src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o
-
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o: src/CMakeFiles/mdserver.dir/flags.make
-src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o: ../src/OutputAdapter/TcpOutputAdapter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o -c /home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.i"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp > CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.i
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.s"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/OutputAdapter/TcpOutputAdapter.cpp -o CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.s
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o.requires:
-
-.PHONY : src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o.requires
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o.provides: src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o.provides.build
-.PHONY : src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o.provides
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o
-
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o: src/CMakeFiles/mdserver.dir/flags.make
-src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o: ../src/OutputAdapter/UdpOutputAdapter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o -c /home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.i"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp > CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.i
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.s"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/OutputAdapter/UdpOutputAdapter.cpp -o CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.s
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o.requires:
-
-.PHONY : src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o.requires
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o.provides: src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o.provides.build
-.PHONY : src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o.provides
-
-src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o
-
-
 # Object files for target mdserver
 mdserver_OBJECTS = \
 "CMakeFiles/mdserver.dir/Main/main.cpp.o" \
 "CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o" \
-"CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o" \
-"CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o" \
-"CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o" \
-"CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o"
+"CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o"
 
 # External object files for target mdserver
 mdserver_EXTERNAL_OBJECTS =
@@ -216,13 +141,10 @@ mdserver_EXTERNAL_OBJECTS =
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/Main/main.cpp.o
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
-../bin/mdserver: src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o
-../bin/mdserver: src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o
-../bin/mdserver: src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/build.make
 ../bin/mdserver: ../lib/libttest.so
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ../../bin/mdserver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../../bin/mdserver"
 	cd /home/huziang/Desktop/MdServer/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mdserver.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -233,9 +155,6 @@ src/CMakeFiles/mdserver.dir/build: ../bin/mdserver
 src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/Main/main.cpp.o.requires
 src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires
 src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o.requires
-src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/Main/IniConfig.cpp.o.requires
-src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/OutputAdapter/TcpOutputAdapter.cpp.o.requires
-src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/OutputAdapter/UdpOutputAdapter.cpp.o.requires
 
 .PHONY : src/CMakeFiles/mdserver.dir/requires
 
