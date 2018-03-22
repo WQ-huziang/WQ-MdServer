@@ -68,6 +68,7 @@ class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
               char datadirpath[] = "../data/");
   // virtual function
   void Init();
+  void Join();
   void Release();
   void ReqSubscribeMarketData(char *contracts[], int contractsnum);
 
