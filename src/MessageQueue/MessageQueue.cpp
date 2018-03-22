@@ -5,6 +5,7 @@
 
 #include "MessageQueue.h"
 #include <iostream>
+#include <cstring>
 #include "semaphore.h"
 
 MessageQueue::MessageQueue(int _typelen, int _cap) {
@@ -22,15 +23,15 @@ MessageQueue::MessageQueue(int _typelen, int _cap) {
   if (!set_semvalue(&consem_id, 0)) {
     perror("Can't create consume semaphore!");
     exit(1);
-  } 
+  }
 }
 
 MessageQueue::~MessageQueue() {
   delete [] datas;
   pthread_mutex_destroy(&lenlock);
-  // destroy semaphore   
+  // destroy semaphore
   del_semvalue(&prosem_id);
-  del_semvalue(&consem_id); 
+  del_semvalue(&consem_id);
 }
 
 bool MessageQueue::send(void *_data) {

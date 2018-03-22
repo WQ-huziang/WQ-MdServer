@@ -39,3 +39,7 @@ src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
  ../inc/wzconstant.h
  ../inc/wzdatastruct.h
  /home/huziang/Desktop/MdServer/src/Md/MdEngine.cpp
+src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o
+ ../inc/MessageQueue.h
+ ../inc/semaphore.h
+ /home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.cpp

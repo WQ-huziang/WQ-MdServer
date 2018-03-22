@@ -51,17 +51,6 @@ typedef short WZMsgType;
 
 typedef short WZErrorId;
 
-
-///////////////////////////////////
-// source: 数据来源
-///////////////////////////////////
-//ctp
-#define WZ_SOURCE_CTP          0
-//xtp
-#define WZ_SOURCE_XTP          1
-
-typedef short WZSourceType;
-
 ///////////////////////////////////
 // rtn_type: 用来二级区分msg_type, 暂时用不着
 ///////////////////////////////////

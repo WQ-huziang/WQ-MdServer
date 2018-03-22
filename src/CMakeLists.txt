@@ -1,7 +1,7 @@
 SET(CLASS_FILE
-  MessageQueue/MessageQueue.cpp
-  Md/CustomMdSpi.cpp
   Md/MdEngine.cpp
+  Md/CustomMdSpi.cpp
+  MessageQueue/MessageQueue.cpp
 )
 SET(MAIN_FILE Main/main.cpp)
 SET(CTP_SO

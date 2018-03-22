@@ -26,6 +26,10 @@ wzconstant.h
 wzdatastruct.h
 ../inc/wzdatastruct.h
 
+../inc/MessageQueue.h
+pthread.h
+-
+
 ../inc/ThostFtdcMdApi.h
 ThostFtdcUserApiStruct.h
 ../inc/ThostFtdcUserApiStruct.h
@@ -92,6 +96,12 @@ string.h
 ThostFtdcUserApiStruct.h
 -
 
+../inc/semaphore.h
+pthread.h
+-
+sys/sem.h
+-
+
 ../inc/wzconstant.h
 
 ../inc/wzdatastruct.h
@@ -153,4 +163,14 @@ WZUtil/frame.h
 /home/huziang/Desktop/MdServer/src/Md/WZUtil/frame.h
 WZUtil/WZPiper.h
 /home/huziang/Desktop/MdServer/src/Md/WZUtil/WZPiper.h
+
+/home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.cpp
+MessageQueue.h
+/home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.h
+iostream
+-
+cstring
+-
+semaphore.h
+/home/huziang/Desktop/MdServer/src/MessageQueue/semaphore.h
 

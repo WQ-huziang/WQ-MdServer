@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/huziang/Desktop/MdServer/src/Main/main.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/mdserver.dir/Main/main.cpp.o"
   "/home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o"
   "/home/huziang/Desktop/MdServer/src/Md/MdEngine.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o"
+  "/home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.cpp" "/home/huziang/Desktop/MdServer/build/src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

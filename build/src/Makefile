@@ -206,6 +206,33 @@ Md/MdEngine.cpp.s:
 	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.s
 .PHONY : Md/MdEngine.cpp.s
 
+MessageQueue/MessageQueue.o: MessageQueue/MessageQueue.cpp.o
+
+.PHONY : MessageQueue/MessageQueue.o
+
+# target to build an object file
+MessageQueue/MessageQueue.cpp.o:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o
+.PHONY : MessageQueue/MessageQueue.cpp.o
+
+MessageQueue/MessageQueue.i: MessageQueue/MessageQueue.cpp.i
+
+.PHONY : MessageQueue/MessageQueue.i
+
+# target to preprocess a source file
+MessageQueue/MessageQueue.cpp.i:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.i
+.PHONY : MessageQueue/MessageQueue.cpp.i
+
+MessageQueue/MessageQueue.s: MessageQueue/MessageQueue.cpp.s
+
+.PHONY : MessageQueue/MessageQueue.s
+
+# target to generate assembly for a file
+MessageQueue/MessageQueue.cpp.s:
+	cd /home/huziang/Desktop/MdServer/build && $(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.s
+.PHONY : MessageQueue/MessageQueue.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -224,6 +251,9 @@ help:
 	@echo "... Md/MdEngine.o"
 	@echo "... Md/MdEngine.i"
 	@echo "... Md/MdEngine.s"
+	@echo "... MessageQueue/MessageQueue.o"
+	@echo "... MessageQueue/MessageQueue.i"
+	@echo "... MessageQueue/MessageQueue.s"
 .PHONY : help
 
 

@@ -81,33 +81,9 @@ src/CMakeFiles/mdserver.dir/Main/main.cpp.o.provides: src/CMakeFiles/mdserver.di
 src/CMakeFiles/mdserver.dir/Main/main.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/Main/main.cpp.o
 
 
-src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: src/CMakeFiles/mdserver.dir/flags.make
-src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../src/Md/CustomMdSpi.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o -c /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp
-
-src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.i"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp > CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.i
-
-src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.s"
-	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp -o CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.s
-
-src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires:
-
-.PHONY : src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires
-
-src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.provides: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.provides.build
-.PHONY : src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.provides
-
-src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
-
-
 src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o: src/CMakeFiles/mdserver.dir/flags.make
 src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o: ../src/Md/MdEngine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o"
 	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o -c /home/huziang/Desktop/MdServer/src/Md/MdEngine.cpp
 
 src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.i: cmake_force
@@ -129,22 +105,72 @@ src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o.provides: src/CMakeFiles/mdserver.
 src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
 
 
+src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: src/CMakeFiles/mdserver.dir/flags.make
+src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o: ../src/Md/CustomMdSpi.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o -c /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp
+
+src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.i"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp > CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.i
+
+src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.s"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp -o CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.s
+
+src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires
+
+src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.provides: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.provides.build
+.PHONY : src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.provides
+
+src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
+
+
+src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o: src/CMakeFiles/mdserver.dir/flags.make
+src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o: ../src/MessageQueue/MessageQueue.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o -c /home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.cpp
+
+src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.i"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.cpp > CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.i
+
+src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.s"
+	cd /home/huziang/Desktop/MdServer/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.cpp -o CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.s
+
+src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o.requires
+
+src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o.provides: src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/mdserver.dir/build.make src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o.provides.build
+.PHONY : src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o.provides
+
+src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o.provides.build: src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o
+
+
 # Object files for target mdserver
 mdserver_OBJECTS = \
 "CMakeFiles/mdserver.dir/Main/main.cpp.o" \
+"CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o" \
 "CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o" \
-"CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o"
+"CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o"
 
 # External object files for target mdserver
 mdserver_EXTERNAL_OBJECTS =
 
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/Main/main.cpp.o
-../bin/mdserver: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
+../bin/mdserver: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
+../bin/mdserver: src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/build.make
 ../bin/mdserver: ../lib/libttest.so
 ../bin/mdserver: src/CMakeFiles/mdserver.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ../../bin/mdserver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/huziang/Desktop/MdServer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../../bin/mdserver"
 	cd /home/huziang/Desktop/MdServer/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mdserver.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,8 +179,9 @@ src/CMakeFiles/mdserver.dir/build: ../bin/mdserver
 .PHONY : src/CMakeFiles/mdserver.dir/build
 
 src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/Main/main.cpp.o.requires
-src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires
 src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o.requires
+src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o.requires
+src/CMakeFiles/mdserver.dir/requires: src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o.requires
 
 .PHONY : src/CMakeFiles/mdserver.dir/requires
 
