@@ -27,6 +27,20 @@ const char EXCHANGE_SSE[] = "SSE"; //上海证券交易所
 ///////////////////////////////////
 // WZActionFlagType: 报单操作标志
 ///////////////////////////////////
+//市价单
+#define WZ_ORDER_MARKET_ORDER     '0'
+//限价单
+#define WZ_ORDER_LIMIT_ORDER      '1'
+//fok
+#define WZ_ORDER_FOK_ORDER        '2'
+//fak
+#define WZ_ORDER_FAK_ORDER        '3'
+
+typedef char WZOrderType;
+
+///////////////////////////////////
+// WZActionFlagType: 报单操作标志
+///////////////////////////////////
 //删除
 #define WZ_CHAR_Delete          '0'
 //挂起

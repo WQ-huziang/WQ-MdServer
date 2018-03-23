@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11 -g -pthread
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/huziang/Desktop/MdServer/inc -I/home/huziang/Desktop/MdServer/test 
+CXX_INCLUDES = -I/home/lijiaheng/Md5/inc -I/home/lijiaheng/Md5/test 
 

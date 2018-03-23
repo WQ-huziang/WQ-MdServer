@@ -11,11 +11,14 @@
 #include <cstring>
 #include <fstream>
 #include <thread>
+#include <stdio.h>
 #include "WZUtil/iniparser.h"
 #include "CustomMdSpi.h"
 #include "WZUtil/TcpPiper.h"
 #include "WZUtil/UDPPiper.h"
 #include "MessageQueue.h"
+#include "WZUtil/Logger.h"
+#include "transportstruct.h"
 using std::thread;
 
 
@@ -32,35 +35,15 @@ TThostFtdcPasswordType Password;
 char contractsfile[50];
 char MdAddr[50];
 MessageQueue *que;
-
-
-// int splitList(char *list[], const char strs[], const char deli = '\n') {
-//   if (strs[0] == '\0') {
-//     return 0;
-//   }
-
-//   // split string
-//   int sum = 0;
-//   char str[strlen(strs) + 1];
-//   strcpy(str, strs);
-//   char *begin = str;
-//   for (int i = 0; str[i] != '\0'; i++) {
-//     if (str[i] == deli) {
-//       str[i] = '\0';
-//       strcpy(list[sum++], begin);
-//       begin = str + i + 1;
-//     }
-//   }
-
-//   // get last string
-//   strcpy(list[sum++], begin);
-//   return sum;
-// }
+Logger *logger;
 
 int processInstrumentIDList(char *list[], const char *filename) {
   FILE* fp = fopen(filename, "r");
   if (fp == NULL) {
-    fprintf(stderr, "No such file %s\n", filename);
+    char info[50];
+    sprintf(info, "No such file %s", filename);
+    logger->Error(info);
+    return 0;
   }
 
   int num = 0;
@@ -69,7 +52,7 @@ int processInstrumentIDList(char *list[], const char *filename) {
   return num - 1;
 }
 
-void readInit(char *filepath){
+void readInit(char *progname, char *filepath){
   CIni ini;
   ini.OpenFile(filepath, "r");
   strcpy(MdAddr, (ini.GetStr("Addr", "Md")));
@@ -81,6 +64,10 @@ void readInit(char *filepath){
     contracts[i] = new char[CONTRACT_LEN];
   }
   contractsnum = processInstrumentIDList(contracts, contractsfile);
+
+  // logger init
+  logger = new Logger(progname);
+  logger->ParseConfigInfo(filepath);
 }
 
 void testInit() {
@@ -91,26 +78,32 @@ void testInit() {
 #endif
 }
 
-void writeFile(WZMarketDataField *pDepthMarketData){
+void writeFile(TSMarketDataField *pDepthMarketData){
   char filePath[100] = {'\0'};
-  std::cout << pDepthMarketData->InstrumentID << std::endl;
   sprintf(filePath, "%s_market_data.csv", pDepthMarketData->InstrumentID);
+  /*
   std::ofstream fout;
-  fout.open(filePath, std::ios::app);
-  fout << pDepthMarketData->InstrumentID << "," << pDepthMarketData->TradingDay << "," << pDepthMarketData->LastPrice << "," << pDepthMarketData->Volume << std::endl;
+  fout.open(filePath, std::ios::binary);
+  fout << pDepthMarketData << std::endl;
   fout.close();
+  */
+  FILE *fp = fopen(filePath, "wb");
+  if(fp != NULL){
+    int ret = fwrite(pDepthMarketData, sizeof(TSMarketDataField), sizeof(pDepthMarketData), fp);
+    fclose(fp);
+  }
 }
 
 void writeThread(){
-  for(int index = 0; index < contractsnum; index++){
-    char filePath[100] = {'\0'};
-    sprintf(filePath, "%s_market_data.csv", contracts[index]);
-    std::ofstream fout;
-    fout.open(filePath, std::ios::app);
-    fout << "code" << "," << "date" << "," << "last price" << "," << "volume" << std::endl;
-    fout.close();
-  }
-  WZMarketDataField *pDepthMarketData = new WZMarketDataField;
+  // for(int index = 0; index < contractsnum; index++){
+  //   char filePath[100] = {'\0'};
+  //   sprintf(filePath, "%s_market_data.csv", contracts[index]);
+  //   std::ofstream fout;
+  //   fout.open(filePath, std::ios::app);
+  //   fout << "code" << "," << "date" << "," << "last price" << "," << "volume" << std::endl;
+  //   fout.close();
+  // }
+  TSMarketDataField *pDepthMarketData = new TSMarketDataField;
   que = new MessageQueue(sizeof(*pDepthMarketData), 600);
   while(1){
     if(que->receive(pDepthMarketData)){
@@ -130,11 +123,11 @@ int main(int argc, char* argv[])
 
   // if this file can't read
   if (access(argv[2], R_OK) == -1) {
-    perror("Not have a such file or this file is not readable!");
+    logger->Fatal("Not have a such file or this file is not readable!");
     exit(1);
   }
 
-  readInit(argv[2]);
+  readInit(argv[0], argv[2]);
   thread wtr(writeThread);
 
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
@@ -145,7 +138,7 @@ int main(int argc, char* argv[])
 
   engine->SetOutput(udppiper);
 
-  cout << "初始化行情..." << endl;
+  logger->Info("初始化行情...");
   engine->Init();
   sleep(1);
 
