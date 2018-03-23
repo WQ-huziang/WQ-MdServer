@@ -13,7 +13,7 @@ Author：胡子昂，李嘉恒
 
 - 程序流程图
 
-  ![](process.png)
+  ![](photo/process.png)
 
 
 - 程序结构
