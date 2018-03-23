@@ -18,7 +18,7 @@
 extern Time *mytime;
 #endif
 
-using std::LOG(INFO);
+// using std::LOG(INFO);
 using std::endl;
 
 extern int requestID;
@@ -191,11 +191,11 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   DLOG(DEBUG) << info;
 #endif
 
-  WZMarketDataField pWZDepthMarketData;
-  pWZDepthMarketData = parseFrom(*pDepthMarketData);
-  this->RtnDepthMarketData(&pWZDepthMarketData);
+  TSMarketDataField pTSDepthMarketData;
+  pTSDepthMarketData = parserFrom(*pDepthMarketData);
+  this->RtnDepthMarketData(&pTSDepthMarketData);
   /*此处可将数据存入数据库*/
-  que->send(&pWZDepthMarketData);
+  que->send(&pTSDepthMarketData);
 
 #ifdef DEBUG
   mytime->WriteEnd();

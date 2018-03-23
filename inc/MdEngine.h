@@ -6,9 +6,10 @@
 #ifndef MDSERVER_MDENGINE_H_
 #define MDSERVER_MDENGINE_H_
 
-#include "ctpwzadapter.h"
+// #include "ctpwzadapter.h"
 #include "wzconstant.h"
-#include "wzdatastruct.h"
+#include "transportstruct.h"
+#include "Parser.h"
 
 class WZPiper;
 
@@ -21,7 +22,7 @@ class MdEngine {
   virtual void Release() = 0;
   virtual void ReqSubscribeMarketData(char *contracts[], int contractsnum) = 0;
   void SetOutput(WZPiper* _output);
-  void RtnDepthMarketData(WZMarketDataField* pDepthMarketData);
+  void RtnDepthMarketData(TSMarketDataField* pDepthMarketData);
 
  private:
   // DISALLOW_COPY_AND_ASSIGN(MdEngine);

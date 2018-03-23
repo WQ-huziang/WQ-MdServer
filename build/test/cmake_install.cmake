@@ -1,4 +1,4 @@
-# Install script for directory: /home/huziang/Desktop/MdServer/test
+# Install script for directory: /home/lijiaheng/Md5/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

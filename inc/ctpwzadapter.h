@@ -7,57 +7,37 @@
 #ifndef CTP_WZ_ADAPTER_H
 #define CTP_WZ_ADAPTER_H
 
-#include <wzdatastruct.h>
+// #include <wzdatastruct.h>
 #include <string.h>
+#include "transportstruct.h"
 
 #include <ThostFtdcUserApiStruct.h>
 
-inline struct WZMarketDataField parseFrom(const struct CThostFtdcDepthMarketDataField &ori)
-{
-	struct WZMarketDataField res = {};
-	memcpy(res.TradingDay, ori.TradingDay, 9);
-	memcpy(res.InstrumentID, ori.InstrumentID, 31);
-	memcpy(res.ExchangeID, ori.ExchangeID, 9);
-	memcpy(res.ExchangeInstID, ori.ExchangeInstID, 64);
-	res.LastPrice = ori.LastPrice;
-	res.PreSettlementPrice = ori.PreSettlementPrice;
-	res.PreClosePrice = ori.PreClosePrice;
-	res.PreOpenInterest = ori.PreOpenInterest;
-	res.OpenPrice = ori.OpenPrice;
-	res.HighestPrice = ori.HighestPrice;
-	res.LowestPrice = ori.LowestPrice;
-	res.Volume = ori.Volume;
-	res.Turnover = ori.Turnover;
-	res.OpenInterest = ori.OpenInterest;
-	res.ClosePrice = ori.ClosePrice;
-	res.SettlementPrice = ori.SettlementPrice;
-	res.UpperLimitPrice = ori.UpperLimitPrice;
-	res.LowerLimitPrice = ori.LowerLimitPrice;
-	res.PreDelta = ori.PreDelta;
-	res.CurrDelta = ori.CurrDelta;
-	memcpy(res.UpdateTime, ori.UpdateTime, 9);
-	res.UpdateMillisec = ori.UpdateMillisec;
-	res.BidPrice1 = ori.BidPrice1;
-	res.BidVolume1 = ori.BidVolume1;
-	res.AskPrice1 = ori.AskPrice1;
-	res.AskVolume1 = ori.AskVolume1;
-	res.BidPrice2 = ori.BidPrice2;
-	res.BidVolume2 = ori.BidVolume2;
-	res.AskPrice2 = ori.AskPrice2;
-	res.AskVolume2 = ori.AskVolume2;
-	res.BidPrice3 = ori.BidPrice3;
-	res.BidVolume3 = ori.BidVolume3;
-	res.AskPrice3 = ori.AskPrice3;
-	res.AskVolume3 = ori.AskVolume3;
-	res.BidPrice4 = ori.BidPrice4;
-	res.BidVolume4 = ori.BidVolume4;
-	res.AskPrice4 = ori.AskPrice4;
-	res.AskVolume4 = ori.AskVolume4;
-	res.BidPrice5 = ori.BidPrice5;
-	res.BidVolume5 = ori.BidVolume5;
-	res.AskPrice5 = ori.AskPrice5;
-	res.AskVolume5 = ori.AskVolume5;
-	return res;
+inline struct TSMarketDataField parserFrom(const CThostFtdcDepthMarketDataField &req){
+	TSMarketDataField rtn;
+	strcpy(rtn.TradingDay, req.TradingDay);
+	strcpy(rtn.InstrumentID, req.InstrumentID);
+	rtn.LastPrice = req.LastPrice;
+	rtn.PreSettlementPrice = req.PreSettlementPrice;
+	rtn.PreClosePrice = req.PreClosePrice;
+	rtn.PreOpenInterest = req.PreOpenInterest;
+	rtn.OpenPrice = req.OpenPrice;
+	rtn.HighestPrice = req.HighestPrice;
+	rtn.LowestPrice = req.LowestPrice;
+	rtn.Volume = req.Volume;
+	rtn.Turnover = req.Turnover;
+	rtn.OpenInterest = req.OpenInterest;
+	rtn.ClosePrice = req.ClosePrice;
+	rtn.SettlementPrice = req.SettlementPrice;
+	rtn.UpperLimitPrice = req.UpperLimitPrice;
+	rtn.LowerLimitPrice = req.LowerLimitPrice;
+	strcpy(rtn.UpdateTime, req.UpdateTime);
+	rtn.UpdateMillisec = req.UpdateMillisec;
+	rtn.BidPrice1 = req.BidPrice1;
+	rtn.BidVolume1 = req.BidVolume1;
+	rtn.AskPrice1 = req.AskPrice1;
+	rtn.AskVolume1 = req.AskVolume1;
+	return rtn;
 }
 /*
 inline struct WZQryPositionField parseFrom(const struct CThostFtdcQryInvestorPositionField& ori)

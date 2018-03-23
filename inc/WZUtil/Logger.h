@@ -1,7 +1,7 @@
 
 
 #include <glog/logging.h>
-#include <wzadapter/wzdatastruct.h>
+#include <wzdatastruct.h>
 #include "WZUtil/iniparser.h"
 
 class Logger

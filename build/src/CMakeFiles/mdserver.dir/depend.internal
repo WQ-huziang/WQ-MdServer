@@ -5,43 +5,50 @@ src/CMakeFiles/mdserver.dir/Main/main.cpp.o
  ../inc/CustomMdSpi.h
  ../inc/MdEngine.h
  ../inc/MessageQueue.h
+ ../inc/Parser.h
  ../inc/ThostFtdcMdApi.h
  ../inc/ThostFtdcUserApiDataType.h
  ../inc/ThostFtdcUserApiStruct.h
+ ../inc/WZUtil/Logger.h
  ../inc/WZUtil/TcpPiper.h
  ../inc/WZUtil/UDPPiper.h
  ../inc/WZUtil/WZPiper.h
  ../inc/WZUtil/frame.h
  ../inc/WZUtil/iniparser.h
  ../inc/ctpwzadapter.h
+ ../inc/transportstruct.h
  ../inc/wzconstant.h
  ../inc/wzdatastruct.h
  ../test/test.h
- /home/huziang/Desktop/MdServer/src/Main/main.cpp
+ /home/lijiaheng/Md5/src/Main/main.cpp
 src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
  ../inc/CustomMdSpi.h
  ../inc/MdEngine.h
  ../inc/MessageQueue.h
+ ../inc/Parser.h
  ../inc/ThostFtdcMdApi.h
  ../inc/ThostFtdcUserApiDataType.h
  ../inc/ThostFtdcUserApiStruct.h
- ../inc/ctpwzadapter.h
- ../inc/wzconstant.h
- ../inc/wzdatastruct.h
- ../test/test.h
- /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp
-src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
- ../inc/MdEngine.h
- ../inc/ThostFtdcUserApiDataType.h
- ../inc/ThostFtdcUserApiStruct.h
- ../inc/WZUtil/WZPiper.h
+ ../inc/WZUtil/Logger.h
  ../inc/WZUtil/frame.h
  ../inc/WZUtil/iniparser.h
  ../inc/ctpwzadapter.h
+ ../inc/transportstruct.h
  ../inc/wzconstant.h
  ../inc/wzdatastruct.h
- /home/huziang/Desktop/MdServer/src/Md/MdEngine.cpp
+ ../test/test.h
+ /home/lijiaheng/Md5/src/Md/CustomMdSpi.cpp
+src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
+ ../inc/MdEngine.h
+ ../inc/Parser.h
+ ../inc/WZUtil/WZPiper.h
+ ../inc/WZUtil/frame.h
+ ../inc/WZUtil/iniparser.h
+ ../inc/transportstruct.h
+ ../inc/wzconstant.h
+ ../inc/wzdatastruct.h
+ /home/lijiaheng/Md5/src/Md/MdEngine.cpp
 src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o
  ../inc/MessageQueue.h
  ../inc/semaphore.h
- /home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.cpp
+ /home/lijiaheng/Md5/src/MessageQueue/MessageQueue.cpp

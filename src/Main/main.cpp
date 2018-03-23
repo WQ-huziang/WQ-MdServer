@@ -11,11 +11,14 @@
 #include <cstring>
 #include <fstream>
 #include <thread>
+#include <stdio.h>
 #include "WZUtil/iniparser.h"
 #include "CustomMdSpi.h"
 #include "WZUtil/TcpPiper.h"
 #include "WZUtil/UDPPiper.h"
 #include "MessageQueue.h"
+#include "WZUtil/Logger.h"
+#include "transportstruct.h"
 using std::thread;
 
 
@@ -64,7 +67,7 @@ void readInit(char *progname, char *filepath){
 
   // logger init
   logger = new Logger(progname);
-  logger->ParseConfigInfo(filename);
+  logger->ParseConfigInfo(filepath);
 }
 
 void testInit() {
@@ -75,26 +78,32 @@ void testInit() {
 #endif
 }
 
-void writeFile(WZMarketDataField *pDepthMarketData){
+void writeFile(TSMarketDataField *pDepthMarketData){
   char filePath[100] = {'\0'};
-  std::cout << pDepthMarketData->InstrumentID << std::endl;
   sprintf(filePath, "%s_market_data.csv", pDepthMarketData->InstrumentID);
+  /*
   std::ofstream fout;
-  fout.open(filePath, std::ios::app);
-  fout << pDepthMarketData->InstrumentID << "," << pDepthMarketData->TradingDay << "," << pDepthMarketData->LastPrice << "," << pDepthMarketData->Volume << std::endl;
+  fout.open(filePath, std::ios::binary);
+  fout << pDepthMarketData << std::endl;
   fout.close();
+  */
+  FILE *fp = fopen(filePath, "wb");
+  if(fp != NULL){
+    int ret = fwrite(pDepthMarketData, sizeof(TSMarketDataField), sizeof(pDepthMarketData), fp);
+    fclose(fp);
+  }
 }
 
 void writeThread(){
-  for(int index = 0; index < contractsnum; index++){
-    char filePath[100] = {'\0'};
-    sprintf(filePath, "%s_market_data.csv", contracts[index]);
-    std::ofstream fout;
-    fout.open(filePath, std::ios::app);
-    fout << "code" << "," << "date" << "," << "last price" << "," << "volume" << std::endl;
-    fout.close();
-  }
-  WZMarketDataField *pDepthMarketData = new WZMarketDataField;
+  // for(int index = 0; index < contractsnum; index++){
+  //   char filePath[100] = {'\0'};
+  //   sprintf(filePath, "%s_market_data.csv", contracts[index]);
+  //   std::ofstream fout;
+  //   fout.open(filePath, std::ios::app);
+  //   fout << "code" << "," << "date" << "," << "last price" << "," << "volume" << std::endl;
+  //   fout.close();
+  // }
+  TSMarketDataField *pDepthMarketData = new TSMarketDataField;
   que = new MessageQueue(sizeof(*pDepthMarketData), 600);
   while(1){
     if(que->receive(pDepthMarketData)){
