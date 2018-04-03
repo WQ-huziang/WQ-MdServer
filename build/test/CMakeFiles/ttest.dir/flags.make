@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11 -g -fPIC
 
 CXX_DEFINES = -Dttest_EXPORTS
 
-CXX_INCLUDES = -I/home/lijiaheng/Md5/inc -I/home/lijiaheng/Md5/test 
+CXX_INCLUDES = -I/home/huziang/Desktop/MdServer/inc -I/home/huziang/Desktop/MdServer/test 
 

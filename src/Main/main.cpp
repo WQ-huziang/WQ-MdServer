@@ -80,16 +80,10 @@ void testInit() {
 
 void writeFile(TSMarketDataField *pDepthMarketData){
   char filePath[100] = {'\0'};
-  sprintf(filePath, "%s_market_data.csv", pDepthMarketData->InstrumentID);
-  /*
-  std::ofstream fout;
-  fout.open(filePath, std::ios::binary);
-  fout << pDepthMarketData << std::endl;
-  fout.close();
-  */
-  FILE *fp = fopen(filePath, "wb");
+  sprintf(filePath, "../data/data.csv", pDepthMarketData->InstrumentID);
+  FILE *fp = fopen(filePath, "ab");
   if(fp != NULL){
-    int ret = fwrite(pDepthMarketData, sizeof(TSMarketDataField), sizeof(pDepthMarketData), fp);
+    int ret = fwrite(pDepthMarketData, sizeof(TSMarketDataField), 1, fp);
     fclose(fp);
   }
 }

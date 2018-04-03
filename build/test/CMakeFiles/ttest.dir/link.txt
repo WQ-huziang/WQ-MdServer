@@ -1,1 +1,1 @@
-/usr/bin/c++  -fPIC -std=c++11 -g  -shared -Wl,-soname,libttest.so -o ../../lib/libttest.so CMakeFiles/ttest.dir/test.cpp.o  -L/home/lijiaheng/Md5/lib 
+/usr/bin/c++  -fPIC -std=c++11 -g  -shared -Wl,-soname,libttest.so -o ../../lib/libttest.so CMakeFiles/ttest.dir/test.cpp.o  -L/home/huziang/Desktop/MdServer/lib 

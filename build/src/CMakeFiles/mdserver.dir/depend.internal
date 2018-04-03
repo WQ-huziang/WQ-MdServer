@@ -20,7 +20,7 @@ src/CMakeFiles/mdserver.dir/Main/main.cpp.o
  ../inc/wzconstant.h
  ../inc/wzdatastruct.h
  ../test/test.h
- /home/lijiaheng/Md5/src/Main/main.cpp
+ /home/huziang/Desktop/MdServer/src/Main/main.cpp
 src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
  ../inc/CustomMdSpi.h
  ../inc/MdEngine.h
@@ -37,7 +37,7 @@ src/CMakeFiles/mdserver.dir/Md/CustomMdSpi.cpp.o
  ../inc/wzconstant.h
  ../inc/wzdatastruct.h
  ../test/test.h
- /home/lijiaheng/Md5/src/Md/CustomMdSpi.cpp
+ /home/huziang/Desktop/MdServer/src/Md/CustomMdSpi.cpp
 src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
  ../inc/MdEngine.h
  ../inc/Parser.h
@@ -47,8 +47,8 @@ src/CMakeFiles/mdserver.dir/Md/MdEngine.cpp.o
  ../inc/transportstruct.h
  ../inc/wzconstant.h
  ../inc/wzdatastruct.h
- /home/lijiaheng/Md5/src/Md/MdEngine.cpp
+ /home/huziang/Desktop/MdServer/src/Md/MdEngine.cpp
 src/CMakeFiles/mdserver.dir/MessageQueue/MessageQueue.cpp.o
  ../inc/MessageQueue.h
  ../inc/semaphore.h
- /home/lijiaheng/Md5/src/MessageQueue/MessageQueue.cpp
+ /home/huziang/Desktop/MdServer/src/MessageQueue/MessageQueue.cpp

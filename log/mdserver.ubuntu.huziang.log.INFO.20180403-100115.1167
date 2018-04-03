@@ -1,0 +1,4 @@
+Log file created at: 2018/04/03 10:01:15
+Running on machine: ubuntu
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0403 10:01:15.501003  1167 Logger.cpp:38] 初始化行情...
