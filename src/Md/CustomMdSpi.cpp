@@ -16,6 +16,7 @@
 #ifdef DEBUG
 #include "test.h"
 extern Time *mytime;
+static long num = 0;
 #endif
 
 // using std::LOG(INFO);
@@ -179,18 +180,16 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   mytime->WriteName(pDepthMarketData->InstrumentID);
   mytime->WriteStart();
   char info[50];
-  DLOG(DEBUG) << "===== Get Depth Market Data =====";
-  DLOG(DEBUG) << "Trading Day: " << pDepthMarketData->TradingDay;
-  DLOG(DEBUG) << "Exchange ID: " << pDepthMarketData->ExchangeID;
-  DLOG(DEBUG) << "Instrument ID: " << pDepthMarketData->InstrumentID;
-  sprintf(info, "Last Price: %lf", pDepthMarketData->LastPrice);
-  DLOG(DEBUG) << info;
-  sprintf(info, "Volume: %lf", pDepthMarketData->Volume);
-  DLOG(DEBUG) << info;
-  sprintf(info, "Turnover: %lf", pDepthMarketData->Turnover);
-  DLOG(DEBUG) << info;
+  std::cerr << "===== Get Depth Market Data =====" << endl;
+  std::cerr << num++ << endl;
+  // std::cerr << "Trading Day: " << pDepthMarketData->TradingDay << endl;
+  // std::cerr << "Exchange ID: " << pDepthMarketData->ExchangeID << endl;
+  // std::cerr << "Instrument ID: " << pDepthMarketData->InstrumentID << endl;
+  // std::cerr << "Last Price: " << pDepthMarketData->LastPrice << endl;
+  // std::cerr << "Volume: " << pDepthMarketData->Volume << endl;
+  // std::cerr << "Turnover: " << pDepthMarketData->Turnover << endl;
 #endif
-
+  LOG(INFO) << "Get Depth Market Data";
   TSMarketDataField pTSDepthMarketData;
   pTSDepthMarketData = parserFrom(*pDepthMarketData);
   this->RtnDepthMarketData(&pTSDepthMarketData);

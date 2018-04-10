@@ -26,6 +26,7 @@ using std::thread;
 #ifdef DEBUG
 #include "test.h"
 Time *mytime;
+static long num = 0;
 #endif
 
 int requestID;
@@ -37,6 +38,7 @@ char contractsfile[50];
 char MdAddr[50];
 MessageQueue *que;
 Logger *logger;
+
 DataEngine *db;
 vector<map<string, string>> mds;
 map<string, string> md;
@@ -84,7 +86,6 @@ void testInit() {
 #ifdef DEBUG
   mytime = new Time();
   mytime->Init();
-#else
 #endif
 }
 
@@ -92,10 +93,14 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
   // to document
   md.clear();
   parseFrom(md, *pDepthMarketData);
+#ifdef DEBUG
+  cerr << "===== Data Engine =====" << endl;
+  cerr << num++ << endl;
+#endif
 
   // documents insert the document
   mds.push_back(md);
-  if (mds.size() >= 100) {
+  if (mds.size() >= 50) {
     if (db->insert_many(mds)) {
       LOG(INFO) << "insert TSMarketDataFields success!";
     } else {
