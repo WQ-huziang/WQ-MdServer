@@ -20,6 +20,7 @@ struct Frame{
         TSRtnOrderField order;
         TSRtnTradeField trade;
         TSMarketDataField market;
+        TSAlertField alert;
     } data;
 };
 
@@ -95,6 +96,8 @@ typedef short WZSourceType;
 #define WZ_MSG_TYPE_ON_ORDER             3
 //订单成交数据
 #define WZ_MSG_TYPE_ON_TRADE             4
+// alert data
+#define WZ_MSG_TYPE_ALERT_DATA           5
 //错误信息
 #define WZ_MSG_ERROR                     404
 typedef short WZMsgType;

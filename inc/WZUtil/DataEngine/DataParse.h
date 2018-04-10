@@ -70,11 +70,11 @@ inline int parseFrom(map<string, string> &my_map, TSMarketDataField &res)
   my_map.insert(pair<string, string>("Turnover", num_value));
   sprintf(num_value, "%lf", res.OpenInterest);
   my_map.insert(pair<string, string>("OpenInterest", num_value));
-  sprintf(num_value, "%lf", res.ClosePrice);
-  my_map.insert(pair<string, string>("ClosePrice", num_value));
+  // sprintf(num_value, "%lf", res.ClosePrice);
+  // my_map.insert(pair<string, string>("ClosePrice", num_value));
 
-  sprintf(num_value, "%lf", res.SettlementPrice);
-  my_map.insert(pair<string, string>("SettlementPrice", num_value));
+  // sprintf(num_value, "%lf", res.SettlementPrice);
+  // my_map.insert(pair<string, string>("SettlementPrice", num_value));
   sprintf(num_value, "%lf", res.UpperLimitPrice);
   my_map.insert(pair<string, string>("UpperLimitPrice", num_value));
   sprintf(num_value, "%lf", res.LowerLimitPrice);

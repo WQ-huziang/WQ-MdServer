@@ -12,6 +12,7 @@
 #include <fstream>
 #include <thread>
 #include <stdio.h>
+#include "alertthread.h"
 #include "WZUtil/iniparser.h"
 #include "CustomMdSpi.h"
 #include "WZUtil/TcpPiper.h"
@@ -21,6 +22,7 @@
 #include "transportstruct.h"
 #include "MongodbEngine.h"
 #include "DataParse.h"
+#include "alertthread.h"
 using std::thread;
 
 #ifdef DEBUG
@@ -38,6 +40,8 @@ char contractsfile[50];
 char MdAddr[50];
 MessageQueue *que;
 Logger *logger;
+
+WZPiper *udppiper;
 
 DataEngine *db;
 vector<map<string, string>> mds;
@@ -80,6 +84,10 @@ void readInit(char *progname, char *filepath){
   db->init();
   db->setLibname("Md");
   db->setTablename("TSMarketDataField");
+
+  udppiper = new UDPPiper();
+  udppiper->set_config_info(filepath);
+  udppiper->init_as_client();
 }
 
 void testInit() {
@@ -137,13 +145,9 @@ int main(int argc, char* argv[])
 
   readInit(argv[0], argv[2]);
   thread wtr(writeThread);
+  thread alr(alertThread);
 
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
-  WZPiper *udppiper = new UDPPiper();
-  udppiper->set_config_info(argv[2]);
-  udppiper->init_as_client();
-  //WZPiper *tcppiper = new TcpPiper();
-
   engine->SetOutput(udppiper);
 
   logger->Info("初始化行情...");
