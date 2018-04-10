@@ -16,6 +16,7 @@ MESSAGE(STATUS "This is LIBRARY dir " ${LIBRARY_OUTPUT_PATH})
 
 # include hpp
 INCLUDE_DIRECTORIES(inc)
+INCLUDE_DIRECTORIES(inc/WZUtil/DataEngine)
 INCLUDE_DIRECTORIES(test)
 
 # link all .so

@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libttiger.a  CMakeFiles/ttest_static.dir/test.cpp.o
-/usr/bin/ranlib ../../lib/libttiger.a

@@ -19,8 +19,9 @@
 #include "MessageQueue.h"
 #include "WZUtil/Logger.h"
 #include "transportstruct.h"
+#include "MongodbEngine.h"
+#include "DataParse.h"
 using std::thread;
-
 
 #ifdef DEBUG
 #include "test.h"
@@ -36,6 +37,9 @@ char contractsfile[50];
 char MdAddr[50];
 MessageQueue *que;
 Logger *logger;
+DataEngine *db;
+vector<map<string, string>> mds;
+map<string, string> md;
 
 int processInstrumentIDList(char *list[], const char *filename) {
   FILE* fp = fopen(filename, "r");
@@ -68,6 +72,12 @@ void readInit(char *progname, char *filepath){
   // logger init
   logger = new Logger(progname);
   logger->ParseConfigInfo(filepath);
+
+  // data engine init
+  db = MongodbEngine::getInstance();
+  db->init();
+  db->setLibname("Md");
+  db->setTablename("TSMarketDataField");
 }
 
 void testInit() {
@@ -78,30 +88,29 @@ void testInit() {
 #endif
 }
 
-void writeFile(TSMarketDataField *pDepthMarketData){
-  char filePath[100] = {'\0'};
-  sprintf(filePath, "../data/data.csv", pDepthMarketData->InstrumentID);
-  FILE *fp = fopen(filePath, "ab");
-  if(fp != NULL){
-    int ret = fwrite(pDepthMarketData, sizeof(TSMarketDataField), 1, fp);
-    fclose(fp);
+void writeDataEngine(TSMarketDataField *pDepthMarketData) {
+  // to document
+  md.clear();
+  parseFrom(md, *pDepthMarketData);
+
+  // documents insert the document
+  mds.push_back(md);
+  if (mds.size() >= 100) {
+    if (db->insert_many(mds)) {
+      LOG(INFO) << "insert TSMarketDataFields success!";
+    } else {
+      LOG(ERROR) << "Can't insert TSMarketDataFields!";
+    }
+    mds.clear();
   }
 }
 
-void writeThread(){
-  // for(int index = 0; index < contractsnum; index++){
-  //   char filePath[100] = {'\0'};
-  //   sprintf(filePath, "%s_market_data.csv", contracts[index]);
-  //   std::ofstream fout;
-  //   fout.open(filePath, std::ios::app);
-  //   fout << "code" << "," << "date" << "," << "last price" << "," << "volume" << std::endl;
-  //   fout.close();
-  // }
+void writeThread() {
   TSMarketDataField *pDepthMarketData = new TSMarketDataField;
   que = new MessageQueue(sizeof(*pDepthMarketData), 600);
   while(1){
     if(que->receive(pDepthMarketData)){
-      writeFile(pDepthMarketData);
+      writeDataEngine(pDepthMarketData);
     }
   }
 }
@@ -137,7 +146,7 @@ int main(int argc, char* argv[])
   sleep(1);
 
   // test class init
-  // testInit();
+  testInit();
 
   engine->ReqSubscribeMarketData(contracts, contractsnum);
   wtr.join();
