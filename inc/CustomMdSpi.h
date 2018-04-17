@@ -10,8 +10,6 @@
 #include "MdEngine.h"
 #include "ThostFtdcMdApi.h"
 #include "ThostFtdcUserApiStruct.h"
-#include "ctpwzadapter.h"
-#include "wzdatastruct.h"
 
 class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
 {

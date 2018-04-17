@@ -11,7 +11,8 @@
 #include "ThostFtdcUserApiDataType.h"
 #include "ThostFtdcMdApi.h"
 #include "MessageQueue.h"
-#include "WZUtil/Logger.h"
+#include "logger.h"
+#include "TS2CTPparser.h"
 
 #ifdef DEBUG
 #include "test.h"
@@ -191,7 +192,7 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
 #endif
   LOG(INFO) << "Get Depth Market Data";
   TSMarketDataField pTSDepthMarketData;
-  pTSDepthMarketData = parserFrom(*pDepthMarketData);
+  parseFrom(pTSDepthMarketData, *pDepthMarketData);
   this->RtnDepthMarketData(&pTSDepthMarketData);
   /*此处可将数据存入数据库*/
   que->send(&pTSDepthMarketData);

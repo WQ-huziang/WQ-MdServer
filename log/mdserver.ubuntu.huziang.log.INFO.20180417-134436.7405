@@ -1,0 +1,294 @@
+Log file created at: 2018/04/17 13:44:36
+Running on machine: ubuntu
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0417 13:44:36.959828  7405 Logger.cpp:38] 初始化行情...
+I0417 13:44:36.990718  7407 CustomMdSpi.cpp:79] 连接成功，正在登录...
+I0417 13:44:36.990797  7407 CustomMdSpi.cpp:70] 发送登录请求成功！
+I0417 13:44:37.025280  7407 CustomMdSpi.cpp:101] 登录成功
+I0417 13:44:37.025298  7407 CustomMdSpi.cpp:102] 交易日:20180417
+I0417 13:44:37.025321  7407 CustomMdSpi.cpp:103] 登录时间:
+I0417 13:44:37.025327  7407 CustomMdSpi.cpp:104] 用户名:
+I0417 13:44:37.025331  7407 CustomMdSpi.cpp:105] 经济商:
+I0417 13:44:37.960249  7405 CustomMdSpi.cpp:55] 发送行情请求成功
+I0417 13:44:38.002707  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002735  7407 CustomMdSpi.cpp:135] 合约代码：SR811
+I0417 13:44:38.002740  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002756  7407 CustomMdSpi.cpp:135] 合约代码：CF805
+I0417 13:44:38.002760  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002764  7407 CustomMdSpi.cpp:135] 合约代码：SR807
+I0417 13:44:38.002768  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002773  7407 CustomMdSpi.cpp:135] 合约代码：SR805
+I0417 13:44:38.002775  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002780  7407 CustomMdSpi.cpp:135] 合约代码：TA805
+I0417 13:44:38.002784  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002789  7407 CustomMdSpi.cpp:135] 合约代码：TA804
+I0417 13:44:38.002792  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002795  7407 CustomMdSpi.cpp:135] 合约代码：SR803
+I0417 13:44:38.002799  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002804  7407 CustomMdSpi.cpp:135] 合约代码：jd1804
+I0417 13:44:38.002807  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002811  7407 CustomMdSpi.cpp:135] 合约代码：fu1807
+I0417 13:44:38.002815  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002818  7407 CustomMdSpi.cpp:135] 合约代码：sc1807
+I0417 13:44:38.002822  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002826  7407 CustomMdSpi.cpp:135] 合约代码：fu1806
+I0417 13:44:38.002830  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002833  7407 CustomMdSpi.cpp:135] 合约代码：ZC810
+I0417 13:44:38.002837  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002841  7407 CustomMdSpi.cpp:135] 合约代码：jd1811
+I0417 13:44:38.002846  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002849  7407 CustomMdSpi.cpp:135] 合约代码：ag1809
+I0417 13:44:38.002853  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002856  7407 CustomMdSpi.cpp:135] 合约代码：al1809
+I0417 13:44:38.002861  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002864  7407 CustomMdSpi.cpp:135] 合约代码：au1810
+I0417 13:44:38.002867  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002871  7407 CustomMdSpi.cpp:135] 合约代码：bu1909
+I0417 13:44:38.002876  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002879  7407 CustomMdSpi.cpp:135] 合约代码：cu1809
+I0417 13:44:38.002883  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002887  7407 CustomMdSpi.cpp:135] 合约代码：hc1809
+I0417 13:44:38.002890  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002894  7407 CustomMdSpi.cpp:135] 合约代码：ni1809
+I0417 13:44:38.002897  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002902  7407 CustomMdSpi.cpp:135] 合约代码：pb1809
+I0417 13:44:38.002905  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002909  7407 CustomMdSpi.cpp:135] 合约代码：rb1809
+I0417 13:44:38.002913  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002923  7407 CustomMdSpi.cpp:135] 合约代码：ru1809
+I0417 13:44:38.002928  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002931  7407 CustomMdSpi.cpp:135] 合约代码：bu1803
+I0417 13:44:38.002934  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002938  7407 CustomMdSpi.cpp:135] 合约代码：p1811
+I0417 13:44:38.002941  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002945  7407 CustomMdSpi.cpp:135] 合约代码：pp1811
+I0417 13:44:38.002977  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002982  7407 CustomMdSpi.cpp:135] 合约代码：v1811
+I0417 13:44:38.002986  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002990  7407 CustomMdSpi.cpp:135] 合约代码：y1811
+I0417 13:44:38.002992  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.002996  7407 CustomMdSpi.cpp:135] 合约代码：CY811
+I0417 13:44:38.003000  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003005  7407 CustomMdSpi.cpp:135] 合约代码：FG811
+I0417 13:44:38.003007  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003011  7407 CustomMdSpi.cpp:135] 合约代码：JR811
+I0417 13:44:38.003015  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003018  7407 CustomMdSpi.cpp:135] 合约代码：bu1812
+I0417 13:44:38.003022  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003026  7407 CustomMdSpi.cpp:135] 合约代码：LR811
+I0417 13:44:38.003029  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003033  7407 CustomMdSpi.cpp:135] 合约代码：MA811
+I0417 13:44:38.003037  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003041  7407 CustomMdSpi.cpp:135] 合约代码：OI811
+I0417 13:44:38.003044  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003047  7407 CustomMdSpi.cpp:135] 合约代码：PM811
+I0417 13:44:38.003051  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003056  7407 CustomMdSpi.cpp:135] 合约代码：RI811
+I0417 13:44:38.003058  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003062  7407 CustomMdSpi.cpp:135] 合约代码：RM811
+I0417 13:44:38.003067  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003069  7407 CustomMdSpi.cpp:135] 合约代码：RS811
+I0417 13:44:38.003073  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003077  7407 CustomMdSpi.cpp:135] 合约代码：SF811
+I0417 13:44:38.003080  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003084  7407 CustomMdSpi.cpp:135] 合约代码：SM811
+I0417 13:44:38.003087  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003091  7407 CustomMdSpi.cpp:135] 合约代码：WH811
+I0417 13:44:38.003095  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003098  7407 CustomMdSpi.cpp:135] 合约代码：a1905
+I0417 13:44:38.003103  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003106  7407 CustomMdSpi.cpp:135] 合约代码：b1811
+I0417 13:44:38.003109  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003113  7407 CustomMdSpi.cpp:135] 合约代码：bb1811
+I0417 13:44:38.003118  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003120  7407 CustomMdSpi.cpp:135] 合约代码：TA810
+I0417 13:44:38.003124  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003127  7407 CustomMdSpi.cpp:135] 合约代码：CY810
+I0417 13:44:38.003131  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003135  7407 CustomMdSpi.cpp:135] 合约代码：FG810
+I0417 13:44:38.003139  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003142  7407 CustomMdSpi.cpp:135] 合约代码：MA810
+I0417 13:44:38.003145  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003149  7407 CustomMdSpi.cpp:135] 合约代码：SF810
+I0417 13:44:38.003154  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003156  7407 CustomMdSpi.cpp:135] 合约代码：SM810
+I0417 13:44:38.003160  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003165  7407 CustomMdSpi.cpp:135] 合约代码：IC1806
+I0417 13:44:38.003167  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003171  7407 CustomMdSpi.cpp:135] 合约代码：IF1806
+I0417 13:44:38.003175  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003178  7407 CustomMdSpi.cpp:135] 合约代码：IH1806
+I0417 13:44:38.003182  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003186  7407 CustomMdSpi.cpp:135] 合约代码：bb1810
+I0417 13:44:38.003190  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003201  7407 CustomMdSpi.cpp:135] 合约代码：fb1810
+I0417 13:44:38.003204  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003208  7407 CustomMdSpi.cpp:135] 合约代码：i1810
+I0417 13:44:38.003212  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003216  7407 CustomMdSpi.cpp:135] 合约代码：j1810
+I0417 13:44:38.003218  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003222  7407 CustomMdSpi.cpp:135] 合约代码：jm1810
+I0417 13:44:38.003226  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003229  7407 CustomMdSpi.cpp:135] 合约代码：l1810
+I0417 13:44:38.003233  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003237  7407 CustomMdSpi.cpp:135] 合约代码：p1810
+I0417 13:44:38.003240  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003243  7407 CustomMdSpi.cpp:135] 合约代码：pp1810
+I0417 13:44:38.003247  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003252  7407 CustomMdSpi.cpp:135] 合约代码：v1810
+I0417 13:44:38.003254  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003258  7407 CustomMdSpi.cpp:135] 合约代码：a1803
+I0417 13:44:38.003262  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003265  7407 CustomMdSpi.cpp:135] 合约代码：fu1805
+I0417 13:44:38.003269  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003273  7407 CustomMdSpi.cpp:135] 合约代码：TA809
+I0417 13:44:38.003276  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003280  7407 CustomMdSpi.cpp:135] 合约代码：CF809
+I0417 13:44:38.003283  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003288  7407 CustomMdSpi.cpp:135] 合约代码：SR903
+I0417 13:44:38.003291  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003294  7407 CustomMdSpi.cpp:135] 合约代码：a1903
+I0417 13:44:38.003298  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003301  7407 CustomMdSpi.cpp:135] 合约代码：b1809
+I0417 13:44:38.003305  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003309  7407 CustomMdSpi.cpp:135] 合约代码：bb1809
+I0417 13:44:38.003312  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003316  7407 CustomMdSpi.cpp:135] 合约代码：c1809
+I0417 13:44:38.003319  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003324  7407 CustomMdSpi.cpp:135] 合约代码：cs1809
+I0417 13:44:38.003327  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003330  7407 CustomMdSpi.cpp:135] 合约代码：fb1809
+I0417 13:44:38.003334  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003337  7407 CustomMdSpi.cpp:135] 合约代码：i1809
+I0417 13:44:38.003341  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003345  7407 CustomMdSpi.cpp:135] 合约代码：j1809
+I0417 13:44:38.003348  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003352  7407 CustomMdSpi.cpp:135] 合约代码：jm1809
+I0417 13:44:38.003355  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003360  7407 CustomMdSpi.cpp:135] 合约代码：l1809
+I0417 13:44:38.003363  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003366  7407 CustomMdSpi.cpp:135] 合约代码：m1809
+I0417 13:44:38.003371  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003373  7407 CustomMdSpi.cpp:135] 合约代码：p1809
+I0417 13:44:38.003377  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003381  7407 CustomMdSpi.cpp:135] 合约代码：pp1809
+I0417 13:44:38.003384  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003388  7407 CustomMdSpi.cpp:135] 合约代码：v1809
+I0417 13:44:38.003391  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003396  7407 CustomMdSpi.cpp:135] 合约代码：y1809
+I0417 13:44:38.003399  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003402  7407 CustomMdSpi.cpp:135] 合约代码：CY809
+I0417 13:44:38.003407  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003409  7407 CustomMdSpi.cpp:135] 合约代码：FG809
+I0417 13:44:38.003419  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003423  7407 CustomMdSpi.cpp:135] 合约代码：JR809
+I0417 13:44:38.003427  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003432  7407 CustomMdSpi.cpp:135] 合约代码：LR809
+I0417 13:44:38.003435  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003438  7407 CustomMdSpi.cpp:135] 合约代码：MA809
+I0417 13:44:38.003443  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003446  7407 CustomMdSpi.cpp:135] 合约代码：OI809
+I0417 13:44:38.003449  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003453  7407 CustomMdSpi.cpp:135] 合约代码：PM809
+I0417 13:44:38.003458  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003460  7407 CustomMdSpi.cpp:135] 合约代码：RI809
+I0417 13:44:38.003464  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003468  7407 CustomMdSpi.cpp:135] 合约代码：RM809
+I0417 13:44:38.003471  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003475  7407 CustomMdSpi.cpp:135] 合约代码：RS809
+I0417 13:44:38.003479  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003482  7407 CustomMdSpi.cpp:135] 合约代码：bu1809
+I0417 13:44:38.003486  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003490  7407 CustomMdSpi.cpp:135] 合约代码：bu1806
+I0417 13:44:38.003494  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003497  7407 CustomMdSpi.cpp:135] 合约代码：TA806
+I0417 13:44:38.003501  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003505  7407 CustomMdSpi.cpp:135] 合约代码：FG806
+I0417 13:44:38.003509  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003512  7407 CustomMdSpi.cpp:135] 合约代码：MA806
+I0417 13:44:38.003516  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003520  7407 CustomMdSpi.cpp:135] 合约代码：SF806
+I0417 13:44:38.003523  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003526  7407 CustomMdSpi.cpp:135] 合约代码：SM806
+I0417 13:44:38.003530  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003535  7407 CustomMdSpi.cpp:135] 合约代码：bb1806
+I0417 13:44:38.003537  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003541  7407 CustomMdSpi.cpp:135] 合约代码：ZC812
+I0417 13:44:38.003545  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003548  7407 CustomMdSpi.cpp:135] 合约代码：jd1803
+I0417 13:44:38.003552  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003556  7407 CustomMdSpi.cpp:135] 合约代码：fu1804
+I0417 13:44:38.003559  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003563  7407 CustomMdSpi.cpp:135] 合约代码：a1811
+I0417 13:44:38.003566  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003571  7407 CustomMdSpi.cpp:135] 合约代码：b1805
+I0417 13:44:38.003574  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003577  7407 CustomMdSpi.cpp:135] 合约代码：bb1805
+I0417 13:44:38.003582  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003584  7407 CustomMdSpi.cpp:135] 合约代码：fb1806
+I0417 13:44:38.003588  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003592  7407 CustomMdSpi.cpp:135] 合约代码：i1806
+I0417 13:44:38.003595  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003599  7407 CustomMdSpi.cpp:135] 合约代码：j1806
+I0417 13:44:38.003603  7407 CustomMdSpi.cpp:134] 行情订阅成功
+I0417 13:44:38.003607  7407 CustomMdSpi.cpp:135] 合约代码：jm1806
+I0417 13:44:38.003698  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003744  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003757  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003767  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003788  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003799  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003808  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003830  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003845  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003855  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.003864  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033639  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033696  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033710  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033720  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033730  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033741  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033751  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033759  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033768  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033777  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.033787  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034008  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034034  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034044  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034060  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034070  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034081  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034090  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034112  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034123  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034132  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034142  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034160  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034171  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034183  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034193  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034204  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034214  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034230  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034240  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034250  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034260  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.034270  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.071935  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.071993  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072016  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072033  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072043  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072053  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072064  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072074  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072087  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072098  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.072113  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.073922  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.073946  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.073958  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.073967  7407 CustomMdSpi.cpp:192] Get Depth Market Data
+I0417 13:44:38.073982  7407 CustomMdSpi.cpp:192] Get Depth Market Data

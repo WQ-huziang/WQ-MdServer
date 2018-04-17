@@ -11,11 +11,11 @@ SET(CTP_SO
 )
 SET(WZUTIL_SO
   iniparser
-  TcpPiper
-  UDPPiper
-  Logger
+  tcp
+  udp
+  logger
   glog
-  MongodbEngine
+  mongodbengine
   mongocxx
   bsoncxx
 )
