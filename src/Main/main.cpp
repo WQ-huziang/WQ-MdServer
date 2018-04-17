@@ -12,7 +12,6 @@
 #include <fstream>
 #include <thread>
 #include <stdio.h>
-#include "alertthread.h"
 #include "WZUtil/iniparser.h"
 #include "CustomMdSpi.h"
 #include "WZUtil/TcpPiper.h"
@@ -22,7 +21,7 @@
 #include "transportstruct.h"
 #include "MongodbEngine.h"
 #include "DataParse.h"
-#include "alertthread.h"
+//#include "alertthread.h"
 using std::thread;
 
 #ifdef DEBUG
@@ -145,7 +144,7 @@ int main(int argc, char* argv[])
 
   readInit(argv[0], argv[2]);
   thread wtr(writeThread);
-  thread alr(alertThread);
+  //thread alr(alertThread);
 
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
   engine->SetOutput(udppiper);
