@@ -12,16 +12,14 @@
 #include <fstream>
 #include <thread>
 #include <stdio.h>
-#include "WZUtil/iniparser.h"
+#include "iniparser.h"
 #include "CustomMdSpi.h"
-#include "WZUtil/TcpPiper.h"
-#include "WZUtil/UDPPiper.h"
+#include "wzsocket_inc/udp.h"
 #include "MessageQueue.h"
-#include "WZUtil/Logger.h"
-#include "transportstruct.h"
-#include "MongodbEngine.h"
-#include "DataParse.h"
-//#include "alertthread.h"
+#include "logger.h"
+#include "tsdatastruct.h"
+#include "mongodbengine.h"
+#include "dataparse.h"
 using std::thread;
 
 #ifdef DEBUG
@@ -40,7 +38,7 @@ char MdAddr[50];
 MessageQueue *que;
 Logger *logger;
 
-WZPiper *udppiper;
+WZPiper<UdpSocket> *udppiper;
 
 DataEngine *db;
 vector<map<string, string>> mds;
@@ -84,9 +82,8 @@ void readInit(char *progname, char *filepath){
   db->setLibname("Md");
   db->setTablename("TSMarketDataField");
 
-  udppiper = new UDPPiper();
-  udppiper->set_config_info(filepath);
-  udppiper->init_as_client();
+  udppiper = new WZPiper<UdpSocket>();
+  udppiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
 }
 
 void testInit() {
