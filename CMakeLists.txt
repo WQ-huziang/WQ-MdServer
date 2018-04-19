@@ -7,6 +7,7 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 SET(TEST_LIB ttest)
 
 # add c++11 and -g
+SET(CMAKE_CXX_COMPILER "icc")
 SET(CMAKE_CXX_FLAGS "-std=c++11 -g -pthread")
 
 MESSAGE(STATUS "Project name is " ${PROJECT})
