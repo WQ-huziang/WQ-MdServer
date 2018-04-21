@@ -1,0 +1,32 @@
+Log file created at: 2018/04/19 19:22:32
+Running on machine: ubuntu
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0419 19:22:32.276967 26005 udp.cpp:79] Udp Socket Init Success, IP = 192.168.0.6 PORT = 25520 isClient = 1
+I0419 19:22:37.890130 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:37.935688 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:37.981017 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.026625 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.070652 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.115420 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.160557 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.205425 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.253907 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.302188 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.347368 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.391993 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.435570 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.479499 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.523939 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.568122 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.611611 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.655732 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.700094 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.743306 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.787796 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.833061 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.877002 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.921133 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:38.966392 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:39.011545 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:39.056349 26005 dataenginethread.h:75] insert TSMarketDataFields success!
+I0419 19:22:39.101251 26005 dataenginethread.h:75] insert TSMarketDataFields success!

@@ -3,27 +3,43 @@
 // Author : huziang
 // This is a cpp file, complete the function in class CustomMdSpi
 
-#include "CustomMdSpi.h"
+#include "custommdspi.h"
 #include <memory.h>
 #include <string>
 #include <iostream>
 #include <unistd.h>
 #include "ThostFtdcUserApiDataType.h"
 #include "ThostFtdcMdApi.h"
-#include "MessageQueue.h"
+#include "messagequeue.h"
 #include "logger.h"
 #include "TS2CTPparser.h"
 
 #ifdef DEBUG
-#include "test.h"
-extern Time *mytime;
-static long num = 0;
+#include <chrono>
+using std::time_t;
+#define TIMES 1024
+long recvtime[TIMES];
+long sendtime[TIMES];
+long timenum = 0;
+
+/*
+ * 调用之间返回当前时间点到2018年04月19日 10:29:13的us级别
+ * 返回 time_t 实际上是个 long
+ */
+time_t getTimeStamp()
+{
+    std::chrono::time_point<std::chrono::system_clock,std::chrono::microseconds> tp = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now());
+    auto tmp = std::chrono::duration_cast<std::chrono::microseconds>(tp.time_since_epoch());
+    time_t timestamp = tmp.count();
+    // 以 2018年04月19日 10:29:13 时间点往后计时
+    timestamp -= 1524104953746000;
+    return timestamp;
+}
 #endif
 
-// using std::LOG(INFO);
 using std::endl;
 
-extern int requestID;
+int requestID = 0;
 extern MessageQueue *que;
 extern Logger *logger;
 
@@ -178,11 +194,13 @@ void CustomMdSpi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpec
 ///深度行情通知
 void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
 #ifdef DEBUG
-  mytime->WriteName(pDepthMarketData->InstrumentID);
-  mytime->WriteStart();
-  char info[50];
+  if (timenum == TIMES) {
+    return;
+  }
+  recvtime[timenum] = getTimeStamp();
   std::cerr << "===== Get Depth Market Data =====" << endl;
-  std::cerr << num++ << endl;
+  std::cerr << "Num: " << timenum << endl;
+
   // std::cerr << "Trading Day: " << pDepthMarketData->TradingDay << endl;
   // std::cerr << "Exchange ID: " << pDepthMarketData->ExchangeID << endl;
   // std::cerr << "Instrument ID: " << pDepthMarketData->InstrumentID << endl;
@@ -190,15 +208,17 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   // std::cerr << "Volume: " << pDepthMarketData->Volume << endl;
   // std::cerr << "Turnover: " << pDepthMarketData->Turnover << endl;
 #endif
-  LOG(INFO) << "Get Depth Market Data";
+
   TSMarketDataField pTSDepthMarketData;
   parseFrom(pTSDepthMarketData, *pDepthMarketData);
+  // send data
   this->RtnDepthMarketData(&pTSDepthMarketData);
-  /*此处可将数据存入数据库*/
+  // insert data engine
   que->send(&pTSDepthMarketData);
 
 #ifdef DEBUG
-  mytime->WriteEnd();
+  sendtime[timenum] = getTimeStamp();
+  timenum++;
 #endif
 };
 

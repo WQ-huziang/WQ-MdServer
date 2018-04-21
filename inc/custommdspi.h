@@ -7,7 +7,7 @@
 #ifndef MDSERVER_CUSTOMMDSPI_H_
 #define MDSERVER_CUSTOMMDSPI_H_
 
-#include "MdEngine.h"
+#include "mdengine.h"
 #include "ThostFtdcMdApi.h"
 #include "ThostFtdcUserApiStruct.h"
 

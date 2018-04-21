@@ -1,0 +1,4 @@
+Log file created at: 2018/04/19 17:04:22
+Running on machine: ubuntu
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0419 17:04:22.334928 19448 dataenginethread.h:123] Kill Signal recieved!

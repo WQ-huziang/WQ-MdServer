@@ -6,7 +6,6 @@
 #ifndef MDSERVER_MDENGINE_H_
 #define MDSERVER_MDENGINE_H_
 
-#include "wzconstant.h"
 #include "tsdatastruct.h"
 #include "wzsocket_inc/udp.h"
 

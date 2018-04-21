@@ -1,0 +1,4 @@
+Log file created at: 2018/04/19 20:49:02
+Running on machine: ubuntu
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0419 20:49:02.150980 20140 udp.cpp:79] Udp Socket Init Success, IP = 192.168.0.6 PORT = 25520 isClient = 1

@@ -13,36 +13,23 @@
 #include <thread>
 #include <stdio.h>
 #include "iniparser.h"
-#include "CustomMdSpi.h"
+#include "custommdspi.h"
 #include "wzsocket_inc/udp.h"
-#include "MessageQueue.h"
 #include "logger.h"
-#include "tsdatastruct.h"
 #include "mongodbengine.h"
-#include "dataparse.h"
+#include "Thread/dataenginethread.h"
 using std::thread;
 
-#ifdef DEBUG
-#include "test.h"
-Time *mytime;
-static long num = 0;
-#endif
-
-int requestID;
 int contractsnum;
 char **contracts;
 TThostFtdcInvestorIDType InvestorID;
 TThostFtdcPasswordType Password;
 char contractsfile[50];
 char MdAddr[50];
-MessageQueue *que;
+
 Logger *logger;
-
 WZPiper<UdpSocket> *udppiper;
-
 DataEngine *db;
-vector<map<string, string>> mds;
-map<string, string> md;
 
 int processInstrumentIDList(char *list[], const char *filename) {
   FILE* fp = fopen(filename, "r");
@@ -59,7 +46,8 @@ int processInstrumentIDList(char *list[], const char *filename) {
   return num - 1;
 }
 
-void readInit(char *progname, char *filepath){
+void init(char *progname, char *filepath){
+  // get parameter
   CIni ini;
   ini.OpenFile(filepath, "r");
   strcpy(MdAddr, (ini.GetStr("Addr", "Md")));
@@ -72,56 +60,19 @@ void readInit(char *progname, char *filepath){
   }
   contractsnum = processInstrumentIDList(contracts, contractsfile);
 
-  // logger init
+  // init logger
   logger = new Logger(progname);
   logger->ParseConfigInfo(filepath);
 
-  // data engine init
+  // init data engine
   db = MongodbEngine::getInstance();
   db->init();
   db->setLibname("Md");
   db->setTablename("TSMarketDataField");
 
+  // init udppiper
   udppiper = new WZPiper<UdpSocket>();
   udppiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
-}
-
-void testInit() {
-#ifdef DEBUG
-  mytime = new Time();
-  mytime->Init();
-#endif
-}
-
-void writeDataEngine(TSMarketDataField *pDepthMarketData) {
-  // to document
-  md.clear();
-  parseFrom(md, *pDepthMarketData);
-#ifdef DEBUG
-  cerr << "===== Data Engine =====" << endl;
-  cerr << num++ << endl;
-#endif
-
-  // documents insert the document
-  mds.push_back(md);
-  if (mds.size() >= 50) {
-    if (db->insert_many(mds)) {
-      LOG(INFO) << "insert TSMarketDataFields success!";
-    } else {
-      LOG(ERROR) << "Can't insert TSMarketDataFields!";
-    }
-    mds.clear();
-  }
-}
-
-void writeThread() {
-  TSMarketDataField *pDepthMarketData = new TSMarketDataField;
-  que = new MessageQueue(sizeof(*pDepthMarketData), 600);
-  while(1){
-    if(que->receive(pDepthMarketData)){
-      writeDataEngine(pDepthMarketData);
-    }
-  }
 }
 
 int main(int argc, char* argv[])
@@ -139,7 +90,7 @@ int main(int argc, char* argv[])
     exit(1);
   }
 
-  readInit(argv[0], argv[2]);
+  init(argv[0], argv[2]);
   thread wtr(writeThread);
   //thread alr(alertThread);
 
@@ -150,10 +101,8 @@ int main(int argc, char* argv[])
   engine->Init();
   sleep(1);
 
-  // test class init
-  testInit();
-
   engine->ReqSubscribeMarketData(contracts, contractsnum);
+
   wtr.join();
   engine->Join();
 

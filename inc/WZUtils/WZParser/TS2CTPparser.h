@@ -77,7 +77,6 @@ inline void parseTo(const TSRtnOrderField& req, struct CThostFtdcOrderField &rtn
   rtn.OrderStatus = req.OrderStatus;
 }
 
-
 inline void parseFrom(struct TSMarketDataField &rtn, const CThostFtdcDepthMarketDataField &req){
   strcpy(rtn.TradingDay, req.TradingDay);
   strcpy(rtn.InstrumentID, req.InstrumentID);
@@ -102,5 +101,31 @@ inline void parseFrom(struct TSMarketDataField &rtn, const CThostFtdcDepthMarket
   rtn.AskPrice1 = req.AskPrice1;
   rtn.AskVolume1 = req.AskVolume1;
 }
+
+inline void parseTo(const struct TSMarketDataField &rtn, CThostFtdcDepthMarketDataField &req){
+  strcpy(req.TradingDay, rtn.TradingDay);
+  strcpy(req.InstrumentID, rtn.InstrumentID);
+  req.LastPrice = rtn.LastPrice;
+  req.PreSettlementPrice = rtn.PreSettlementPrice;
+  req.PreClosePrice = rtn.PreClosePrice;
+  req.PreOpenInterest = rtn.PreOpenInterest;
+  req.OpenPrice = rtn.OpenPrice;
+  req.HighestPrice = rtn.HighestPrice;
+  req.LowestPrice = rtn.LowestPrice;
+  req.Volume = rtn.Volume;
+  req.Turnover = rtn.Turnover;
+  req.OpenInterest = rtn.OpenInterest;
+  // rtn.ClosePrice = req.ClosePrice;
+  // rtn.SettlementPrice = req.SettlementPrice;
+  req.UpperLimitPrice = rtn.UpperLimitPrice;
+  req.LowerLimitPrice = rtn.LowerLimitPrice;
+  strcpy(req.UpdateTime, rtn.UpdateTime);
+  req.UpdateMillisec = rtn.UpdateMillisec;
+  req.BidPrice1 = rtn.BidPrice1;
+  req.BidVolume1 = rtn.BidVolume1;
+  req.AskPrice1 = rtn.AskPrice1;
+  req.AskVolume1 = rtn.AskVolume1;
+}
+
 
 #endif  // TS2CTPPARSER_H_

@@ -3,7 +3,7 @@
 // Author : huziang
 // This is a cpp file corresponded with it's head file
 
-#include "MessageQueue.h"
+#include "messagequeue.h"
 #include <iostream>
 #include <cstring>
 #include "semaphore.h"

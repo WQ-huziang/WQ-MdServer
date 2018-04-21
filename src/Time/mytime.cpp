@@ -3,7 +3,7 @@
 // Author : huziang
 // This is a test file
 
-#include "test.h"
+#include "mytime.h"
 #include <unistd.h>
 #include <sys/stat.h>
 
