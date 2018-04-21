@@ -17,7 +17,7 @@ Description: MemEngine reads data from shared memory(pop data from the MemQueue)
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 class MemEngine{
 
-    /************************************************* 
+    /*************************************************
     Function: MemEngine
     Description: Constructor, init some variables
     InputParameter: none
@@ -25,34 +25,44 @@ class MemEngine{
     *************************************************/
     MemEngine();
 
-    /************************************************* 
+    /*************************************************
+    Function: ~MemEngine
+    Description: Destructor, detach the shared memory
+    InputParameter: none
+    Return: none
+    *************************************************/
+    ~MemEngine();
+
+    /*************************************************
     Function: init
     Description: read configure file and init as server or client,
       server will create the shared memory and init the QueueManager
-    InputParameter: 
+    InputParameter:
       file_path: the path of the configure file
-      piperMode: the flag to mark server or client, 
-        0 or WZ_PIPER_SERVER as server,
-        1 or WZ_PIPER_CLIENT as client
+      piperMode: the flag to mark server or client,
+            0 or WZ_PIPER_SERVER as server,
+            1 or WZ_PIPER_CLIENT as client
+      blockMode: WZ_PIPER_BLOCK for Recv and Send block the proccess
+                 WZ_PIPER_NBLOCK for Recv and Send return without block
     Return: positive if create succeed, -1 if failed
     *************************************************/
-    int init(char file_path[256], int piperMode);
+    int init(char file_path[256], int piperMode, int blockMode);
 
-    /************************************************* 
-    Function: wzRecv
+    /*************************************************
+    Function: Recv
     Description: read a frame from shared memory queue
-    InputParameter: 
+    InputParameter:
       frame: pop(memcpy) a datum in queue to mail
-    Return: 1 if receive succeed, 0 if failed
+    Return: size of receive data(positive) if receive succeed, -1 if failed
     *************************************************/
     int Recv(QueueDataType &data);
 
-    /************************************************* 
-    Function: wzSend
+    /*************************************************
+    Function: Send
     Description: write a frame to shared memory queue
-    InputParameter: 
+    InputParameter:
       frame: the datum to push(memcpy) into queue
-    Return: 1 if send succeed, 0 if failed
+    Return: 0 if send succeed, -1 if failed
     *************************************************/
     int Send(QueueDataType &data);
 };
@@ -100,6 +110,8 @@ struct QueueManager
 [MemInfo]
 # key of the shared memory, better not to use 0
 key=12
+# size of the shared memory
+size=1024000
 ```
 
 #### Include .h and .hpp file in folder WZUtils/WZPiper/inc/util/wzmem_inc/, or remember to copy them to your include folder:
@@ -138,11 +150,11 @@ WZPiper<MemEngine<DataType, QueueSize, MaxReaderSize> >  * memServer;
 // new a memServer object
 memServer = new WZPiper<MemEngine<DataType, QueueSize, MaxReaderSize> > ();
 
-// read configuer file and create the shared memory, set as WZ_PIPER_SERVER
-memServer -> init(filePath, WZ_PIPER_SERVER);
+// read configuer file and create the shared memory, set as WZ_PIPER_SERVER and WZ_PIPER_NBLOCK
+memServer -> init(filePath, WZ_PIPER_SERVER, WZ_PIPER_NBLOCK);
 
 // receive message
-int rtn = memServer -> wzRecv(recvFrame);
+int rtn = memServer -> Recv(recvFrame);
 if(rtn == -1) {
   printf("read failed\n");
 }
@@ -160,7 +172,7 @@ sendFrame.length = 1;
 
 
 // send message
-int rtn = memServer -> wzSend(sendFrame);
+int rtn = memServer -> Send(sendFrame);
 if(rtn == -1) {
   printf("write failed\n");
 }
@@ -184,7 +196,7 @@ WZPiper<MemEngine<DataType, QueueSize, MaxReaderSize> >  * memClient;
 memClient = new WZPiper<MemEngine<DataType, QueueSize, MaxReaderSize> > ();
 
 // read configuer file and create the shared memory, set as WZ_PIPER_CLIENT
-memClient -> init(filePath, WZ_PIPER_CLIENT);
+memClient -> init(filePath, WZ_PIPER_CLIENT, WZ_PIPER_NBLOCK);
 
 // write message
 Frame sendFrame;
@@ -196,7 +208,7 @@ sendFrame.length = 1;
 
 
 // send message
-int rtn = memClient -> wzSend(sendFrame);
+int rtn = memClient -> Send(sendFrame);
 if(rtn == -1) {
   printf("write failed\n");
 }
@@ -205,7 +217,7 @@ else if (rtn == 0) {
 }
 
 // receive message
-int rtn = memClient -> wzRecv(recvFrame);
+int rtn = memClient -> Recv(recvFrame);
 if(rtn == -1) {
   printf("read failed\n");
 }

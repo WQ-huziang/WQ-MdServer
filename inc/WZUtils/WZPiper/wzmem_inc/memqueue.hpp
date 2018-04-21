@@ -5,8 +5,8 @@ Description: class template of single writer and multiple reader lockless queue 
 Date: 2018-03-30
 ****************************************************************************/
 
-#ifndef MEMQUEUE_H_
-#define MEMQUEUE_H_
+#ifndef MEMQUEUE_HPP_
+#define MEMQUEUE_HPP_
 
 #include <atomic>
 #include <sched.h>
@@ -65,13 +65,13 @@ public:
     int addReader();
 
     /************************************************* 
-    Function: hangReader
+    Function: removeReader
     Description: when a reader proccess down, call it
     InputParameter: 
         reader_id: reader proccess's reader id
     Return: if succeed return positive, else return -1
     *************************************************/
-    int hangReader(int reader_id);
+    int removeReader(int reader_id);
 
     /************************************************* 
     Function: resetReader
@@ -148,7 +148,7 @@ public:
     InputParameter: 
         index: index of the slot
     Return: the slot read time
-    *************************************************/ 
+    *************************************************/
     unsigned int getReadTime(int index = 0);
 
     unsigned int getReadIndex(int index = 0);
@@ -377,9 +377,11 @@ int MemQueue<ELEM_T, queue_size, reader_size>::addReader(){
 
 // when a reader proccess down or quit, call it, reset the m_min_read_index
 template <typename ELEM_T, int queue_size, int reader_size>
-int MemQueue<ELEM_T, queue_size, reader_size>::hangReader(int reader_id){
+int MemQueue<ELEM_T, queue_size, reader_size>::removeReader(int reader_id){
     unsigned int sec_min;
-
+    if(!reader_ocpy_arr[reader_id]){
+        return -1;
+    }
     // the slowest reader
     if(m_readIndex_arr[reader_id] == m_min_read_index){
         sec_min = -1;
@@ -389,15 +391,18 @@ int MemQueue<ELEM_T, queue_size, reader_size>::hangReader(int reader_id){
                 sec_min = m_readIndex_arr[i];
             }
         }
-        LOG(INFO)  << "reader_id:" << reader_id << "sec_min:" << sec_min;
+        LOG(INFO)  << "reader_id:" << reader_id << ";sec_min:" << sec_min;
 
-        // reset readtime[m_min_read_index] to readtime[sec_min] as 0
-        for(unsigned int i = m_min_read_index; i < sec_min ; i++){
-            atomic_store(&read_time[countToIndex(i)],(unsigned int) 0);
+        // has another reader
+        if(sec_min != -1){
+            // reset readtime[m_min_read_index] to readtime[sec_min] as 0
+            for(unsigned int i = m_min_read_index; i < sec_min ; i++){
+                atomic_store(&read_time[countToIndex(i)],(unsigned int) 0);
+            }
+            // reset m_min_read_index as sec_min
+            atomic_store(&m_min_read_index, (unsigned int ) sec_min);
         }
-
-        // reset m_min_read_index as sec_min
-        atomic_store(&m_min_read_index, (unsigned int ) sec_min);
+        
         reader_ocpy_arr[reader_id] = 0;
         // ++reader_num has atomic problem?
         atomic_fetch_sub(&reader_num, 1);
@@ -419,7 +424,7 @@ int MemQueue<ELEM_T, queue_size, reader_size>::hangReader(int reader_id){
 template <typename ELEM_T, int queue_size, int reader_size>
 int MemQueue<ELEM_T, queue_size, reader_size>::resetReader(int reader_id){
     
-    return 0;
+    return -1;
 }
 
 template <typename ELEM_T, int queue_size, int reader_size>

@@ -77,7 +77,7 @@ WZPiper<T>::WZPiper(){
 
 template<typename T>
 WZPiper<T>::~WZPiper(){
-	//delete t;
+	delete t;
 }
 
 template<typename T>

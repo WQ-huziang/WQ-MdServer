@@ -7,18 +7,20 @@ Description:struct template QueueManager:manage the MemQueue used in shared memo
 Date: 2018-04-09
 ***************************************************************************/
 
-#ifndef MEMENGINE_H_
-#define MEMENGINE_H_
+#ifndef MEMENGINE_HPP_
+#define MEMENGINE_HPP_
 
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <csignal>
 #include <unistd.h>
+#include <map>
 #include "wzpiper.hpp"
-#include "wzmem_inc/memqueue.hpp"
 #include "frame.h"
 #include "logger.h"
+#include "signalhandler.hpp"
 
 #ifndef PRT
 #define PRT(...) printf(__VA_ARGS__);
@@ -33,17 +35,6 @@ Date: 2018-04-09
 #define SHM_FLAG IPC_CREAT|0666
 #endif
 
-// #ifndef QueueDataType
-// #define QueueDataType Frame
-// #endif
-
-// #ifndef DataQueueSize
-// #define DataQueueSize 2048
-// #endif
-
-// #ifndef MaxReaderSize
-// #define MaxReaderSize 4
-// #endif
 
 // logger
 extern Logger *logger;
@@ -51,32 +42,6 @@ extern Logger *logger;
 // logger buffer
 extern char logger_buf[1024];
 
-/***************************************************************************
-Description: QueueManager manage the MemQueue used in shared memory
-****************************************************************************/
-template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
-struct QueueManager
-{
-
-    // the MemQueue<DataType, DataQueueSize(must be 2^n), MaxReaderSize>
-    MemQueue<QueueDataType, DataQueueSize, MaxReaderSize > frame_rec_queue;
-    MemQueue<QueueDataType, DataQueueSize, MaxReaderSize > frame_req_queue;
-
-    // Return: 1 if initManager succeed, 0 if failed
-    bool initManager(){
-
-        // call different queue's init
-        if (!frame_req_queue.initQueue()) {
-            return false;
-        }
-
-        if (!frame_rec_queue.initQueue()) {
-            return false;
-        }
-
-        return true;
-    }
-};
 
 /***************************************************************************
 Description: MemEngine reads data from shared memory(pop data from the MemQueue)
@@ -131,7 +96,7 @@ public:
     Description: write a frame to shared memory queue
     InputParameter:
       frame: the datum to push(memcpy) into queue
-    Return: 1 if send succeed, 0 if failed
+    Return: 0 if send succeed, -1 if failed
     *************************************************/
     int Send(QueueDataType &data);
 
@@ -150,7 +115,6 @@ public:
     *************************************************/
     bool createMemory(const int &m_key, const int &m_size, const int &m_flag, int &m_shmid, char* & m_memory_addr);
 
-
     /*************************************************
     Function: destroyMemory
     Description: destroy shared memory function
@@ -160,7 +124,6 @@ public:
     Return: 1 if destroy succeed, 0 if failed
     *************************************************/
     bool destroyMemory(int & m_shmid, char* & m_memory_addr);
-
 
     /*************************************************
     Function: attachMemory
@@ -173,7 +136,6 @@ public:
     Return: 1 if attach succeed, 0 if failed
     *************************************************/
     bool attachMemory(const int & m_key, int & m_shmid, const int & m_flag, char*& m_memory_addr);
-
 
     /*************************************************
     Function: detachMemory
@@ -189,7 +151,7 @@ public:
 
 private:
     QueueManager<QueueDataType, DataQueueSize, MaxReaderSize> *queue_manager;// pointer point to the queue manager in shared memory address
-    int reader_id; 			    // reader index
+    int reader_id; 			        // reader index
     int m_key;					        // shared memory key
     int m_size;					        // shared memory size
     int m_flag;					        // shared memory flag
@@ -197,32 +159,36 @@ private:
     char *m_memory_addr;		    // shared memory address pointer
     int piperMode;              // the flag to mark server or client, 0 as server, 1 as client
     int blockMode;              // the flag to set the Recv and Send blocking or non-blocking 
+    SignalHandler signalhandler;// the signal handler listen and catch the signal
 };
+
 
 // server:piperMode = 0  client:piperMode = 1;
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::MemEngine(){
-  this->m_flag = 3 ;
   this->m_key  = 0 ;
   this->m_size = 0 ;
   this->m_flag = SHM_FLAG ;
   this->m_shmid  = -1;
   this->reader_id = 0;
   this->queue_manager = NULL;
+
 }
 
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::~MemEngine(){
-  if(this->m_memory_addr != NULL) {
-    detachMemory(this -> m_shmid, this -> m_memory_addr);
-  }
   if(this->piperMode == 0) { // server
-    // add as a reader of the frame_req_queue and get the reader_id
-    this -> queue_manager -> frame_req_queue.hangReader(reader_id);
+    // hang reader of the frame_req_queue and release the reader_id
+    this -> queue_manager -> frame_req_queue.removeReader(reader_id);
+    printf("call ~MemEngine()\n");
   }
   else if(this->piperMode == 1){ // client
-    // add as a reader of the frame_rec_queue and get the reader_id
-    this -> queue_manager -> frame_rec_queue.hangReader(reader_id);
+    // hang reader of the frame_rec_queue and release the reader_id
+    this -> queue_manager -> frame_rec_queue.removeReader(reader_id);
+    printf("call ~MemEngine()\n");
+  }
+  if(this->m_memory_addr != NULL) {
+    detachMemory(this -> m_shmid, this -> m_memory_addr);
   }
 }
 
@@ -339,7 +305,6 @@ bool MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::detachMemory(const 
   return true;
 }
 
-
 // initialize the client shared memory address pointer
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 int MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::init(char file_path[256], int piperMode, int blockMode) {
@@ -372,7 +337,7 @@ int MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::init(char file_path[
       }
       // add as a reader of the frame_req_queue and get the reader_id
       this -> reader_id = this -> queue_manager -> frame_req_queue.addReader();
-      printf("reader_id = %d\n", this -> reader_id);
+      // printf("reader_id = %d\n", this -> reader_id);
       if(this -> reader_id == -1) {
         return -1;
       }
@@ -380,11 +345,19 @@ int MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::init(char file_path[
     else if(this->piperMode == 1){ // client
       // add as a reader of the frame_rec_queue and get the reader_id
       this -> reader_id = this -> queue_manager -> frame_rec_queue.addReader();
-      printf("reader_id = %d\n", this -> reader_id);
       if(this -> reader_id == -1) {
         return -1;
       }
     }
+
+    // initialize signal handler
+    int pid = getpid();
+    SignalHandler::initSignalQueueManager(this -> m_key, this -> m_size, this -> m_flag, this -> m_shmid , this -> m_memory_addr);
+    signalhandler.addToMap(pid, piperMode, this -> reader_id);
+    LOG(INFO) << "pid:" << pid;
+    signalhandler.listenSignal(SIGINT);
+    signalhandler.listenSignal(SIGTERM);
+    signalhandler.listenSignal(SIGSEGV);
 
     //printf("sizeof queue_manager:%ld\n", sizeof(*queue_manager) );
 

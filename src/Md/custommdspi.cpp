@@ -13,28 +13,12 @@
 #include "messagequeue.h"
 #include "logger.h"
 #include "TS2CTPparser.h"
+#include "timer.h"
 
 #ifdef DEBUG
-#include <chrono>
-using std::time_t;
-#define TIMES 1024
-long recvtime[TIMES];
-long sendtime[TIMES];
-long timenum = 0;
-
-/*
- * 调用之间返回当前时间点到2018年04月19日 10:29:13的us级别
- * 返回 time_t 实际上是个 long
- */
-time_t getTimeStamp()
-{
-    std::chrono::time_point<std::chrono::system_clock,std::chrono::microseconds> tp = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now());
-    auto tmp = std::chrono::duration_cast<std::chrono::microseconds>(tp.time_since_epoch());
-    time_t timestamp = tmp.count();
-    // 以 2018年04月19日 10:29:13 时间点往后计时
-    timestamp -= 1524104953746000;
-    return timestamp;
-}
+unsigned long long recvtime[TIMES];
+unsigned long long sendtime[TIMES];
+static long timenum = 0;
 #endif
 
 using std::endl;
@@ -197,7 +181,7 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   if (timenum == TIMES) {
     return;
   }
-  recvtime[timenum] = getTimeStamp();
+  recvtime[timenum] = getTimeByTSC();
   std::cerr << "===== Get Depth Market Data =====" << endl;
   std::cerr << "Num: " << timenum << endl;
 
@@ -217,8 +201,7 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   que->send(&pTSDepthMarketData);
 
 #ifdef DEBUG
-  sendtime[timenum] = getTimeStamp();
-  timenum++;
+  sendtime[timenum++] = getTimeByTSC();
 #endif
 };
 

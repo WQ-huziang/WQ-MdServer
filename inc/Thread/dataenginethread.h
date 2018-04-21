@@ -13,44 +13,16 @@
 #include "mongodbengine.h"
 #include "logger.h"
 #include "messagequeue.h"
+#include "timer.h"
 using std::map;
 using std::vector;
 
 
 #ifdef DEBUG
-#include <chrono>
-using std::time_t;
-#define TIMES 1024
-extern long recvtime[TIMES];
-extern long sendtime[TIMES];
-extern long timenum;
-long savetime[TIMES];
-
-/*
- * 调用之间返回当前时间点到2018年04月19日 10:29:13的us级别
- * 返回 time_t 实际上是个 long
- */
-time_t mygetTimeStamp()
-{
-    std::chrono::time_point<std::chrono::system_clock,std::chrono::microseconds> tp = std::chrono::time_point_cast<std::chrono::microseconds>(std::chrono::system_clock::now());
-    auto tmp = std::chrono::duration_cast<std::chrono::microseconds>(tp.time_since_epoch());
-    time_t timestamp = tmp.count();
-    // 以 2018年04月19日 10:29:13 时间点往后计时
-    timestamp -= 1524104953746000;
-    return timestamp;
-}
-
-/*
- * 输入t1 为开始时间，t2为结束时间， 返回long为us数
- * 返回 time_t 实际上是个 long
- */
-long getDuration(time_t t1, time_t t2) {
-    auto mt1 = std::chrono::microseconds(t1);
-    auto mt2 = std::chrono::microseconds(t2);
-    std::chrono::duration<int64_t, std::micro> time_span = std::chrono::duration_cast<std::chrono::duration<int64_t, std::micro>>(mt2 - mt1);
-    long time = time_span.count();
-    return time;
-}
+extern unsigned long long recvtime[TIMES];
+extern unsigned long long sendtime[TIMES];
+static long timenum = 0;
+unsigned long long savetime[TIMES];
 #endif
 
 MessageQueue *que;
@@ -68,9 +40,11 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
   mds.push_back(md);
 #ifdef DEBUG
   if (mds.size() >= TIMES) {
+    db->insert_many(mds);
+    mds.clear();
+  }
 #else
   if (mds.size() >= 50) {
-#endif
     if (db->insert_many(mds)) {
       LOG(INFO) << "insert TSMarketDataFields success!";
     } else {
@@ -78,6 +52,7 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
     }
     mds.clear();
   }
+#endif
 
 #ifdef DEBUG
   if (timenum == TIMES) {
@@ -112,7 +87,7 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
     exit(0);
   }
 
-  savetime[timenum] = mygetTimeStamp();
+  savetime[timenum++] = getTimeByTSC();
 #endif
 }
 
@@ -123,6 +98,7 @@ void writeThread() {
       LOG(ERROR) << "Kill Signal recieved!";
     }
 
+    delete que;
     db->insert_many(mds);
     exit(0);
   };

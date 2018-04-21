@@ -35,6 +35,8 @@ public:
 public:
     int GetInt(const char* mAttr, const char* cAttr);
 
+    double GetDouble(const char* mAttr, const char* cAttr);
+
     char *GetStr(const char* mAttr, const char* cAttr);
 
     INI_RES OpenFile(const char* pathName, const char* type);
