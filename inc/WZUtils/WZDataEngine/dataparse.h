@@ -3,8 +3,8 @@
 // Author : luojunbin
 //
 
-#ifndef WZUTILS_DATAPARSE_H_
-#define WZUTILS_DATAPARSE_H_
+#ifndef DATAPARSE_H_
+#define DATAPARSE_H_
 
 #include <iostream>
 #include <string>
@@ -216,4 +216,4 @@ inline int parseFrom(map<string, string> &my_map, TSRtnTradeField &res)
   return 0;
 }
 
-#endif // WZUTILS_DATAPARSE_H_
+#endif

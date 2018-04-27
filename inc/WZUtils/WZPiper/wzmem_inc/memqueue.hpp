@@ -13,6 +13,7 @@ Date: 2018-03-30
 #include <assert.h>
 #include <string.h>
 #include "logger.h"
+#include "timer.h"
 
 // #ifndef PRT
 // #define PRT(...) printf(__VA_ARGS__)
@@ -25,6 +26,11 @@ using std::atomic_load;
 using std::atomic_fetch_add;
 using std::atomic_fetch_sub;
 using std::atomic_store;
+
+unsigned long long push_time_arr[1024];
+unsigned long long pop_time_arr[1024];
+int push_count = -1;
+int pop_count = -1;
 
 // here to define a QueueDataStruct?
 
@@ -72,14 +78,6 @@ public:
     Return: if succeed return positive, else return -1
     *************************************************/
     int removeReader(int reader_id);
-
-    /************************************************* 
-    Function: resetReader
-    Description: when a reader proccess reload, call it
-    InputParameter: reader proccess's reader id
-    Return: if succeed return positive, else return -1
-    *************************************************/
-    int resetReader(int reader_id);
 
     /************************************************* 
     Function: push
@@ -241,6 +239,8 @@ bool MemQueue<ELEM_T, queue_size, reader_size>::initQueue(){
     return true;
 }
 
+
+
 // writer write a data to the data queue
 template <typename ELEM_T, int queue_size, int reader_size>
 bool MemQueue<ELEM_T, queue_size, reader_size>::push(const ELEM_T &a_datum) {
@@ -339,24 +339,6 @@ bool MemQueue<ELEM_T, queue_size, reader_size>::pop(ELEM_T &a_datum, int &reader
 template <typename ELEM_T, int queue_size, int reader_size>
 int MemQueue<ELEM_T, queue_size, reader_size>::addReader(){
 
-    // add reader, reader num + 1, 
-    // has atomic problem?
-    // int cur_reader_num;
-    // do{
-    //     // add, get the right to add read time
-    //     cur_reader_num = atomic_load(&reader_num);
-    // }while(!atomic_compare_exchange_weak(&reader_num, &cur_reader_num, (cur_reader_num + 1)));
-
-    // if(cur_reader_num >= MAX_READER_SIZE) {
-    //     return -1;
-    // }
-
-    // // reader added start reading from current min_read_index
-    // m_readIndex_arr[cur_reader_num] = m_min_read_index;
-
-    // // reader_num start from 0, use cur_reader_num  as id
-    // return cur_reader_num;
-
     for (int i = 0; i < reader_size; i++) {
         if(!reader_ocpy_arr[i]) {
             // ++reader_num has atomic problem?
@@ -417,13 +399,6 @@ int MemQueue<ELEM_T, queue_size, reader_size>::removeReader(int reader_id){
         atomic_fetch_sub(&reader_num, 1);
         return 0;
     }
-    return -1;
-}
-
-// when a reader proccess reload, call it
-template <typename ELEM_T, int queue_size, int reader_size>
-int MemQueue<ELEM_T, queue_size, reader_size>::resetReader(int reader_id){
-    
     return -1;
 }
 

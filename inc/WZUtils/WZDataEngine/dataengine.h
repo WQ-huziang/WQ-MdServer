@@ -3,8 +3,8 @@
 // Author : huziang
 // include class DataEngine and struct
 
-#ifndef WZUTILS_DATAENGINE_H_
-#define WZUTILS_DATAENGINE_H_
+#ifndef WZUTIL_DATAENGINE_H_
+#define WZUTIL_DATAENGINE_H_
 
 #include <cstring>
 #include <iostream>
@@ -71,4 +71,4 @@ class DataEngine {
 
 DataEngine *DataEngine::instance = NULL;
 
-#endif  // WZUTILS_DATAENGINE_H_
+#endif  // WZUTIL_DATAENGINE_H_

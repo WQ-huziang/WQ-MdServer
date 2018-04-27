@@ -7,63 +7,68 @@
 #ifndef MDSERVER_CUSTOMMDSPI_H_
 #define MDSERVER_CUSTOMMDSPI_H_
 
+#include <string>
 #include "mdengine.h"
 #include "ThostFtdcMdApi.h"
 #include "ThostFtdcUserApiStruct.h"
 
+using std::string;
+
+typedef char String[20];
+
 class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
 {
  public:
-  ///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨½¨Á¢ÆðÍ¨ÐÅÁ¬½ÓÊ±£¨»¹Î´µÇÂ¼Ç°£©£¬¸Ã·½·¨±»µ÷ÓÃ¡£
+  ///ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ë½»ï¿½×ºï¿½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½Â¼Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
   void OnFrontConnected();
 
-  ///µ±¿Í»§¶ËÓë½»Ò×ºóÌ¨Í¨ÐÅÁ¬½Ó¶Ï¿ªÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£µ±·¢ÉúÕâ¸öÇé¿öºó£¬API»á×Ô¶¯ÖØÐÂÁ¬½Ó£¬¿Í»§¶Ë¿É²»×ö´¦Àí¡£
-  ///@param nReason ´íÎóÔ­Òò
-  ///        0x1001 ÍøÂç¶ÁÊ§°Ü
-  ///        0x1002 ÍøÂçÐ´Ê§°Ü
-  ///        0x2001 ½ÓÊÕÐÄÌø³¬Ê±
-  ///        0x2002 ·¢ËÍÐÄÌøÊ§°Ü
-  ///        0x2003 ÊÕµ½´íÎó±¨ÎÄ
+  ///ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ë½»ï¿½×ºï¿½Ì¨Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ó¶Ï¿ï¿½Ê±ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½APIï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½Í»ï¿½ï¿½Ë¿É²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  ///@param nReason ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½
+  ///        0x1001 ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+  ///        0x1002 ï¿½ï¿½ï¿½ï¿½Ð´Ê§ï¿½ï¿½
+  ///        0x2001 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
+  ///        0x2002 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+  ///        0x2003 ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   void OnFrontDisconnected(int nReason);
 
-  ///ÐÄÌø³¬Ê±¾¯¸æ¡£µ±³¤Ê±¼äÎ´ÊÕµ½±¨ÎÄÊ±£¬¸Ã·½·¨±»µ÷ÓÃ¡£
-  ///@param nTimeLapse ¾àÀëÉÏ´Î½ÓÊÕ±¨ÎÄµÄÊ±¼ä
+  ///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½æ¡£ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Î´ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
+  ///@param nTimeLapse ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Î½ï¿½ï¿½Õ±ï¿½ï¿½Äµï¿½Ê±ï¿½ï¿½
   void OnHeartBeatWarning(int nTimeLapse);
 
 
-  ///µÇÂ¼ÇëÇóÏìÓ¦
+  ///ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
   void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-  ///µÇ³öÇëÇóÏìÓ¦
+  ///ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
   void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-  ///´íÎóÓ¦´ð
+  ///ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
   void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-  ///¶©ÔÄÐÐÇéÓ¦´ð
+  ///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
   void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-  ///È¡Ïû¶©ÔÄÐÐÇéÓ¦´ð
+  ///È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½
   void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-  ///¶©ÔÄÑ¯¼ÛÓ¦´ð
+  ///ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Ó¦ï¿½ï¿½
   void OnRspSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-  ///È¡Ïû¶©ÔÄÑ¯¼ÛÓ¦´ð
+  ///È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Ó¦ï¿½ï¿½
   void OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
-  ///Éî¶ÈÐÐÇéÍ¨Öª
+  ///ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öª
   void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData);
 
-  ///Ñ¯¼ÛÍ¨Öª
+  ///Ñ¯ï¿½ï¿½Í¨Öª
   void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp);
 
- //×Ô¶¨Òå
+ //ï¿½Ô¶ï¿½ï¿½ï¿½
  public:
-  CustomMdSpi(TThostFtdcInvestorIDType uid,
-              TThostFtdcPasswordType password,
-              char mdaddr[],
-              char datadirpath[] = "../data/");
+  CustomMdSpi(TThostFtdcInvestorIDType uid, 
+              TThostFtdcPasswordType password, 
+              char *mdaddr, 
+              char *datadir = "../data");
   // virtual function
   void Init();
   void Join();
@@ -74,7 +79,7 @@ class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
 
 private:
   // DISALLOW_COPY_AND_ASSIGN(CustomMdSpi);
-  const TThostFtdcBrokerIDType BrokerID = "9999";
+  TThostFtdcBrokerIDType BrokerID;
   TThostFtdcInvestorIDType InvestorID;
   TThostFtdcPasswordType Password;
   CThostFtdcMdApi *pUserApi;

@@ -25,7 +25,6 @@ using dur = std::chrono::duration<int64_t, std::micro>;
 static double FREQUENCY;
 
 
-
 /*
  * 高精度，低时延获得TSC时间
  */

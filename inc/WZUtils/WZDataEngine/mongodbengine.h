@@ -3,8 +3,8 @@
 // Author : huziang
 // this is a mongodb database complete
 
-#ifndef WZUTILS_MONGODBENGINE_H_
-#define WZUTILS_MONGODBENGINE_H_
+#ifndef WZUTIL_MONGODBENGINE_H_
+#define WZUTIL_MONGODBENGINE_H_
 
 #include <mongocxx/client.hpp>
 #include <bsoncxx/builder/stream/document.hpp>
@@ -25,7 +25,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: insert_one
   Description: insert one item into mongodb
-  InputParameter:
+  InputParameter: 
     map<string, string>: the map of data that is to be inserted
   Return: 0 if send succeed, -1 if failed
   ******************************************/
@@ -34,7 +34,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: insert_many
   Description: insert many items into mongodb
-  InputParameter:
+  InputParameter: 
     vector<map<string, string>>: the vector of the maps of data that is to be inserted
   Return: 0 if send succeed, -1 if failed
   ******************************************/
@@ -43,7 +43,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: update_one
   Description: update one item in mongodb
-  InputParameter:
+  InputParameter: 
     map<string, string>: the map of data that is to be updated
     vector<KeyValue>: the conditions that is used to find the item
   Return: 0 if send succeed, -1 if failed
@@ -53,7 +53,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: update_many
   Description: update many items in mongodb
-  InputParameter:
+  InputParameter: 
     vector<map<string, string>>: the vector of the maps of data that is to be update
     vector<KeyValue>: the conditions that is used to find the items
   Return: 0 if send succeed, -1 if failed
@@ -63,7 +63,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: find_one
   Description: find one item from mongodb
-  InputParameter:
+  InputParameter: 
     map<string, string>: the map of data that is found from mongodb
     vector<KeyValue>: the conditions that is used to find the item
     ID: the ID of the instrument, NULL means to find all the instrument
@@ -74,7 +74,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: find_many
   Description: find some items from mongodb
-  InputParameter:
+  InputParameter: 
     vector<map<string, string>>: the vector of the maps of data that is found from mongodb
     vector<KeyValue>: the conditions that is used to find the items
     ID: the ID of the instrument, NULL means to find all the instrument
@@ -85,7 +85,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: delete_one
   Description: delete one item in mongodb
-  InputParameter:
+  InputParameter: 
     vector<KeyValue>: the conditions that is used to find the item
     ID: the ID of the instrument, NULL means to find all the instrument
   Return: 0 if send succeed, -1 if failed
@@ -95,7 +95,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: delete_many
   Description: delete some items in mongodb
-  InputParameter:
+  InputParameter: 
     vector<KeyValue>: the conditions that is used to find the item
     ID: the ID of the instrument, NULL means to find all the instrument
   Return: 0 if send succeed, -1 if failed
@@ -108,7 +108,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: get_max_item
   Description: get the max item according to a key
-  InputParameter:
+  InputParameter: 
     map<string, string>: the item found from mongodb
     string: the column which is to be found from
   Return: 0 if send succeed, -1 if failed
@@ -118,7 +118,7 @@ class MongodbEngine : public DataEngine {
   /******************************************
   Function: get_latest_item
   Description: get some latest items according to a num
-  InputParameter:
+  InputParameter: 
     vector<map<string, string>>: the vector the items found from mongodb
     ID: the ID of the instrument
     int: the number of items
@@ -142,4 +142,4 @@ class MongodbEngine : public DataEngine {
   volatile int isReading;
 };
 
-#endif  // WZUTILS_MONGODBENGINE_H_
+#endif  // WZUTIL_MONGODBENGINE_H_

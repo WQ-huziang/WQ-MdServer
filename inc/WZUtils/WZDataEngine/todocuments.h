@@ -29,8 +29,8 @@
 //     int        AskVolume1;            //申卖量一
 // };
 
-#ifndef WZUTILS_TODOCUMENTS_H_
-#define WZUTILS_TODOCUMENTS_H_
+#ifndef WZUTIL_TODOCUMENT_H_
+#define WZUTIL_TODOCUMENT_H_
 
 #include <iostream>
 #include <map>
@@ -109,4 +109,4 @@ void toDocument(const char ID[20], document &doc){
   doc << "InstrumentID" << ID;
 }
 
-#endif  // WZUTILS_TODOCUMENTS_H_
+#endif  // WZUTIL_TODOCUMENT_H_

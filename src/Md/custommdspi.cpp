@@ -22,6 +22,7 @@ static long timenum = 0;
 #endif
 
 using std::endl;
+using std::string;
 
 int requestID = 0;
 extern MessageQueue *que;
@@ -29,11 +30,12 @@ extern Logger *logger;
 
 CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
                          TThostFtdcPasswordType password,
-                         char mdaddr[],
-                         char datadirpath[]) {
+                         char *mdaddr, 
+                         char *datadir) {
   strcpy(Password, password);
   strcpy(InvestorID, uid);
-  pUserApi = CThostFtdcMdApi::CreateFtdcMdApi(datadirpath);
+  strcpy(BrokerID, "9999");
+  pUserApi = CThostFtdcMdApi::CreateFtdcMdApi(datadir);
   pUserApi->RegisterSpi(this);
   pUserApi->RegisterFront(mdaddr);
 }

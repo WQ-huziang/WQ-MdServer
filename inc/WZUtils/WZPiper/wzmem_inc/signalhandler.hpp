@@ -163,6 +163,7 @@ void SignalHandler::handleSignal(int signalType){
 				itr->second.pop();
 				SignalHandler::releaseReader(signal_queue_manager,sd.pipeMode,sd.readerId);
 			}
+			exit(0);
 			break;
 		case SIGFPE:
 			printf("Interrupt signal %d(SIGFPE) received\n", signalType);
