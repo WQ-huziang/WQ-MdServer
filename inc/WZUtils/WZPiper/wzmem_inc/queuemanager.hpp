@@ -7,7 +7,7 @@ Date: 2018-04-20
 
 #ifndef QUEUEMANAGER_HPP_
 #define QUEUEMANAGER_HPP_
-#include "wzmem_inc/memqueue.hpp"
+#include "memqueue.hpp"
 
 /***************************************************************************
 Description: QueueManager manage the MemQueue used in shared memory

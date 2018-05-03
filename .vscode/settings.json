@@ -4,6 +4,7 @@
         "*.tcc": "cpp",
         "array": "cpp",
         "ostream": "cpp",
-        "atomic": "cpp"
+        "atomic": "cpp",
+        "thread": "cpp"
     }
 }

@@ -12,8 +12,8 @@ Date: 2018-03-30
 #include <sched.h>
 #include <assert.h>
 #include <string.h>
+#include "logmode.h"
 #include "logger.h"
-#include "timer.h"
 
 // #ifndef PRT
 // #define PRT(...) printf(__VA_ARGS__)
@@ -26,13 +26,6 @@ using std::atomic_load;
 using std::atomic_fetch_add;
 using std::atomic_fetch_sub;
 using std::atomic_store;
-
-unsigned long long push_time_arr[1024];
-unsigned long long pop_time_arr[1024];
-int push_count = -1;
-int pop_count = -1;
-
-// here to define a QueueDataStruct?
 
 /***************************************************************************
 Description: single writer and multiple reader lockless queue template with atomic,

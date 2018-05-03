@@ -14,13 +14,13 @@ Date: 2018-04-09
 #include <sys/shm.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <csignal>
 #include <unistd.h>
 #include <map>
+#include "wzmem_inc/memqueue.hpp"
+#include "wzmem_inc/queuemanager.hpp"
 #include "wzpiper.hpp"
 #include "frame.h"
 #include "logger.h"
-#include "signalhandler.hpp"
 
 #ifndef PRT
 #define PRT(...) printf(__VA_ARGS__);
@@ -179,12 +179,12 @@ MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::~MemEngine(){
   if(this->piperMode == 0) { // server
     // hang reader of the frame_req_queue and release the reader_id
     this -> queue_manager -> frame_req_queue.removeReader(reader_id);
-    printf("call ~MemEngine()\n");
+    DEBUG("call ~MemEngine()");
   }
   else if(this->piperMode == 1){ // client
     // hang reader of the frame_rec_queue and release the reader_id
     this -> queue_manager -> frame_rec_queue.removeReader(reader_id);
-    printf("call ~MemEngine()\n");
+    DEBUG("call ~MemEngine()");
   }
   if(this->m_memory_addr != NULL) {
     detachMemory(this -> m_shmid, this -> m_memory_addr);
@@ -194,227 +194,209 @@ MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::~MemEngine(){
 // create shared memory function
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 bool MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::createMemory(const int &m_key, const int &m_size, const int &m_flag, int &m_shmid, char* & m_memory_addr) {
-  // call shmget and use return value to initialize shared memory address pointer
-  m_shmid = shmget(m_key, m_size, m_flag);
+    // call shmget and use return value to initialize shared memory address pointer
+    m_shmid = shmget(m_key, m_size, m_flag);
 
-  if ( m_shmid == -1 ) {
-    sprintf(logger_buf, "shared memory create failed");
-    logger -> Error(logger_buf);
-    return false;
-  }
+    if ( m_shmid == -1 ) {
+        DEBUG("shared memory create failed");
+        return false;
+    }
 
-  // call shmat to attach shared memory
-  m_memory_addr = reinterpret_cast<char*>(shmat(m_shmid, NULL, 0));
+    // call shmat to attach shared memory
+    m_memory_addr = reinterpret_cast<char*>(shmat(m_shmid, NULL, 0));
 
-  if ( m_memory_addr == (char*)SHM_FAILED ) {
-    sprintf(logger_buf, "shared memory m_memory_addr attach failed");
-    logger -> Error(logger_buf);
-    return false;
-  }
-
-  sprintf(logger_buf, "shared memory create succeed, key = %d, size = %d, shmid = %d", m_key, m_size, m_shmid);
-  logger -> Info(logger_buf);
-
-  return true;
+    if ( m_memory_addr == (char*)SHM_FAILED ) {
+        DEBUG("shared memory m_memory_addr attach failed");
+        return false;
+    }
+    DEBUG("shared memory create succeed, key = %d, size = %d, shmid = %d", m_key, m_size, m_shmid);
+    return true;
 }
 
 // destroy shared memory function
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 bool MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::destroyMemory(int & shmid, char* & m_memory_addr) {
 
-  if (shmid == -1) {
-    sprintf(logger_buf, "destroy memory failed, shmid = -1");
-    logger -> Error(logger_buf);
-    return false;
-  }
-
-  if (m_memory_addr != NULL) {
-    if (shmdt(m_memory_addr) != 0) {
-       sprintf(logger_buf, "call shmdt failed");
-       logger -> Error(logger_buf);
-       return false;
+    if (shmid == -1) {
+        DEBUG("destroy memory failed, shmid = -1");
+        return false;
     }
+
+    if (m_memory_addr != NULL) {
+        if (shmdt(m_memory_addr) != 0) {
+           DEBUG("call shmdt failed");
+           logger -> Error(logger_buf);
+           return false;
+        }
+        m_memory_addr = NULL;
+    }
+
+    // call shmctl destroy the memory
+    if (shmctl(shmid, IPC_RMID, NULL) != 0) {
+        DEBUG("call shmctl destroy memory failed");
+        return false;
+    }
+
+    shmid = -1;
     m_memory_addr = NULL;
-  }
-
-  // call shmctl destroy the memory
-  if (shmctl(shmid, IPC_RMID, NULL) != 0) {
-    sprintf(logger_buf, "call shmctl destroy memory failed");
-    logger -> Error(logger_buf);
-    return false;
-  }
-
-  shmid = -1;
-  m_memory_addr = NULL;
-  sprintf(logger_buf, "destroy memory succeed");
-  logger -> Info(logger_buf);
-
-  return true;
+    DEBUG("destroy memory succeed");
+    return true;
 }
 
 // attach shared memory function
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 bool MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::attachMemory(const int & m_key, int & m_shmid, const int & m_flag, char*& m_memory_addr) {
 
-  // is the id exist
-  if (m_shmid == SHM_FAILED ) {
+    // is the id exist
+    if (m_shmid == SHM_FAILED ) {
     // is not exist the recreate it according to m_key
-    m_shmid = shmget(m_key, 0, m_flag);
-    sprintf(logger_buf, "recreate shared memory");
-    logger -> Info(logger_buf);
-  }
+        m_shmid = shmget(m_key, 0, m_flag);
+        DEBUG("recreate shared memory");
+    }
 
-  // call shmat to attach and return address
-  m_memory_addr = reinterpret_cast<char*> (shmat(m_shmid, NULL, 0));
+    // call shmat to attach and return address
+    m_memory_addr = reinterpret_cast<char*> (shmat(m_shmid, NULL, 0));
 
-  // is null
-  if (m_memory_addr == (char*) SHM_FAILED ) {
-    sprintf(logger_buf, "the memory address is null");
-    logger -> Error(logger_buf);
-    return false;
-  }
-
-  return true;
+    // is null
+    if (m_memory_addr == (char*) SHM_FAILED ) {
+        DEBUG("the memory address is null");
+        return false;
+    }
+    return true;
 }
 
 // detach shared memory function
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 bool MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::detachMemory(const int & m_shmid, char*& m_memory_addr) {
 
-  // is private variable address valid
-  if (m_shmid == -1 || m_memory_addr == NULL) {
-    // not valid
-    return false;
-  }
+    // is private variable address valid
+    if (m_shmid == -1 || m_memory_addr == NULL) {
+        // not valid
+        return false;
+    }
 
-  // call detach and return to nCode
-  int nCode = shmdt(m_memory_addr);
+    // call detach and return to nCode
+    int nCode = shmdt(m_memory_addr);
 
-  if (nCode != 0) {
-   if(errno == EINVAL) {
-       m_memory_addr = NULL;
-       sprintf(logger_buf, "*Already shmdt*");
-       logger -> Info(logger_buf);
-       return true;
-   }
-   return false;
-  }
+    if (nCode != 0) {
+        if(errno == EINVAL) {
+           m_memory_addr = NULL;
+           DEBUG("*Already shmdt*");
+           return true;
+        }
+        return false;
+    }
 
-  m_memory_addr = NULL;
-  return true;
+    m_memory_addr = NULL;
+    return true;
 }
 
 // initialize the client shared memory address pointer
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 int MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::init(char file_path[256], int piperMode, int blockMode) {
 
-  this->piperMode = piperMode;
-  this->blockMode = blockMode;
+    this->piperMode = piperMode;
+    this->blockMode = blockMode;
 
-  // read key and size from configure file
-  CIni ini;
-  if (ini.OpenFile(file_path, "r") == INI_OPENFILE_ERROR) {
-     sprintf(logger_buf, "INI_OPENFILE_ERROR");
-     logger -> Info(logger_buf);
-     return -1;
-  }
-  this -> m_key = ini.GetInt("MemInfo","key");
-  this -> m_size = ini.GetInt("MemInfo","size");
-
-  sprintf(logger_buf, "Config read MemInfo key = %d, MemInfo size = %d\n", this->m_key, this->m_size);
-  logger -> Info(logger_buf);
-
-  // init the queue_manager
-  if(createMemory(this -> m_key, this -> m_size, this -> m_flag, this -> m_shmid, this -> m_memory_addr) ) {
-    // assign queue_manager to the first address of shared memory
-    this -> queue_manager = reinterpret_cast<QueueManager<QueueDataType, DataQueueSize, MaxReaderSize> * > (this -> m_memory_addr);
-
-    if(this->piperMode == 0) { // server
-      // initialize the queues before using
-      if(!this -> queue_manager -> initManager()) {
-        return -1;
-      }
-      // add as a reader of the frame_req_queue and get the reader_id
-      this -> reader_id = this -> queue_manager -> frame_req_queue.addReader();
-      // printf("reader_id = %d\n", this -> reader_id);
-      if(this -> reader_id == -1) {
-        return -1;
-      }
+    // read key and size from configure file
+    CIni ini;
+    if (ini.OpenFile(file_path, "r") == INI_OPENFILE_ERROR) {
+         DEBUG("INI_OPENFILE_ERROR");
+         return -1;
     }
-    else if(this->piperMode == 1){ // client
-      // add as a reader of the frame_rec_queue and get the reader_id
-      this -> reader_id = this -> queue_manager -> frame_rec_queue.addReader();
-      if(this -> reader_id == -1) {
-        return -1;
-      }
+    this -> m_key = ini.GetInt("MemInfo","key");
+    this -> m_size = ini.GetInt("MemInfo","size");
+
+    DEBUG("Config read MemInfo key = %d, MemInfo size = %d\n", this->m_key, this->m_size);
+
+    // init the queue_manager
+    if(createMemory(this -> m_key, this -> m_size, this -> m_flag, this -> m_shmid, this -> m_memory_addr) ) {
+        // assign queue_manager to the first address of shared memory
+        this -> queue_manager = reinterpret_cast<QueueManager<QueueDataType, DataQueueSize, MaxReaderSize> * > (this -> m_memory_addr);
+
+        if(this->piperMode == 0) { // server
+              // initialize the queues before using
+              if(!this -> queue_manager -> initManager()) {
+                return -1;
+              }
+              // add as a reader of the frame_req_queue and get the reader_id
+              this -> reader_id = this -> queue_manager -> frame_req_queue.addReader();
+              // printf("reader_id = %d\n", this -> reader_id);
+              if(this -> reader_id == -1) {
+                return -1;
+              }
+        }
+        else if(this->piperMode == 1){ // client
+              // add as a reader of the frame_rec_queue and get the reader_id
+              this -> reader_id = this -> queue_manager -> frame_rec_queue.addReader();
+              if(this -> reader_id == -1) {
+                return -1;
+              }
+        }
+
+
+        //printf("sizeof queue_manager:%ld\n", sizeof(*queue_manager) );
+        DEBUG("Reader id is:%d", this -> reader_id);
+        DEBUG("attach memory successfully");
+
+        return 0;
     }
 
-    //printf("sizeof queue_manager:%ld\n", sizeof(*queue_manager) );
-
-    sprintf(logger_buf, "Reader id is:%d", this -> reader_id);
-    logger -> Info(logger_buf);
-
-    sprintf(logger_buf, "attach memory successfully");
-    logger -> Info(logger_buf);
-
-    return 0;
-  }
-
-  return -1;
+    return -1;
 }
 
 // read from the shared memory
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 int MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::Recv(QueueDataType &data) {
-  while(1){
-    if(this->piperMode == 1 ) { // client
-      if(this -> queue_manager -> frame_rec_queue.pop(data,this -> reader_id)) {
-        return sizeof(QueueDataType);
-      }
-      else{
-        if(blockMode == WZ_PIPER_NBLOCK){
-          return -1;
+    while(1){
+        if(this->piperMode == 1 ) { // client
+              if(this -> queue_manager -> frame_rec_queue.pop(data,this -> reader_id)) {
+                return sizeof(QueueDataType);
+              }
+              else{
+                if(blockMode == WZ_PIPER_NBLOCK){
+                  return -1;
+                }
+            }
         }
-      }
-    }
-    else if(this->piperMode == 0 ){ // server
-      if(this -> queue_manager -> frame_req_queue.pop(data,this -> reader_id)) {
-        return sizeof(QueueDataType);
-      }
-      else{
-        if(blockMode == WZ_PIPER_NBLOCK){
-          return -1;
+        else if(this->piperMode == 0 ){ // server
+              if(this -> queue_manager -> frame_req_queue.pop(data,this -> reader_id)) {
+                  return sizeof(QueueDataType);
+              }
+              else{
+                  if(blockMode == WZ_PIPER_NBLOCK){
+                      return -1;
+                  }
+              }
         }
-      }
     }
-  }
 }
 
 // write from the shared memory
 template <typename QueueDataType, int DataQueueSize, int MaxReaderSize>
 int MemEngine<QueueDataType, DataQueueSize, MaxReaderSize>::Send(QueueDataType &data) {
-  while(1){
-    if(this->piperMode == 1 ) {
-      if(this -> queue_manager -> frame_req_queue.push(data) == 1) {
-        return 0;
-      }
-      else{
-        if(blockMode == WZ_PIPER_NBLOCK){
-          return -1;
-        }
-      }
-    }// client
-    else if(this->piperMode == 0 ){
-      if(this -> queue_manager -> frame_rec_queue.push(data) == 1) {
-        return 0;
-      }
-      else{
-        if(blockMode == WZ_PIPER_NBLOCK){
-          return -1;
-        }
-      }
-    }// server
-  }
+    while(1){
+        if(this->piperMode == 1 ) {
+            if(this -> queue_manager -> frame_req_queue.push(data) == 1) {
+                return 0;
+            }
+            else{
+                if(blockMode == WZ_PIPER_NBLOCK){
+                    return -1;
+                }
+            }
+        }// client
+        else if(this->piperMode == 0 ){
+            if(this -> queue_manager -> frame_rec_queue.push(data) == 1) {
+                return 0;
+            }
+            else{
+                if(blockMode == WZ_PIPER_NBLOCK){
+                  return -1;
+                }
+            }
+        }// server
+    }
 }
 
 #endif // MEMENGINE_H_

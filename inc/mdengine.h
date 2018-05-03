@@ -7,22 +7,23 @@
 #define MDSERVER_MDENGINE_H_
 
 #include "tsdatastruct.h"
-#include "wzsocket_inc/udp.h"
+#include "wzmem_inc/memengine.hpp"
 
 class MdEngine {
  public:
-  MdEngine(WZPiper<UdpSocket>* _output = NULL)
+  MdEngine(MemEngine<Frame, 1024, 1024>* _output = NULL)
       : output(_output) {}
   virtual void Init() = 0;
   virtual void Join() = 0;
   virtual void Release() = 0;
   virtual void ReqSubscribeMarketData(char *contracts[], int contractsnum) = 0;
-  void SetOutput(WZPiper<UdpSocket> *_output);
+  void SetOutput(MemEngine<Frame, 1024, 1024> *_output);
   void RtnDepthMarketData(TSMarketDataField* pDepthMarketData);
 
  private:
   // DISALLOW_COPY_AND_ASSIGN(MdEngine);
-  WZPiper<UdpSocket> *output;
+  MemEngine<Frame, 1024, 1024> *output;
+  Frame frame;
 };
 
 #endif  // MDSERVER_MDENGINE_H_

@@ -8,28 +8,13 @@
 #include "tsdatastruct.h"
 #include "FM2TSparser.h"
 
-// Frame parseTo(TSMarketDataField &pDepthMarketData) {
-
-//   Frame frame = {};
-//   frame.source = WZ_SOURCE_CTP;
-//   frame.msg_type = WZ_MSG_TYPE_MARKET_DATA;
-//   frame.error_id = WZ_ERROR_ID_SUCCESS;
-//   frame.rtn_type = 0;
-//   frame.length = sizeof(pDepthMarketData);
-//   memcpy(&frame.data.market, &pDepthMarketData, frame.length);
-
-
-//   return frame;
-// }
-
-void MdEngine::SetOutput(WZPiper<UdpSocket> *_output) {
+void MdEngine::SetOutput(MemEngine<Frame, 1024, 1024> *_output) {
   output = _output;
 }
 
 void MdEngine::RtnDepthMarketData(TSMarketDataField* pDepthMarketData) {
   if (output != NULL) {
-    Frame frame;
-    parseTo(frame, *pDepthMarketData);
-    output->Send(frame);
+    parseTo(this->frame, *pDepthMarketData);
+    output->Send(this->frame);
   }
 }

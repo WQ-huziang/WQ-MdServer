@@ -12,7 +12,7 @@ Date: 2018-04-16
 #include <sys/shm.h>
 #include <map>
 #include <queue>
-#include "queuemanager.hpp"
+#include "wzmem_inc/queuemanager.hpp"
 
 #ifndef DataType
 #define DataType Frame

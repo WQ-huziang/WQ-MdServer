@@ -88,14 +88,14 @@ void writeThread() {
       LOG(ERROR) << "Kill Signal recieved!";
     }
 
-    delete pDepthMarketData;
-    db->insert_many(mds);
+    if (!mds.empty()) {
+      db->insert_many(mds);
+    }
     exit(0);
   };
   signal(SIGINT, sig_handle);
   signal(SIGTERM, sig_handle);
 
-  pDepthMarketData = new TSMarketDataField;
   // wait to receive data
   while(1){
     if(que.pop(pDepthMarketData)){

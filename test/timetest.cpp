@@ -23,7 +23,7 @@ using namespace std;
 CThostFtdcDepthMarketDataField input_array[MAX_NUM];
 CustomMdSpi *engine;
 extern FQueue<TSMarketDataField*> que;
-WZPiper<UdpSocket> *udppiper;
+MemEngine<Frame, 1024, 1024> *mempiper;
 Logger *logger;
 DataEngine *db;
 
@@ -83,12 +83,12 @@ void init() {
   logger->ParseConfigInfo("../test/config.ini");
 
   // init udppiper
-  udppiper = new WZPiper<UdpSocket>();
-  udppiper->init("../test/config.ini", WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
+  mempiper = new MemEngine<Frame, 1024, 1024>();
+  mempiper->init("../test/config.ini", WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
 
   // init mdengine
   engine = new CustomMdSpi("112586", "821361187", "tcp://180.168.146.187:10010");
-  engine->SetOutput(udppiper);
+  engine->SetOutput(mempiper);
 
   // init data engine
   db = MongodbEngine::getInstance();

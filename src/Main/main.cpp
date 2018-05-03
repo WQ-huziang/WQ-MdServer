@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include "iniparser.h"
 #include "custommdspi.h"
-#include "wzsocket_inc/udp.h"
 #include "logger.h"
 #include "mongodbengine.h"
 #include "Thread/dataenginethread.h"
@@ -28,7 +27,7 @@ char contractsfile[50];
 char MdAddr[50];
 
 Logger *logger;
-WZPiper<UdpSocket> *udppiper;
+MemEngine<Frame, 1024, 1024> *mempiper;
 DataEngine *db;
 
 int processInstrumentIDList(char *list[], const char *filename) {
@@ -70,9 +69,9 @@ void init(char *progname, char *filepath){
   db->setLibname("Md");
   db->setTablename("TSMarketDataField");
 
-  // init udppiper
-  udppiper = new WZPiper<UdpSocket>();
-  udppiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
+  // init memory piper
+  mempiper = new MemEngine<Frame, 1024, 1024>();
+  mempiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
 }
 
 int main(int argc, char* argv[])
@@ -95,7 +94,7 @@ int main(int argc, char* argv[])
   //thread alr(alertThread);
 
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
-  engine->SetOutput(udppiper);
+  engine->SetOutput(mempiper);
 
   logger->Info("初始化行情...");
   engine->Init();
