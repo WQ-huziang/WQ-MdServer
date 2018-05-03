@@ -68,7 +68,7 @@ class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
   CustomMdSpi(TThostFtdcInvestorIDType uid, 
               TThostFtdcPasswordType password, 
               char *mdaddr, 
-              char *datadir = "../data");
+              char *datadir = "./data");
   // virtual function
   void Init();
   void Join();

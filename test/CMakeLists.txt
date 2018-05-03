@@ -1,7 +1,6 @@
 SET(CLASS_FILE
   ../src/Md/mdengine.cpp
   ../src/Md/custommdspi.cpp
-  ../src/MessageQueue/messagequeue.cpp
   # ../src/Time/mytime.cpp
   # Alert/alert.cpp
 )

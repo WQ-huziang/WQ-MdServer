@@ -13,7 +13,6 @@
 #include "custommdspi.h"
 #include "TS2CTPparser.h"
 #include "mongodbengine.h"
-#include "messagequeue.h"
 #include "wzsocket_inc/udp.h"
 #include "logger.h"
 #include "Thread/dataenginethread.h"
@@ -23,7 +22,7 @@ using namespace std;
 
 CThostFtdcDepthMarketDataField input_array[MAX_NUM];
 CustomMdSpi *engine;
-extern MessageQueue *que;
+extern FQueue<TSMarketDataField*> que;
 WZPiper<UdpSocket> *udppiper;
 Logger *logger;
 DataEngine *db;
@@ -60,7 +59,6 @@ static void BM_OnRtnDepthMarketData(benchmark::State& state) {
     num = num == MAX_NUM - 1 ? 0 : num + 1;
     state.ResumeTiming();
     engine->OnRtnDepthMarketData(&input_array[num]);
-    usleep(10000);
   }
 }
 
@@ -91,10 +89,6 @@ void init() {
   // init mdengine
   engine = new CustomMdSpi("112586", "821361187", "tcp://180.168.146.187:10010");
   engine->SetOutput(udppiper);
-
-  // init messagequeue
-  TSMarketDataField *p;
-  que = new MessageQueue(sizeof(p), 600);
 
   // init data engine
   db = MongodbEngine::getInstance();

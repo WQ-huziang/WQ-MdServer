@@ -12,8 +12,8 @@
 #include "dataparse.h"
 #include "mongodbengine.h"
 #include "logger.h"
-#include "messagequeue.h"
 #include "timer.h"
+#include "fqueue.h"
 using std::map;
 using std::vector;
 
@@ -25,11 +25,12 @@ static long timenum = 0;
 unsigned long long savetime[TIMES];
 #endif
 
-MessageQueue *que;
+FQueue<TSMarketDataField*> que;
 extern DataEngine *db;
 extern Logger *logger;
 vector<map<string, string>> mds;
 map<string, string> md;
+TSMarketDataField *pDepthMarketData;
 
 void writeDataEngine(TSMarketDataField *pDepthMarketData) {
   // to document
@@ -55,39 +56,28 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
 #endif
 
 #ifdef DEBUG
+  savetime[timenum++] = getTimeByTSC();
+
   if (timenum == TIMES) {
-    ofstream fout("../test/time/recvtime.txt");
+    ofstream fout("../test/time/md_recvtime.csv");
     for (int i = 0; i < TIMES; ++i) {
-      fout << recvtime[i] << endl;
+      fout << recvtime[i + 500] << '\t';
     }
     fout.close();
 
-    fout.open("../test/time/sendtime.txt");
+    fout.open("../test/time/md_sendtime.csv");
     for (int i = 0; i < TIMES; ++i) {
-      fout << sendtime[i] << endl;
+      fout << sendtime[i + 500] << '\t';
     }
     fout.close();
 
-    fout.open("../test/time/savetime.txt");
+    fout.open("../test/time/md_savetime.csv");
     for (int i = 0; i < TIMES; ++i) {
-      fout << savetime[i] << endl;
-    }
-    fout.close();
-
-    fout.open("../test/time/processinterval.txt");
-    long long avg = 0;
-    for (int i = 0; i < TIMES; ++i) {
-      avg += getDuration(recvtime[i], savetime[i]);
-    }
-    fout << "AVERAGE: " << avg / TIMES << endl;
-    for (int i = 0; i < TIMES; ++i) {
-      fout << savetime[i] << endl;
+      fout << savetime[i + 500] << '\t';
     }
     fout.close();
     exit(0);
   }
-
-  savetime[timenum++] = getTimeByTSC();
 #endif
 }
 
@@ -98,18 +88,17 @@ void writeThread() {
       LOG(ERROR) << "Kill Signal recieved!";
     }
 
-    delete que;
+    delete pDepthMarketData;
     db->insert_many(mds);
     exit(0);
   };
   signal(SIGINT, sig_handle);
   signal(SIGTERM, sig_handle);
 
-  TSMarketDataField *pDepthMarketData = new TSMarketDataField;
-  que = new MessageQueue(sizeof(*pDepthMarketData), 600);
+  pDepthMarketData = new TSMarketDataField;
   // wait to receive data
   while(1){
-    if(que->receive(pDepthMarketData)){
+    if(que.pop(pDepthMarketData)){
       writeDataEngine(pDepthMarketData);
     }
   }

@@ -22,7 +22,7 @@ private:
     ELEM_T *m_theQueue;
     inline unsigned int countToIndex(unsigned int a_count);
     unsigned int Q_SIZE;
-    unsigned int count;
+    volatile std::atomic<unsigned int> count;
 
 
 public:
@@ -91,15 +91,9 @@ bool FQueue<ELEM_T>::pop(ELEM_T &a_data) {
             return false;
         }
 //        a_data = m_theQueue[countToIndex(currentReadIndex)];
-<<<<<<< HEAD
         if  (atomic_compare_exchange_weak(&m_readIndex, &currentReadIndex, (currentReadIndex + 1))){
             atomic_fetch_sub(&count, (unsigned int) 1);
             memcpy(&a_data, &m_theQueue[countToIndex(currentReadIndex)], sizeof(a_data));
-=======
-        memcpy(&a_data, &m_theQueue[countToIndex(currentReadIndex)], sizeof(a_data));
-        if  (atomic_compare_exchange_weak(&m_readIndex, &currentReadIndex, (currentReadIndex + 1))){
-            atomic_fetch_sub(&count, (unsigned int) 1);
->>>>>>> 009faea86958bab82f2011214d79b1892df7fb3d
             return true;
         }
     }while(true);

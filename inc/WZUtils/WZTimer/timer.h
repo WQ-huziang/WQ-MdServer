@@ -19,7 +19,7 @@ Date: 2018-04-20
 #define FREQUENCY_US 3096.4785
 #endif
 
-#define TIMES 1024
+#define TIMES 1524
 
 using dur = std::chrono::duration<int64_t, std::micro>;
 static double FREQUENCY;

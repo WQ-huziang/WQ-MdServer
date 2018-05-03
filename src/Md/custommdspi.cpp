@@ -10,23 +10,33 @@
 #include <unistd.h>
 #include "ThostFtdcUserApiDataType.h"
 #include "ThostFtdcMdApi.h"
-#include "messagequeue.h"
 #include "logger.h"
 #include "TS2CTPparser.h"
 #include "timer.h"
+#include "fqueue.h"
 
 #ifdef DEBUG
 unsigned long long recvtime[TIMES];
 unsigned long long sendtime[TIMES];
 static long timenum = 0;
+static long beginnum = 0;
 #endif
 
 using std::endl;
 using std::string;
 
 int requestID = 0;
-extern MessageQueue *que;
+extern FQueue<TSMarketDataField*> que;
 extern Logger *logger;
+
+TSMarketDataField memorypool[1024];
+int memorypooladdr = 0;
+TSMarketDataField *pTSDepthMarketData;
+
+inline TSMarketDataField* newTSMarketDataField() {
+  memorypooladdr = memorypooladdr == 1024 - 1 ? 0 : memorypooladdr + 1;
+  return memorypool + memorypooladdr; 
+}
 
 CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
                          TThostFtdcPasswordType password,
@@ -184,8 +194,8 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
     return;
   }
   recvtime[timenum] = getTimeByTSC();
-  std::cerr << "===== Get Depth Market Data =====" << endl;
-  std::cerr << "Num: " << timenum << endl;
+  // std::cerr << "===== Get Depth Market Data =====" << endl;
+  // std::cerr << "Num: " << timenum << endl;
 
   // std::cerr << "Trading Day: " << pDepthMarketData->TradingDay << endl;
   // std::cerr << "Exchange ID: " << pDepthMarketData->ExchangeID << endl;
@@ -195,12 +205,13 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   // std::cerr << "Turnover: " << pDepthMarketData->Turnover << endl;
 #endif
 
-  TSMarketDataField pTSDepthMarketData;
-  parseFrom(pTSDepthMarketData, *pDepthMarketData);
+  pTSDepthMarketData = newTSMarketDataField();
+  parseFrom(*pTSDepthMarketData, *pDepthMarketData);
   // send data
-  this->RtnDepthMarketData(&pTSDepthMarketData);
+  this->RtnDepthMarketData(pTSDepthMarketData);
+
   // insert data engine
-  que->send(&pTSDepthMarketData);
+  que.push(pTSDepthMarketData);
 
 #ifdef DEBUG
   sendtime[timenum++] = getTimeByTSC();

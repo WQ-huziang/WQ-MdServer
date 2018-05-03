@@ -78,8 +78,8 @@ inline void parseTo(const TSRtnOrderField& req, struct CThostFtdcOrderField &rtn
 }
 
 inline void parseFrom(struct TSMarketDataField &rtn, const CThostFtdcDepthMarketDataField &req){
-  strcpy(rtn.TradingDay, req.TradingDay);
-  strcpy(rtn.InstrumentID, req.InstrumentID);
+  memcpy(rtn.TradingDay, req.TradingDay, sizeof(char_13));
+  memcpy(rtn.InstrumentID, req.InstrumentID, sizeof(char_31));
   rtn.LastPrice = req.LastPrice;
   rtn.PreSettlementPrice = req.PreSettlementPrice;
   rtn.PreClosePrice = req.PreClosePrice;
@@ -94,7 +94,7 @@ inline void parseFrom(struct TSMarketDataField &rtn, const CThostFtdcDepthMarket
   // rtn.SettlementPrice = req.SettlementPrice;
   rtn.UpperLimitPrice = req.UpperLimitPrice;
   rtn.LowerLimitPrice = req.LowerLimitPrice;
-  strcpy(rtn.UpdateTime, req.UpdateTime);
+  memcpy(rtn.UpdateTime, req.UpdateTime, sizeof(char_13));
   rtn.UpdateMillisec = req.UpdateMillisec;
   rtn.BidPrice1 = req.BidPrice1;
   rtn.BidVolume1 = req.BidVolume1;

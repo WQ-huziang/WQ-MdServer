@@ -1,7 +1,6 @@
 SET(CLASS_FILE
   Md/mdengine.cpp
   Md/custommdspi.cpp
-  MessageQueue/messagequeue.cpp
   Time/mytime.cpp
   # Alert/alert.cpp
 )

@@ -1,0 +1,4 @@
+Log file created at: 2018/04/27 19:13:03
+Running on machine: localhost.localdomain
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0427 19:13:03.904476 30753 dataenginethread.h:88] Kill Signal recieved!
