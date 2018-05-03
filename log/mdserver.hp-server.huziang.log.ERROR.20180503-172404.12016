@@ -1,0 +1,4 @@
+Log file created at: 2018/05/03 17:24:04
+Running on machine: hp-server
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0503 17:24:04.499009 12016 dataenginethread.h:97] Kill Signal recieved!

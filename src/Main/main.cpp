@@ -85,7 +85,11 @@ void init(char *progname, char *filepath){
 
   // init mempiper
   mempiper = new MemEngine<Frame, 1024, 10>();
+#ifdef TIMER
   mempiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_NBLOCK);
+#else
+  mempiper->init(filepath, WZ_PIPER_SERVER, WZ_PIPER_NBLOCK);
+#endif
 
   // init data engine
   db = MongodbEngine::getInstance();
