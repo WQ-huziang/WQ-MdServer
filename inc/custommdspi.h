@@ -1,8 +1,10 @@
-//
-//
-// Author : lijiaheng
-//   This is a class inherit virtual class MdEngine and
-// class CThostFtdcMdSpi, and have instance CThostFtdcMdApi
+/***************************************************************************
+Copyright(C) 2018, Wizard Quant
+Author: lijiaheng
+Description: This is a class inherit virtual class MdEngine and
+class CThostFtdcMdSpi, and have instance CThostFtdcMdApi
+Date: 2018年5月3日 星期四 下午2:19
+****************************************************************************/
 
 #ifndef MDSERVER_CUSTOMMDSPI_H_
 #define MDSERVER_CUSTOMMDSPI_H_
@@ -14,10 +16,16 @@
 
 using std::string;
 
-typedef char String[20];
-
+/***************************************************************************
+Description: CustomMdSpi realize the function defined in MdEngine
+            by CTP's api
+****************************************************************************/
 class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
 {
+
+ /***************************************************************************
+ Description: This public function is the realization of Spi
+ ****************************************************************************/
  public:
   ///���ͻ����뽻�׺�̨������ͨ������ʱ����δ��¼ǰ�����÷��������á�
   void OnFrontConnected();
@@ -63,27 +71,72 @@ class CustomMdSpi : public MdEngine, public CThostFtdcMdSpi
   ///ѯ��֪ͨ
   void OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp);
 
- //�Զ���
  public:
+
+  /*************************************************
+  Function: CustomMdSpi
+  Description: Constructor
+  InputParameter:
+    uid: CTP's user ID
+    password: CTP's user password, corresponding with uid
+    mdaddr: CTP's market datas' tcp addr
+    datadir: the floder store ".con" file (created by CTP)
+  Return: none
+  *************************************************/
   CustomMdSpi(TThostFtdcInvestorIDType uid, 
               TThostFtdcPasswordType password, 
               char *mdaddr, 
               char *datadir = "./data");
-  // virtual function
+  
+  /*************************************************
+  Function: Init
+  Description: Realized function, init pointer pUserApi
+  InputParameter: none
+  Return: none
+  *************************************************/
   void Init();
+
+  /*************************************************
+  Function: Join
+  Description: Realized function, join pointer pUserApi
+  InputParameter: none
+  Return: none
+  *************************************************/
   void Join();
+
+  /*************************************************
+  Function: Release
+  Description: Realized function, release pointer pUserApi
+  InputParameter: none
+  Return: none
+  *************************************************/
   void Release();
+
+  /*************************************************
+  Function: ReqSubscribeMarketData
+  Description: Realized function, send request to CTP
+    in order to subscribe CTP's market data
+  InputParameter:
+    contracts: constracts' name
+    contractsnum: constracts' size
+  Return: none
+  *************************************************/
   void ReqSubscribeMarketData(char *contracts[], int contractsnum);
 
+  /*************************************************
+  Function: ReqUserLogin
+  Description: Before send request, you need to login at first 
+  InputParameter: none
+  Return: none
+  *************************************************/
   void ReqUserLogin();
 
 private:
   // DISALLOW_COPY_AND_ASSIGN(CustomMdSpi);
-  TThostFtdcBrokerIDType BrokerID;
-  TThostFtdcInvestorIDType InvestorID;
-  TThostFtdcPasswordType Password;
-  CThostFtdcMdApi *pUserApi;
-  bool lock;
+  TThostFtdcBrokerIDType BrokerID;         // 9999
+  TThostFtdcInvestorIDType InvestorID;     // user's ID
+  TThostFtdcPasswordType Password;         // user's passwird
+  CThostFtdcMdApi *pUserApi;               // CTP's api pointer
 };
 
 #endif  // MDSERVER_CUSTOMMDSPI_H_

@@ -1,8 +1,6 @@
 SET(CLASS_FILE
   Md/mdengine.cpp
   Md/custommdspi.cpp
-  Time/mytime.cpp
-  # Alert/alert.cpp
 )
 SET(MAIN_FILE Main/main.cpp)
 SET(CTP_SO

@@ -1,7 +1,9 @@
-//
-//
-// Author : huziang
-// This is main.cpp file by md server
+/***************************************************************************
+Copyright(C) 2018, Wizard Quant
+Author: huziang
+Description: This is main.cpp file by md server
+Date: 2018年5月3日 星期四 下午3:29
+****************************************************************************/
 
 #define CONTRACT_NUM 1000
 #define CONTRACT_LEN 8
@@ -19,17 +21,26 @@
 #include "Thread/dataenginethread.h"
 using std::thread;
 
-int contractsnum;
-char **contracts;
-TThostFtdcInvestorIDType InvestorID;
-TThostFtdcPasswordType Password;
-char contractsfile[50];
-char MdAddr[50];
+char **contracts;                        // constracts' name list
+int contractsnum;                        // constracts' size
+TThostFtdcInvestorIDType InvestorID;     // user ID
+TThostFtdcPasswordType Password;         // user password
+char contractsfile[50];                  // the file stored constracts' name list
+char MdAddr[50];                         // mds' address
 
 Logger *logger;
 MemEngine<Frame, 1024, 1024> *mempiper;
 DataEngine *db;
 
+/*************************************************
+Function: processInstrumentIDList
+Description: Read given file, and split it into
+constracts' name list
+InputParameter:
+  list: constracts' name list
+  filename: the given files' path
+Return: the size of constracts' name list
+*************************************************/
 int processInstrumentIDList(char *list[], const char *filename) {
   FILE* fp = fopen(filename, "r");
   if (fp == NULL) {
@@ -45,6 +56,15 @@ int processInstrumentIDList(char *list[], const char *filename) {
   return num - 1;
 }
 
+/*************************************************
+Function: init
+Description: init function, read information by given
+.ini file
+InputParameter:
+  proname: projects' name
+  filepath: the .ini files' path
+Return: none
+*************************************************/
 void init(char *progname, char *filepath){
   // get parameter
   CIni ini;
@@ -63,15 +83,18 @@ void init(char *progname, char *filepath){
   logger = new Logger(progname);
   logger->ParseConfigInfo(filepath);
 
+  // init memory piper
+  mempiper = new MemEngine<Frame, 1024, 1024>();
+  mempiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
+
   // init data engine
   db = MongodbEngine::getInstance();
   db->init();
   db->setLibname("Md");
   db->setTablename("TSMarketDataField");
 
-  // init memory piper
-  mempiper = new MemEngine<Frame, 1024, 1024>();
-  mempiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
+  // start thread
+  thread wtr(writeThread);
 }
 
 int main(int argc, char* argv[])
@@ -90,20 +113,19 @@ int main(int argc, char* argv[])
   }
 
   init(argv[0], argv[2]);
-  thread wtr(writeThread);
 
+  // init mdengine and set output
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
   engine->SetOutput(mempiper);
 
   logger->Info("初始化行情...");
   engine->Init();
-  sleep(1);
+  sleep(1);  // in order to given enough time to login user
 
   engine->ReqSubscribeMarketData(contracts, contractsnum);
 
   wtr.join();
   engine->Join();
-
   engine->Release();
 
   return 0;

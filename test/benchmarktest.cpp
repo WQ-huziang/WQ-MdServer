@@ -1,7 +1,9 @@
-//
-//
-// Author : huziang
-// Using benchmark to test mdserver
+/***************************************************************************
+Copyright(C) 2018, Wizard Quant
+Author: huziang
+Description: Using benchmark to test mdserver
+Date: 2018年5月3日 星期四 下午3:37
+****************************************************************************/
 
 #include <benchmark/benchmark.h>
 #include <fstream>
@@ -27,6 +29,12 @@ MemEngine<Frame, 1024, 1024> *mempiper;
 Logger *logger;
 DataEngine *db;
 
+/*************************************************
+Function: scanTS
+Description: read TS object by file
+InputParameter: none
+Return: none
+*************************************************/
 void scanTS(ifstream &fin, TSMarketDataField &pDepthMarketData) {
   fin >> pDepthMarketData.TradingDay
      >> pDepthMarketData.InstrumentID
@@ -52,6 +60,9 @@ void scanTS(ifstream &fin, TSMarketDataField &pDepthMarketData) {
      >> pDepthMarketData.AskVolume1;
 }
 
+/***************************************************************************
+Description: Test function OnRtnDepthMarketData
+****************************************************************************/
 static void BM_OnRtnDepthMarketData(benchmark::State& state) {
   int num = 0;
   while (state.KeepRunning()) {
@@ -62,6 +73,9 @@ static void BM_OnRtnDepthMarketData(benchmark::State& state) {
   }
 }
 
+/***************************************************************************
+Description: Test function writeDataEngine
+****************************************************************************/
 static void BM_writeDataEngine(benchmark::State& state) {
   int num = 0;
   while (state.KeepRunning()) {
@@ -74,10 +88,23 @@ static void BM_writeDataEngine(benchmark::State& state) {
   }
 }
 
+// set time
 BENCHMARK(BM_OnRtnDepthMarketData);
 BENCHMARK(BM_writeDataEngine);
 
+/***************************************************************************
+Description: init function like main.cpp
+****************************************************************************/
 void init() {
+  // read data from file
+  ifstream fin("../test/data.csv");
+  TSMarketDataField ts;
+  for (int i = 0; i < MAX_NUM; i++) {
+    scanTS(fin, ts);
+    parseTo(ts, input_array[i]);
+  }
+  fin.close();
+
   // init logger
   logger = new Logger("timetest");
   logger->ParseConfigInfo("../test/config.ini");
@@ -98,14 +125,6 @@ void init() {
 }
 
 int main(int argc, char** argv) {
-  ifstream fin("../test/data.csv");
-  TSMarketDataField ts;
-  for (int i = 0; i < MAX_NUM; i++) {
-    scanTS(fin, ts);
-    parseTo(ts, input_array[i]);
-  }
-  fin.close();
-
   init();
 
   benchmark::Initialize(&argc, argv);

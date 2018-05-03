@@ -1,7 +1,9 @@
-//
-//
-// Author : huziang
-// This is a cpp file, complete the function in class CustomMdSpi
+/***************************************************************************
+Copyright(C) 2018, Wizard Quant
+Author: huziang
+Description: This is a cpp file, complete the function in class CustomMdSpi
+Date: 2018年5月3日 星期四 下午3:27
+****************************************************************************/
 
 #include "custommdspi.h"
 #include <memory.h>
@@ -29,37 +31,16 @@ int requestID = 0;
 extern FQueue<TSMarketDataField*> que;
 extern Logger *logger;
 
+/***************************************************************************
+Description: This is a small memory pool, without delete and lock,
+            please quickly get data, or this data will be covered
+****************************************************************************/
 TSMarketDataField memorypool[1024];
 int memorypooladdr = 0;
 TSMarketDataField *pTSDepthMarketData;
-
 inline TSMarketDataField* newTSMarketDataField() {
   memorypooladdr = memorypooladdr == 1024 - 1 ? 0 : memorypooladdr + 1;
   return memorypool + memorypooladdr; 
-}
-
-CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
-                         TThostFtdcPasswordType password,
-                         char *mdaddr, 
-                         char *datadir) {
-  strcpy(Password, password);
-  strcpy(InvestorID, uid);
-  strcpy(BrokerID, "9999");
-  pUserApi = CThostFtdcMdApi::CreateFtdcMdApi(datadir);
-  pUserApi->RegisterSpi(this);
-  pUserApi->RegisterFront(mdaddr);
-}
-
-void CustomMdSpi::Init() {
-  pUserApi->Init();
-}
-
-void CustomMdSpi::Join(){
-  pUserApi->Join();
-}
-
-void CustomMdSpi::Release() {
-  pUserApi->Release();
 }
 
 void CustomMdSpi::ReqSubscribeMarketData(char *contracts[], int contractsnum){
@@ -205,12 +186,14 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   // std::cerr << "Turnover: " << pDepthMarketData->Turnover << endl;
 #endif
 
+  // get TS's pointer, and transform CTP to TS
   pTSDepthMarketData = newTSMarketDataField();
   parseFrom(*pTSDepthMarketData, *pDepthMarketData);
-  // send data
+  
+  // send data to other processes
   this->RtnDepthMarketData(pTSDepthMarketData);
 
-  // insert data engine
+  // send data to other threads
   que.push(pTSDepthMarketData);
 
 #ifdef DEBUG
@@ -234,3 +217,27 @@ void CustomMdSpi::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp) {
   ///交易所代码
   LOG(INFO) << pForQuoteRsp->ExchangeID;
 };
+
+CustomMdSpi::CustomMdSpi(TThostFtdcInvestorIDType uid,
+                         TThostFtdcPasswordType password,
+                         char *mdaddr, 
+                         char *datadir) {
+  strcpy(Password, password);
+  strcpy(InvestorID, uid);
+  strcpy(BrokerID, "9999");
+  pUserApi = CThostFtdcMdApi::CreateFtdcMdApi(datadir);
+  pUserApi->RegisterSpi(this);
+  pUserApi->RegisterFront(mdaddr);
+}
+
+void CustomMdSpi::Init() {
+  pUserApi->Init();
+}
+
+void CustomMdSpi::Join(){
+  pUserApi->Join();
+}
+
+void CustomMdSpi::Release() {
+  pUserApi->Release();
+}

@@ -5,6 +5,7 @@
         "array": "cpp",
         "ostream": "cpp",
         "atomic": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "ios": "cpp"
     }
 }

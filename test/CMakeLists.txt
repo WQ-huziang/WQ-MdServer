@@ -1,10 +1,8 @@
 SET(CLASS_FILE
   ../src/Md/mdengine.cpp
   ../src/Md/custommdspi.cpp
-  # ../src/Time/mytime.cpp
-  # Alert/alert.cpp
 )
-SET(TESTMAIN_FILE timetest)
+SET(TESTMAIN_FILE benchmarktest)
 SET(CTP_SO
   thostmduserapi
   thosttraderapi

@@ -1,9 +1,8 @@
-
 /***************************************************************************
 Copyright(C) 2018, Wizard Quant
 Author: huziang
 Description: This is a thread function to store data into data engine
-Date: 
+Date: 2018年5月3日 星期四 下午2:15
 ****************************************************************************/
 
 #ifndef MDSERVER_DATAENGINETHREAD_H_
@@ -35,6 +34,9 @@ vector<map<string, string>> mds;
 map<string, string> md;
 TSMarketDataField *pDepthMarketData;
 
+/***************************************************************************
+Description: get TS and store it in data engine
+****************************************************************************/
 void writeDataEngine(TSMarketDataField *pDepthMarketData) {
   // to document
   md.clear();
@@ -42,12 +44,8 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
 
   // documents insert the document
   mds.push_back(md);
-#ifdef DEBUG
-  if (mds.size() >= TIMES) {
-    db->insert_many(mds);
-    mds.clear();
-  }
-#else
+
+#ifndef DEBUG
   if (mds.size() >= 50) {
     if (db->insert_many(mds)) {
       LOG(INFO) << "insert TSMarketDataFields success!";
@@ -58,7 +56,13 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
   }
 #endif
 
+// if use DEBUG mode, insert to mongodb in the last one
 #ifdef DEBUG
+  if (mds.size() >= TIMES - 1) {
+    db->insert_many(mds);
+    mds.clear();
+  }
+
   savetime[timenum++] = getTimeByTSC();
 
   if (timenum == TIMES) {
@@ -84,6 +88,10 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
 #endif
 }
 
+/***************************************************************************
+Description: the thread's run function, recieve data and store it in data
+engine
+****************************************************************************/
 void writeThread() {
   // if recieve signal kill or ctrl+c, save remain data
   auto sig_handle = [](int sig) {
