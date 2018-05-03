@@ -55,21 +55,22 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
   savetime[timenum++] = getTimeByTSC();
 
   if (timenum == TIMES) {
+    cerr << "Over!" << endl;
     ofstream fout("../test/time/md_recvtime.csv");
     for (int i = 0; i < TIMES; ++i) {
-      fout << recvtime[i + 500] << '\t';
+      fout << recvtime[i] << '\t';
     }
     fout.close();
 
     fout.open("../test/time/md_sendtime.csv");
     for (int i = 0; i < TIMES; ++i) {
-      fout << sendtime[i + 500] << '\t';
+      fout << sendtime[i] << '\t';
     }
     fout.close();
 
     fout.open("../test/time/md_savetime.csv");
     for (int i = 0; i < TIMES; ++i) {
-      fout << savetime[i + 500] << '\t';
+      fout << savetime[i] << '\t';
     }
     fout.close();
     exit(0);
