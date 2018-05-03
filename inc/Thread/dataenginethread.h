@@ -1,7 +1,10 @@
-//
-//
-// Author : huziang
-// This is a thread function to store data into data engine
+
+/***************************************************************************
+Copyright(C) 2018, Wizard Quant
+Author: huziang
+Description: This is a thread function to store data into data engine
+Date: 
+****************************************************************************/
 
 #ifndef MDSERVER_DATAENGINETHREAD_H_
 #define MDSERVER_DATAENGINETHREAD_H_

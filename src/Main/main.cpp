@@ -91,7 +91,6 @@ int main(int argc, char* argv[])
 
   init(argv[0], argv[2]);
   thread wtr(writeThread);
-  //thread alr(alertThread);
 
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);
   engine->SetOutput(mempiper);

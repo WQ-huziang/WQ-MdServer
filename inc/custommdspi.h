@@ -1,7 +1,7 @@
 //
 //
 // Author : lijiaheng
-// This is a class inherit virtual class MdEngine and
+//   This is a class inherit virtual class MdEngine and
 // class CThostFtdcMdSpi, and have instance CThostFtdcMdApi
 
 #ifndef MDSERVER_CUSTOMMDSPI_H_
