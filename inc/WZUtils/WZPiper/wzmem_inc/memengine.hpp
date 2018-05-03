@@ -127,7 +127,7 @@ public:
 
     /*************************************************
     Function: attachMemory
-    Description: attach shared memory function
+    Description: attach shared memory functionWZ_PIPER_BLOCK
     InputParameter:
        m_key: the to-attach shared memory key.
        m_shmid: the to-attach shared memory id.

@@ -10,12 +10,12 @@ Date: 2018年5月3日 星期四 下午3:28
 #include "tsdatastruct.h"
 #include "FM2TSparser.h"
 
-void MdEngine::SetOutput(MemEngine<Frame, 1024, 1024> *_output) {
+void MdEngine::SetOutput(MemEngine<Frame, 1024, 10> *_output) {
   output = _output;
 }
 
 void MdEngine::RtnDepthMarketData(TSMarketDataField* pDepthMarketData) {
-  if (output != NULL) {
+  if (output != nullptr) {
     parseTo(this->frame, *pDepthMarketData);
     output->Send(this->frame);
   }

@@ -25,8 +25,8 @@ class MdEngine {
     _output: outside output to transport Frame struct
   Return: none
   *************************************************/
-  MdEngine(MemEngine<Frame, 1024, 1024>* _output = NULL)
-      : output(_output) {}
+  MdEngine(MemEngine<Frame, 1024, 10>* _output = NULL)
+    : output(_output) {}
 
   /*************************************************
   Function: Init
@@ -70,7 +70,7 @@ class MdEngine {
     _output: outside output to transport Frame struct
   Return: none
   *************************************************/
-  void SetOutput(MemEngine<Frame, 1024, 1024> *_output);
+  void SetOutput(MemEngine<Frame, 1024, 10> *_output);
 
   /*************************************************
   Function: RtnDepthMarketData
@@ -84,7 +84,7 @@ class MdEngine {
 
  private:
   // DISALLOW_COPY_AND_ASSIGN(MdEngine);
-  MemEngine<Frame, 1024, 1024> *output;  // use to transport Frame data
+  MemEngine<Frame, 1024, 10> *output;  // use to transport Frame data
   Frame frame;                           // the Frame object, avoid to repeat construct
 };
 

@@ -29,7 +29,7 @@ char contractsfile[50];                  // the file stored constracts' name lis
 char MdAddr[50];                         // mds' address
 
 Logger *logger;
-MemEngine<Frame, 1024, 1024> *mempiper;
+MemEngine<Frame, 1024, 10> *mempiper;
 DataEngine *db;
 
 /*************************************************
@@ -83,18 +83,15 @@ void init(char *progname, char *filepath){
   logger = new Logger(progname);
   logger->ParseConfigInfo(filepath);
 
-  // init memory piper
-  mempiper = new MemEngine<Frame, 1024, 1024>();
-  mempiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
+  // init mempiper
+  mempiper = new MemEngine<Frame, 1024, 10>();
+  mempiper->init(filepath, WZ_PIPER_CLIENT, WZ_PIPER_NBLOCK);
 
   // init data engine
   db = MongodbEngine::getInstance();
   db->init();
   db->setLibname("Md");
   db->setTablename("TSMarketDataField");
-
-  // start thread
-  thread wtr(writeThread);
 }
 
 int main(int argc, char* argv[])
@@ -113,6 +110,9 @@ int main(int argc, char* argv[])
   }
 
   init(argv[0], argv[2]);
+
+  // start thread
+  thread wtr(writeThread);
 
   // init mdengine and set output
   MdEngine *engine = new CustomMdSpi(InvestorID, Password, MdAddr);

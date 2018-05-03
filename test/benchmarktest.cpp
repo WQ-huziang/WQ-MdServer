@@ -25,7 +25,7 @@ using namespace std;
 CThostFtdcDepthMarketDataField input_array[MAX_NUM];
 CustomMdSpi *engine;
 extern FQueue<TSMarketDataField*> que;
-MemEngine<Frame, 1024, 1024> *mempiper;
+MemEngine<Frame, 1024, 10> *mempiper;
 Logger *logger;
 DataEngine *db;
 
@@ -110,7 +110,7 @@ void init() {
   logger->ParseConfigInfo("../test/config.ini");
 
   // init udppiper
-  mempiper = new MemEngine<Frame, 1024, 1024>();
+  mempiper = new MemEngine<Frame, 1024, 10>();
   mempiper->init("../test/config.ini", WZ_PIPER_CLIENT, WZ_PIPER_BLOCK);
 
   // init mdengine

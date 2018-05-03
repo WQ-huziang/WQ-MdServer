@@ -20,7 +20,7 @@ using std::map;
 using std::vector;
 
 
-#ifdef DEBUG
+#ifdef TIMER
 extern unsigned long long recvtime[TIMES];
 extern unsigned long long sendtime[TIMES];
 static long timenum = 0;
@@ -45,19 +45,8 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
   // documents insert the document
   mds.push_back(md);
 
-#ifndef DEBUG
-  if (mds.size() >= 50) {
-    if (db->insert_many(mds)) {
-      LOG(INFO) << "insert TSMarketDataFields success!";
-    } else {
-      LOG(ERROR) << "Can't insert TSMarketDataFields!";
-    }
-    mds.clear();
-  }
-#endif
-
-// if use DEBUG mode, insert to mongodb in the last one
-#ifdef DEBUG
+#ifdef TIMER
+  // if use TIMER mode, insert to mongodb in the last one
   if (mds.size() >= TIMES - 1) {
     db->insert_many(mds);
     mds.clear();
@@ -84,6 +73,15 @@ void writeDataEngine(TSMarketDataField *pDepthMarketData) {
     }
     fout.close();
     exit(0);
+  }
+#else
+  if (mds.size() >= 50) {
+    if (db->insert_many(mds)) {
+      LOG(INFO) << "insert TSMarketDataFields success!";
+    } else {
+      LOG(ERROR) << "Can't insert TSMarketDataFields!";
+    }
+    mds.clear();
   }
 #endif
 }

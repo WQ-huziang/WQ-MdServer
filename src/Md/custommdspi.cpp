@@ -17,7 +17,7 @@ Date: 2018年5月3日 星期四 下午3:27
 #include "timer.h"
 #include "fqueue.h"
 
-#ifdef DEBUG
+#ifdef TIMER
 unsigned long long recvtime[TIMES];
 unsigned long long sendtime[TIMES];
 static long timenum = 0;
@@ -170,7 +170,7 @@ void CustomMdSpi::OnRspUnSubForQuoteRsp(CThostFtdcSpecificInstrumentField *pSpec
 
 ///深度行情通知
 void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
-#ifdef DEBUG
+#ifdef TIMER
   if (timenum == TIMES) {
     return;
   }
@@ -189,14 +189,15 @@ void CustomMdSpi::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
   // get TS's pointer, and transform CTP to TS
   pTSDepthMarketData = newTSMarketDataField();
   parseFrom(*pTSDepthMarketData, *pDepthMarketData);
-  
+
+  //cout << "enter?" << endl;  
   // send data to other processes
   this->RtnDepthMarketData(pTSDepthMarketData);
 
   // send data to other threads
   que.push(pTSDepthMarketData);
 
-#ifdef DEBUG
+#ifdef TIMER
   sendtime[timenum++] = getTimeByTSC();
 #endif
 };
